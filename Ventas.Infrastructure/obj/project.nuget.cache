@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "J2lna9/P3TvegawaTGN3dbQgPMOC0HKvuZ7bXTuZNud0Hj96oUhu0GovnEi/7RGje3MwVSTimGV/zHZHrDFEwA==",
+  "dgSpecHash": "UKYH8eFtBLKOj0EARPNS8Mg2sWXNjt1xYwnVfA/k/PZwa0TFtTMyaB2AxGmWG2fwLQldHRKWLjkssckSe8vdNw==",
   "success": true,
-  "projectFilePath": "C:\\project\\Ventas\\Ventas.Infrastructure\\Ventas.Infrastructure.csproj",
+  "projectFilePath": "C:\\Proyecto\\Ventas\\Ventas.Infrastructure\\Ventas.Infrastructure.csproj",
   "expectedPackageFiles": [],
   "logs": []
 }
