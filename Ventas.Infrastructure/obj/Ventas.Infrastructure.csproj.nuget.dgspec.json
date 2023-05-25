@@ -1,20 +1,20 @@
 {
   "format": 1,
   "restore": {
-    "C:\\project\\Ventas\\Ventas.Infrastructure\\Ventas.Infrastructure.csproj": {}
+    "C:\\proyecto\\ventas\\Ventas.Infrastructure\\Ventas.Infrastructure.csproj": {}
   },
   "projects": {
-    "C:\\project\\Ventas\\Ventas.Infrastructure\\Ventas.Infrastructure.csproj": {
+    "C:\\proyecto\\ventas\\Ventas.Infrastructure\\Ventas.Infrastructure.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\project\\Ventas\\Ventas.Infrastructure\\Ventas.Infrastructure.csproj",
+        "projectUniqueName": "C:\\proyecto\\ventas\\Ventas.Infrastructure\\Ventas.Infrastructure.csproj",
         "projectName": "Ventas.Infrastructure",
-        "projectPath": "C:\\project\\Ventas\\Ventas.Infrastructure\\Ventas.Infrastructure.csproj",
-        "packagesPath": "C:\\Users\\luise\\.nuget\\packages\\",
-        "outputPath": "C:\\project\\Ventas\\Ventas.Infrastructure\\obj\\",
+        "projectPath": "C:\\proyecto\\ventas\\Ventas.Infrastructure\\Ventas.Infrastructure.csproj",
+        "packagesPath": "C:\\Users\\Aquil\\.nuget\\packages\\",
+        "outputPath": "C:\\proyecto\\ventas\\Ventas.Infrastructure\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\luise\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\Aquil\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -55,7 +55,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.302\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.401\\RuntimeIdentifierGraph.json"
         }
       }
     }
