@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "KJ8agKpw2hF8823Rj2jRncnyN2/LYw8Nl8Ri2GdnlJXcnIbgA2XCtXjs29poakZiKGWLFyMWsKmnNfUixdzYcg==",
+  "dgSpecHash": "ZacogAtloKktB89/OegL+JK0UNo4V8pWDvUZh8ZHg8RGF9RVgD5kvH12zi860zBthzWGujl7RkN6dhkkH2FdRA==",
   "success": true,
-  "projectFilePath": "C:\\proyecto\\ventas\\Ventas.IOC\\Ventas.IOC.csproj",
+  "projectFilePath": "C:\\proyecto\\Ventas\\Ventas.IOC\\Ventas.IOC.csproj",
   "expectedPackageFiles": [],
   "logs": []
 }

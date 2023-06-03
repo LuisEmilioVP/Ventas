@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\proyecto\\ventas\\Ventas.API\\Ventas.API.csproj": {}
+    "C:\\proyecto\\Ventas\\Ventas.API\\Ventas.API.csproj": {}
   },
   "projects": {
-    "C:\\proyecto\\ventas\\Ventas.API\\Ventas.API.csproj": {
+    "C:\\proyecto\\Ventas\\Ventas.API\\Ventas.API.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\proyecto\\ventas\\Ventas.API\\Ventas.API.csproj",
+        "projectUniqueName": "C:\\proyecto\\Ventas\\Ventas.API\\Ventas.API.csproj",
         "projectName": "Ventas.API",
-        "projectPath": "C:\\proyecto\\ventas\\Ventas.API\\Ventas.API.csproj",
+        "projectPath": "C:\\proyecto\\Ventas\\Ventas.API\\Ventas.API.csproj",
         "packagesPath": "C:\\Users\\Aquil\\.nuget\\packages\\",
-        "outputPath": "C:\\proyecto\\ventas\\Ventas.API\\obj\\",
+        "outputPath": "C:\\proyecto\\Ventas\\Ventas.API\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\Aquil\\AppData\\Roaming\\NuGet\\NuGet.Config",

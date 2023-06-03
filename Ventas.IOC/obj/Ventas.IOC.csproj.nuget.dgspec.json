@@ -1,15 +1,15 @@
 {
   "format": 1,
   "restore": {
-    "C:\\proyecto\\ventas\\Ventas.IOC\\Ventas.IOC.csproj": {}
+    "C:\\proyecto\\Ventas\\Ventas.IOC\\Ventas.IOC.csproj": {}
   },
   "projects": {
-    "C:\\proyecto\\ventas\\Ventas.IOC\\Ventas.IOC.csproj": {
+    "C:\\proyecto\\Ventas\\Ventas.IOC\\Ventas.IOC.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\proyecto\\ventas\\Ventas.IOC\\Ventas.IOC.csproj",
+        "projectUniqueName": "C:\\proyecto\\Ventas\\Ventas.IOC\\Ventas.IOC.csproj",
         "projectName": "Ventas.IOC",
-        "projectPath": "C:\\proyecto\\ventas\\Ventas.IOC\\Ventas.IOC.csproj",
+        "projectPath": "C:\\proyecto\\Ventas\\Ventas.IOC\\Ventas.IOC.csproj",
         "packagesPath": "C:\\Users\\Aquil\\.nuget\\packages\\",
         "outputPath": "C:\\proyecto\\ventas\\Ventas.IOC\\obj\\",
         "projectStyle": "PackageReference",

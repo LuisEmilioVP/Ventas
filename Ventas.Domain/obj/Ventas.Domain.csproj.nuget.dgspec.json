@@ -1,15 +1,15 @@
 {
   "format": 1,
   "restore": {
-    "C:\\proyecto\\ventas\\Ventas.Domain\\Ventas.Domain.csproj": {}
+    "C:\\proyecto\\Ventas\\Ventas.Domain\\Ventas.Domain.csproj": {}
   },
   "projects": {
-    "C:\\proyecto\\ventas\\Ventas.Domain\\Ventas.Domain.csproj": {
+    "C:\\proyecto\\Ventas\\Ventas.Domain\\Ventas.Domain.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\proyecto\\ventas\\Ventas.Domain\\Ventas.Domain.csproj",
+        "projectUniqueName": "C:\\proyecto\\Ventas\\Ventas.Domain\\Ventas.Domain.csproj",
         "projectName": "Ventas.Domain",
-        "projectPath": "C:\\proyecto\\ventas\\Ventas.Domain\\Ventas.Domain.csproj",
+        "projectPath": "C:\\proyecto\\Ventas\\Ventas.Domain\\Ventas.Domain.csproj",
         "packagesPath": "C:\\Users\\Aquil\\.nuget\\packages\\",
         "outputPath": "C:\\proyecto\\ventas\\Ventas.Domain\\obj\\",
         "projectStyle": "PackageReference",
