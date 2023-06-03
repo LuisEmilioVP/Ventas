@@ -1,20 +1,20 @@
 {
   "format": 1,
   "restore": {
-    "C:\\project\\Ventas\\Ventas.API\\Ventas.API.csproj": {}
+    "C:\\Proyecto\\Ventas\\Ventas.API\\Ventas.API.csproj": {}
   },
   "projects": {
-    "C:\\project\\Ventas\\Ventas.API\\Ventas.API.csproj": {
+    "C:\\Proyecto\\Ventas\\Ventas.API\\Ventas.API.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\project\\Ventas\\Ventas.API\\Ventas.API.csproj",
+        "projectUniqueName": "C:\\Proyecto\\Ventas\\Ventas.API\\Ventas.API.csproj",
         "projectName": "Ventas.API",
-        "projectPath": "C:\\project\\Ventas\\Ventas.API\\Ventas.API.csproj",
-        "packagesPath": "C:\\Users\\luise\\.nuget\\packages\\",
-        "outputPath": "C:\\project\\Ventas\\Ventas.API\\obj\\",
+        "projectPath": "C:\\Proyecto\\Ventas\\Ventas.API\\Ventas.API.csproj",
+        "packagesPath": "C:\\Users\\Andres\\.nuget\\packages\\",
+        "outputPath": "C:\\Proyecto\\Ventas\\Ventas.API\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\luise\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\Andres\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [

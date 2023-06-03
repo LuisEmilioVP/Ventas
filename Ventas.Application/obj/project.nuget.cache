@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "0gyYV2ET5w8qTURVdjphLkVkI9J9rQf8FR7t9p0jUiC96ewiRxySVVMr2//idh2weJLgJaFXZVgeyx8cJ49Sng==",
+  "dgSpecHash": "oI2K13P41uUhRVQE9jBJBeo0VsLo6Nr8FqiymI2FB0ktR6mImN4xSdZt26xOinzCQsA3JWYxs9Unz28MiWzDfA==",
   "success": true,
-  "projectFilePath": "C:\\project\\Ventas\\Ventas.Application\\Ventas.Application.csproj",
+  "projectFilePath": "C:\\Proyecto\\Ventas\\Ventas.Application\\Ventas.Application.csproj",
   "expectedPackageFiles": [],
   "logs": []
 }

@@ -8,19 +8,19 @@
     ".NETStandard,Version=v2.1": []
   },
   "packageFolders": {
-    "C:\\Users\\luise\\.nuget\\packages\\": {}
+    "C:\\Users\\Andres\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\project\\Ventas\\Ventas.Domain\\Ventas.Domain.csproj",
+      "projectUniqueName": "C:\\Proyecto\\Ventas\\Ventas.Domain\\Ventas.Domain.csproj",
       "projectName": "Ventas.Domain",
-      "projectPath": "C:\\project\\Ventas\\Ventas.Domain\\Ventas.Domain.csproj",
-      "packagesPath": "C:\\Users\\luise\\.nuget\\packages\\",
-      "outputPath": "C:\\project\\Ventas\\Ventas.Domain\\obj\\",
+      "projectPath": "C:\\Proyecto\\Ventas\\Ventas.Domain\\Ventas.Domain.csproj",
+      "packagesPath": "C:\\Users\\Andres\\.nuget\\packages\\",
+      "outputPath": "C:\\Proyecto\\Ventas\\Ventas.Domain\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
-        "C:\\Users\\luise\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\Andres\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
