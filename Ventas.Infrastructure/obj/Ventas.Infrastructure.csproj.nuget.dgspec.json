@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\ProyectoO\\ventas\\Ventas.Infrastructure\\Ventas.Infrastructure.csproj": {}
+    "C:\\Proyecto1\\Ventas\\Ventas.Infrastructure\\Ventas.Infrastructure.csproj": {}
   },
   "projects": {
-    "C:\\ProyectoO\\ventas\\Ventas.Domain\\Ventas.Domain.csproj": {
+    "C:\\Proyecto1\\Ventas\\Ventas.Domain\\Ventas.Domain.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\ProyectoO\\ventas\\Ventas.Domain\\Ventas.Domain.csproj",
+        "projectUniqueName": "C:\\Proyecto1\\Ventas\\Ventas.Domain\\Ventas.Domain.csproj",
         "projectName": "Ventas.Domain",
-        "projectPath": "C:\\ProyectoO\\ventas\\Ventas.Domain\\Ventas.Domain.csproj",
+        "projectPath": "C:\\Proyecto1\\Ventas\\Ventas.Domain\\Ventas.Domain.csproj",
         "packagesPath": "C:\\Users\\Wang Wu\\.nuget\\packages\\",
-        "outputPath": "C:\\ProyectoO\\ventas\\Ventas.Domain\\obj\\",
+        "outputPath": "C:\\Proyecto1\\Ventas\\Ventas.Domain\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\Wang Wu\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -59,14 +59,14 @@
         }
       }
     },
-    "C:\\ProyectoO\\ventas\\Ventas.Infrastructure\\Ventas.Infrastructure.csproj": {
+    "C:\\Proyecto1\\Ventas\\Ventas.Infrastructure\\Ventas.Infrastructure.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\ProyectoO\\ventas\\Ventas.Infrastructure\\Ventas.Infrastructure.csproj",
+        "projectUniqueName": "C:\\Proyecto1\\Ventas\\Ventas.Infrastructure\\Ventas.Infrastructure.csproj",
         "projectName": "Ventas.Infrastructure",
-        "projectPath": "C:\\ProyectoO\\ventas\\Ventas.Infrastructure\\Ventas.Infrastructure.csproj",
+        "projectPath": "C:\\Proyecto1\\Ventas\\Ventas.Infrastructure\\Ventas.Infrastructure.csproj",
         "packagesPath": "C:\\Users\\Wang Wu\\.nuget\\packages\\",
-        "outputPath": "C:\\ProyectoO\\ventas\\Ventas.Infrastructure\\obj\\",
+        "outputPath": "C:\\Proyecto1\\Ventas\\Ventas.Infrastructure\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\Wang Wu\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -83,8 +83,8 @@
           "netstandard2.1": {
             "targetAlias": "netstandard2.1",
             "projectReferences": {
-              "C:\\ProyectoO\\ventas\\Ventas.Domain\\Ventas.Domain.csproj": {
-                "projectPath": "C:\\ProyectoO\\ventas\\Ventas.Domain\\Ventas.Domain.csproj"
+              "C:\\Proyecto1\\Ventas\\Ventas.Domain\\Ventas.Domain.csproj": {
+                "projectPath": "C:\\Proyecto1\\Ventas\\Ventas.Domain\\Ventas.Domain.csproj"
               }
             }
           }

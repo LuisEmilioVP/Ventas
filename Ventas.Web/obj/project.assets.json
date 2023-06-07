@@ -13,11 +13,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\ProyectoO\\ventas\\Ventas.Web\\Ventas.Web.csproj",
+      "projectUniqueName": "C:\\Proyecto1\\Ventas\\Ventas.Web\\Ventas.Web.csproj",
       "projectName": "Ventas.Web",
-      "projectPath": "C:\\ProyectoO\\ventas\\Ventas.Web\\Ventas.Web.csproj",
+      "projectPath": "C:\\Proyecto1\\Ventas\\Ventas.Web\\Ventas.Web.csproj",
       "packagesPath": "C:\\Users\\Wang Wu\\.nuget\\packages\\",
-      "outputPath": "C:\\ProyectoO\\ventas\\Ventas.Web\\obj\\",
+      "outputPath": "C:\\Proyecto1\\Ventas\\Ventas.Web\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\Wang Wu\\AppData\\Roaming\\NuGet\\NuGet.Config",

@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "fi66Nk80SQ0FhQTp6uIRajfArfJqANvtXZ42Vw8EPx/aaH9KNE0/q2ZZry7lzt0C6kKSglmlzdVrn9x5O9UmJw==",
+  "dgSpecHash": "Yo840VXrlLb3SPrdvHA5MuqgTD2Xm/JbofXH3dXMbuoyIu/slN5ZPMLhEfb5ZXBGlhhM4xe931HWSsAxDX5g0Q==",
   "success": true,
-  "projectFilePath": "C:\\ProyectoO\\ventas\\Ventas.API\\Ventas.API.csproj",
+  "projectFilePath": "C:\\Proyecto1\\Ventas\\Ventas.API\\Ventas.API.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\Wang Wu\\.nuget\\packages\\microsoft.extensions.apidescription.server\\3.0.0\\microsoft.extensions.apidescription.server.3.0.0.nupkg.sha512",
     "C:\\Users\\Wang Wu\\.nuget\\packages\\microsoft.openapi\\1.2.3\\microsoft.openapi.1.2.3.nupkg.sha512",

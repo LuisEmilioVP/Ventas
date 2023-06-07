@@ -229,11 +229,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\ProyectoO\\ventas\\Ventas.API\\Ventas.API.csproj",
+      "projectUniqueName": "C:\\Proyecto1\\Ventas\\Ventas.API\\Ventas.API.csproj",
       "projectName": "Ventas.API",
-      "projectPath": "C:\\ProyectoO\\ventas\\Ventas.API\\Ventas.API.csproj",
+      "projectPath": "C:\\Proyecto1\\Ventas\\Ventas.API\\Ventas.API.csproj",
       "packagesPath": "C:\\Users\\Wang Wu\\.nuget\\packages\\",
-      "outputPath": "C:\\ProyectoO\\ventas\\Ventas.API\\obj\\",
+      "outputPath": "C:\\Proyecto1\\Ventas\\Ventas.API\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\Wang Wu\\AppData\\Roaming\\NuGet\\NuGet.Config",

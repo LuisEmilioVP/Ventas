@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "zOzYnt9MlW1DeHu49091YXZk6CFccsDNuN4aAytHCEgVH2wrUCyDMyJEz6J+Bh+sfadSCfyzytNCmJYFGnhuEg==",
+  "dgSpecHash": "MKhzwFlwWP5/+I7FXF45u7yP6kWc2mWwr+Tdw10wYZIRWh6pCTMpPekj5wEKd8YuQ/TvXUhmcPacEWmbp9zMNg==",
   "success": true,
-  "projectFilePath": "C:\\ProyectoO\\ventas\\Ventas.Infrastructure\\Ventas.Infrastructure.csproj",
+  "projectFilePath": "C:\\Proyecto1\\Ventas\\Ventas.Infrastructure\\Ventas.Infrastructure.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\Wang Wu\\.nuget\\packages\\microsoft.bcl.asyncinterfaces\\1.1.1\\microsoft.bcl.asyncinterfaces.1.1.1.nupkg.sha512",
     "C:\\Users\\Wang Wu\\.nuget\\packages\\microsoft.bcl.hashcode\\1.1.1\\microsoft.bcl.hashcode.1.1.1.nupkg.sha512",
