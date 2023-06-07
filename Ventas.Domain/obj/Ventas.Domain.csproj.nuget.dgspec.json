@@ -11,7 +11,7 @@
         "projectName": "Ventas.Domain",
         "projectPath": "C:\\proyecto\\Ventas\\Ventas.Domain\\Ventas.Domain.csproj",
         "packagesPath": "C:\\Users\\Aquil\\.nuget\\packages\\",
-        "outputPath": "C:\\proyecto\\ventas\\Ventas.Domain\\obj\\",
+        "outputPath": "C:\\proyecto\\Ventas\\Ventas.Domain\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\Aquil\\AppData\\Roaming\\NuGet\\NuGet.Config",
