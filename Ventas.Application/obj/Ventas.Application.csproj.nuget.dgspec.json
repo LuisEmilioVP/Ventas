@@ -1,20 +1,20 @@
 {
   "format": 1,
   "restore": {
-    "C:\\project\\Ventas\\Ventas.Application\\Ventas.Application.csproj": {}
+    "C:\\ProyectoO\\ventas\\Ventas.Application\\Ventas.Application.csproj": {}
   },
   "projects": {
-    "C:\\project\\Ventas\\Ventas.Application\\Ventas.Application.csproj": {
+    "C:\\ProyectoO\\ventas\\Ventas.Application\\Ventas.Application.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\project\\Ventas\\Ventas.Application\\Ventas.Application.csproj",
+        "projectUniqueName": "C:\\ProyectoO\\ventas\\Ventas.Application\\Ventas.Application.csproj",
         "projectName": "Ventas.Application",
-        "projectPath": "C:\\project\\Ventas\\Ventas.Application\\Ventas.Application.csproj",
-        "packagesPath": "C:\\Users\\luise\\.nuget\\packages\\",
-        "outputPath": "C:\\project\\Ventas\\Ventas.Application\\obj\\",
+        "projectPath": "C:\\ProyectoO\\ventas\\Ventas.Application\\Ventas.Application.csproj",
+        "packagesPath": "C:\\Users\\Wang Wu\\.nuget\\packages\\",
+        "outputPath": "C:\\ProyectoO\\ventas\\Ventas.Application\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\luise\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\Wang Wu\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
