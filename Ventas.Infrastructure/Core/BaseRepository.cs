@@ -1,8 +1,8 @@
-﻿using Microsoft.EntityFrameworkCore;
-using System;
+﻿using System;
 using System.Collections.Generic;
-using System.Linq;
 using System.Linq.Expressions;
+using System.Linq;
+using Microsoft.EntityFrameworkCore;
 using Ventas.Domain.Repository;
 using Ventas.Infrastructure.Context;
 
@@ -10,7 +10,6 @@ namespace Ventas.Infrastructure.Core
 {
     public class BaseRepository<TEntity> : IBaseRepository<TEntity> where TEntity : class
     {
-
         private readonly VentasContext ventas;
 
         private readonly DbSet<TEntity> entities;
@@ -25,35 +24,43 @@ namespace Ventas.Infrastructure.Core
         {
             return this.entities.Any(filter);
         }
-
-        public IEnumerable<TEntity> GetEntities()
+        public virtual List<TEntity> GetEntities()
         {
-            throw new NotImplementedException();
+            return this.entities.ToList();
+        }
+        public virtual TEntity GetEntity(int id)
+        {
+            return this.entities.Find(id);
+        }
+        public virtual void Remove(TEntity entity)
+        {
+            this.entities.Remove(entity);
+
+        }
+        public virtual void Remove(TEntity[] entities)
+        {
+            this.entities.RemoveRange(entities);
+        }
+        public virtual void Save(TEntity entity)
+        {
+            this.entities.Add(entity);
+        }
+        public virtual void Save(TEntity[] entities)
+        {
+            this.entities.AddRange(entities);
+        }
+        public virtual void Update(TEntity entity)
+        {
+            this.entities.Update(entity);
+        }
+        public virtual void Update(TEntity[] entities)
+        {
+            this.entities.UpdateRange(entities);
         }
 
-        public TEntity GetEntity(int entityid)
+        public virtual void SaveChanges()
         {
-            throw new NotImplementedException();
-        }
-
-        public void Remove(TEntity entity)
-        {
-            throw new NotImplementedException();
-        }
-
-        public void Save(TEntity entity)
-        {
-            throw new NotImplementedException();
-        }
-
-        public void Save(TEntity[] entities)
-        {
-            throw new NotImplementedException();
-        }
-
-        public void Update(TEntity entity)
-        {
-            throw new NotImplementedException();
+            this.ventas.SaveChanges();
         }
     }
 }
