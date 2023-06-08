@@ -3,13 +3,11 @@ using Ventas.Domain.Core;
 
 namespace Ventas.Domain.Entities
 {
-    public class Usuario : Persona
+    public class Usuario : SeconEntity
     {
-        public int IdUser { get; set; }
-        public string? UrlPhoto { get; set; }
-        public string? NamePhoto { get; set; }
-        public string? Password {get; set; }
-        public bool? IsActive { get; set; }
-        public DateTime? RegisterDate { get; set; }
+        public int IdUsuario { get; set; }
+        public string? UrlFoto { get; set; }
+        public string? NombreFoto { get; set; }
+        public string? Clave { get; set; }
     }
 }

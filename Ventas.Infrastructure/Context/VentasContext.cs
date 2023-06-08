@@ -1,5 +1,4 @@
-﻿
-using Microsoft.EntityFrameworkCore;
+﻿using Microsoft.EntityFrameworkCore;
 using Ventas.Domain.Entities;
 
 namespace Ventas.Infrastructure.Context
@@ -16,5 +15,6 @@ namespace Ventas.Infrastructure.Context
         }
 
         public DbSet<Usuario> Usuarios { get; set; }
+        public DbSet<Categoria> Categorias { get; set; }
     }
 }
