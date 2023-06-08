@@ -13,6 +13,7 @@ namespace Ventas.Infrastructure.Core
         private readonly VentasContext ventas;
 
         private readonly DbSet<TEntity> entities;
+
         public BaseRepository(VentasContext ventas)
         {
             this.ventas = ventas;
@@ -24,34 +25,42 @@ namespace Ventas.Infrastructure.Core
             return this.entities.Any(filter);
         }
 
-        public IEnumerable<TEntity> GetEntities()
+        public virtual IEnumerable<TEntity> GetEntities()
         {
-            throw new NotImplementedException();
+            return this.entities.ToList();
         }
-
-        public TEntity GetEntity(int entityid)
+        public virtual TEntity GetEntity(int id)
         {
-            throw new NotImplementedException();
+            return this.entities.Find(id);
         }
-
-        public void Remove(TEntity entity)
+        public virtual void Remove(TEntity entity)
         {
-            throw new NotImplementedException();
+            this.entities.Remove(entity);
+
         }
-
-        public void Save(TEntity entity)
+        public virtual void Remove(TEntity[] entities)
         {
-            throw new NotImplementedException();
+            this.entities.RemoveRange(entities);
         }
-
-        public void Save(TEntity[] entities)
+        public virtual void Save(TEntity entity)
         {
-            throw new NotImplementedException();
+            this.entities.Add(entity);
         }
-
-        public void Update(TEntity entity)
+        public virtual void Save(TEntity[] entities)
         {
-            throw new NotImplementedException();
+            this.entities.AddRange(entities);
+        }
+        public virtual void Update(TEntity entity)
+        {
+            this.entities.Update(entity);
+        }
+        public virtual void Update(TEntity[] entities)
+        {
+            this.entities.UpdateRange(entities);
+        }
+        public virtual void SaveChanges()
+        {
+            this.ventas.SaveChanges();
         }
     }
 }

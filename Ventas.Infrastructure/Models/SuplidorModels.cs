@@ -1,12 +1,11 @@
 ﻿using System;
-using System.Runtime.CompilerServices;
-using Ventas.Domain.Core;
+using System.Collections.Generic;
+using System.Text;
 
-namespace Ventas.Domain.Entities
+namespace Ventas.Infrastructure.Models
 {
-    public class Suplidor : SeconEntity
+    public class SuplidorModels
     {
-
         public int IdSuplidor { get; set; }
         public string Contacto { get; set; }
         public string Ciudad { get; set; }
@@ -14,6 +13,11 @@ namespace Ventas.Domain.Entities
         public string? Codigo_postal { get; set; }
         public string Pais { get; set; }
         public string? Fax { get; set; }
+
+        public int idProducto { get; set; }
+        public string? marca { get; set;}
+        public string? descripcion { get; set;}
+        public string? precio { get; set; }
 
     }
 }
