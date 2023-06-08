@@ -8,11 +8,19 @@ namespace Ventas.Domain.Repository
     {
         void Save(TEntity entity);
         void Save(TEntity[] entities);
-        void Update(TEntity entity);
-        void Remove(TEntity entity);
-        TEntity GetEntity(int entityid);
-        bool Exists(Expression<Func<TEntity, bool>> filter);
-        IEnumerable<TEntity> GetEntities();
 
+        void Update(TEntity entity);
+        void Update(TEntity[] entities);
+
+        void Remove(TEntity entity);
+        void Remove(TEntity[] entities);
+
+        TEntity GetEntity(int entityid);
+
+        bool Exists(Expression<Func<TEntity, bool>> filter);
+
+        List<TEntity> GetEntities();
+
+        void SaveChanges();
     }
 }
