@@ -6,8 +6,8 @@ namespace Ventas.Domain.Repository
 {
     public interface IBaseRepository<TEntity> where TEntity : class
     {
-        void Save(TEntity entity);
-        void Save(TEntity[] entities);
+        void Add(TEntity entity);
+        void Add(TEntity[] entities);
 
         void Update(TEntity entity);
         void Update(TEntity[] entities);
