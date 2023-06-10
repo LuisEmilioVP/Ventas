@@ -13,4 +13,8 @@
     <ProjectReference Include="..\Ventas.Domain\Ventas.Domain.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="useeeeeeeeeeeeeee\" />
+  </ItemGroup>
+
 </Project>
