@@ -27,32 +27,35 @@ namespace Ventas.Infrastructure.Core
 
         public IEnumerable<TEntity> GetEntities()
         {
-            throw new NotImplementedException();
+            return this.entities.ToList();
         }
 
-        public TEntity GetEntity(int entityid)
+        public TEntity GetEntity(int entityId)
         {
-            throw new NotImplementedException();
+            return this.entities.Find(entityId);
         }
 
         public void Remove(TEntity entity)
         {
-            throw new NotImplementedException();
+            this.entities.Remove(entity);
         }
 
         public void Save(TEntity entity)
         {
-            throw new NotImplementedException();
+            this.entities.Add(entity);
+            this.ventas.SaveChanges();
         }
 
         public void Save(TEntity[] entities)
         {
-            throw new NotImplementedException();
+            this.entities.AddRange(entities);
+            this.ventas.SaveChanges();
         }
 
         public void Update(TEntity entity)
         {
-            throw new NotImplementedException();
+            this.entities.Update(entity);
+            this.ventas.SaveChanges();
         }
     }
 }
