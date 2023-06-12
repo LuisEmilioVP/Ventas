@@ -29,18 +29,16 @@ namespace Ventas.Infrastructure.Repositories
             try
             {
                 this.logger.LogInformation("Obteniendo Usuarios...");
-                usuarios = (from use in base.GetEntities()
-                            select new UsuarioModels()
-                            {
-                                IdUsuario = use.IdUsuario,
-                                Nombre = use.Nombre,
-                                Correo = use.Correo,
-                                Telefono = use.Telefono,
-                                UrlFoto = use.UrlFoto,
-                                NombreFoto = use.NombreFoto,
-                                Clave = use.Clave,
-                                EstaActivo = use.EsActivo
-                            }).ToList();
+                usuarios = this.context.Usuario.Select(use => new UsuarioModels() 
+                {
+                    Nombre = use.Nombre,
+                    Correo = use.Correo,
+                    Telefono = use.Telefono,
+                    UrlFoto = use.UrlFoto,
+                    NombreFoto = use.NombreFoto,
+                    EsActivo = use.EsActivo,
+                    FechaRegistro = use.FechaRegistro,
+                }).ToList();
             }
             catch (Exception ex)
             {
@@ -50,24 +48,24 @@ namespace Ventas.Infrastructure.Repositories
             return usuarios;
         }
 
-        public List<UsuarioModels> GetUser(int idUser)
+        public List<UsuarioModels> GetUser(int IdUsuario)
         {
             List<UsuarioModels> usuario = new List<UsuarioModels> ();
             try
             {
-                this.logger.LogInformation($"Obteniendo un Usuario: {idUser}");
+                this.logger.LogInformation($"Obteniendo un Usuario: {IdUsuario}");
                 usuario = (from use in base.GetEntities()
-                           where use.IdUsuario == idUser
+                           where use.IdUsuario == IdUsuario
                            select new UsuarioModels()
                            {
-                               IdUsuario = use.IdUsuario,
                                Nombre = use.Nombre,
                                Correo = use.Correo,
                                Telefono = use.Telefono,
                                UrlFoto = use.UrlFoto,
                                NombreFoto = use.NombreFoto,
                                Clave = use.Clave,
-                               EstaActivo = use.EsActivo
+                               EsActivo = use.EsActivo,
+                               FechaRegistro = use.FechaRegistro
                            }).ToList();
             }
             catch (Exception ex) 
@@ -104,7 +102,6 @@ namespace Ventas.Infrastructure.Repositories
                 {
                     throw new UsuarioExceptions("Usuario no encontrado en la base de datos");
                 }
-
 
                 base.SaveChanges();
             }

@@ -8,15 +8,15 @@ using Ventas.Infrastructure.Context;
 
 namespace Ventas.Infrastructure.Core
 {
-    public class BaseRepository<TEntity> : IBaseRepository<TEntity> where TEntity : class
+    public abstract class BaseRepository<TEntity> : IBaseRepository<TEntity> where TEntity : class
     {
-        private readonly VentasContext ventas;
+        private readonly VentasContext context;
         private readonly DbSet<TEntity> entities;
 
-        public BaseRepository(VentasContext ventas)
+        public BaseRepository(VentasContext context)
         {
-            this.ventas = ventas;
-            this.entities = this.ventas.Set<TEntity>();
+            this.context = context;
+            this.entities = this.context.Set<TEntity>();
         }
 
         public virtual bool Exists(Expression<Func<TEntity, bool>> filter)
@@ -66,7 +66,7 @@ namespace Ventas.Infrastructure.Core
 
         public virtual void SaveChanges()
         {
-            this.ventas.SaveChanges();
+            this.context.SaveChanges();
         }
     }
 }

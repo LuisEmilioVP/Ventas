@@ -1,14 +1,14 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using Ventas.Domain.Entities;
 using Ventas.Domain.Repository;
+using Ventas.Infrastructure.Models;
 
 namespace Ventas.Infrastructure.Interfaces
 {
     public interface ICategoriaRepository : IBaseRepository<Categoria>
     {
-        List<Categoria> GetAllCategory();
+        List<CategoriaModels> GetAllCategory();
 
-        List<Categoria> GetCategoria(int idCategory);
+        List<CategoriaModels> GetCategoria(int IdCategoria);
     }
 }

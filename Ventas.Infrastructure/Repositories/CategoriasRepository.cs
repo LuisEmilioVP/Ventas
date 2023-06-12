@@ -1,10 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using Microsoft.Extensions.Logging;
 using Ventas.Domain.Entities;
 using Ventas.Infrastructure.Context;
 using Ventas.Infrastructure.Core;
 using Ventas.Infrastructure.Interfaces;
+using Ventas.Infrastructure.Models;
 
 namespace Ventas.Infrastructure.Repositories
 {
@@ -20,14 +22,51 @@ namespace Ventas.Infrastructure.Repositories
             this.context = ventas;
         }
 
-        public List<Categoria> GetAllCategory()
+        public List<CategoriaModels> GetAllCategory()
         {
-            throw new NotImplementedException();
+            List<CategoriaModels> categorias = new List<CategoriaModels>();
+            try
+            {
+                this.logger.LogInformation("Obteniendo Categorias...");
+                categorias = (from ca in base.GetEntities()
+                              select new CategoriaModels()
+                              {
+                                  IdCategoria = ca.IdCategoria,
+                                  Descripcion = ca.Descripcion,
+                                  EsActivo = ca.EsActivo,
+                                  FechaRegistro = ca.FechaRegistro
+                              }).ToList();
+            }
+            catch (Exception ex)
+            {
+                this.logger.LogError($"Error al Cargar Categorias: {ex.Message}", ex.ToString());
+            }
+
+            return categorias;
         }
 
-        public List<Categoria> GetCategoria(int idCategory)
+        public List<CategoriaModels> GetCategoria(int IdCategoria)
         {
-            throw new NotImplementedException();
+            List<CategoriaModels> categoria = new List<CategoriaModels>();
+            try
+            {
+                this.logger.LogInformation($"Obteniendo una Categoria: {IdCategoria}");
+                categoria = (from ca in base.GetEntities()
+                             where ca.IdCategoria == IdCategoria
+                             select new CategoriaModels()
+                             {
+                                 IdCategoria = ca.IdCategoria,
+                                 Descripcion = ca.Descripcion,
+                                 EsActivo = ca.EsActivo,
+                                 FechaRegistro = ca.FechaRegistro
+                             }).ToList();
+            }
+            catch(Exception ex)
+            {
+                this.logger.LogError($"Error al cargar Categoria: {ex.Message}", ex.ToString());
+            }
+
+            return categoria;
         }
     }
 }

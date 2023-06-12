@@ -1,5 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using Ventas.Domain.Entities;
 using Ventas.Domain.Repository;
 using Ventas.Infrastructure.Models;
@@ -10,6 +9,6 @@ namespace Ventas.Infrastructure.Interfaces
     {
         List<UsuarioModels> GetAllUser();
 
-        List<UsuarioModels> GetUser(int idUser);
+        List<UsuarioModels> GetUser(int IdUsuario);
     }
 }
