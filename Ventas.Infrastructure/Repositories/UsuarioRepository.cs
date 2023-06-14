@@ -16,8 +16,8 @@ namespace Ventas.Infrastructure.Repositories
         private readonly ILogger<UsuarioRepository> logger;
         private readonly VentasContext context;
 
-        public UsuarioRepository(ILogger<UsuarioRepository> logger, 
-            VentasContext ventas):base(ventas)
+        public UsuarioRepository(ILogger<UsuarioRepository> logger,
+            VentasContext ventas) : base(ventas)
         {
             this.logger = logger;
             this.context = ventas;
@@ -29,51 +29,51 @@ namespace Ventas.Infrastructure.Repositories
             try
             {
                 this.logger.LogInformation("Obteniendo Usuarios...");
-                usuarios = this.context.Usuario.Select(use => new UsuarioModels() 
-                {
-                    Nombre = use.Nombre,
-                    Correo = use.Correo,
-                    Telefono = use.Telefono,
-                    UrlFoto = use.UrlFoto,
-                    NombreFoto = use.NombreFoto,
-                    EsActivo = use.EsActivo,
-                    FechaRegistro = use.FechaRegistro,
-                }).ToList();
+                usuarios = this.context.Usuario
+                    .Where(us => !us.Deleted)
+                    .Select(use => new UsuarioModels()
+                    {
+                        Nombre = use.Nombre,
+                        Correo = use.Correo,
+                        Telefono = use.Telefono,
+                        UrlFoto = use.UrlFoto,
+                        NombreFoto = use.NombreFoto,
+                        EsActivo = use.EsActivo,
+                        FechaRegistro = use.FechaRegistro,
+                    }).ToList();
             }
             catch (Exception ex)
             {
                 this.logger.LogError($"Error al cargar Usuarios {ex.Message}", ex.ToString());
+                throw new UDatabaseConnectionException($"Error de conexión: {ex.Message}");
             }
 
             return usuarios;
         }
 
-        public List<UsuarioModels> GetUser(int IdUsuario)
+        public UsuarioModels GetUserById(int id)
         {
-            List<UsuarioModels> usuario = new List<UsuarioModels> ();
+            UsuarioModels usuarioModels = new UsuarioModels();
             try
             {
-                this.logger.LogInformation($"Obteniendo un Usuario: {IdUsuario}");
-                usuario = (from use in base.GetEntities()
-                           where use.IdUsuario == IdUsuario
-                           select new UsuarioModels()
-                           {
-                               Nombre = use.Nombre,
-                               Correo = use.Correo,
-                               Telefono = use.Telefono,
-                               UrlFoto = use.UrlFoto,
-                               NombreFoto = use.NombreFoto,
-                               Clave = use.Clave,
-                               EsActivo = use.EsActivo,
-                               FechaRegistro = use.FechaRegistro
-                           }).ToList();
+                this.logger.LogInformation($"Obteniendo un Usuario: {id}");
+                Usuario usuario = this.GetEntity(id);
+
+                usuarioModels.Nombre = usuario.Nombre;
+                usuarioModels.Correo = usuario.Correo;
+                usuarioModels.Telefono = usuario.Telefono;
+                usuarioModels.UrlFoto = usuario.UrlFoto;
+                usuarioModels.NombreFoto = usuario.NombreFoto;
+                usuarioModels.EsActivo = usuario.EsActivo;
+                usuarioModels.FechaRegistro = usuario.FechaRegistro;
             }
-            catch (Exception ex) 
+            catch (Exception ex)
             {
-                this.logger.LogError($"Error al cargar Usuario {ex.Message}", ex.ToString());
+                this.logger.LogError($"Error al cargar el usuario {ex.Message}", ex.ToString());
+                throw new UDatabaseConnectionException($"Error de conexión: {ex.Message}");
             }
 
-            return usuario;
+            return usuarioModels;
         }
 
         public override void Add(Usuario entity)
@@ -81,34 +81,86 @@ namespace Ventas.Infrastructure.Repositories
             try
             {
                 if (this.Exists(us => us.Nombre == entity.Nombre))
-                {
                     throw new UsuarioExceptions("¡El usuario ya existe!");
-                }
 
+                base.Add(entity);
                 base.SaveChanges();
-            } 
-            catch(Exception ex) 
+                this.logger.LogInformation($"Nuevo usuario insertado: {entity.Nombre}");
+            }
+            catch (UsuarioExceptions ex)
             {
+                this.logger.LogError($"Error al agregar usuario: {ex.Message}", ex.ToString());
+                throw;
+            }
+            catch (Exception ex)
+            {
+                this.logger.LogError($"Error al agregar usuario: {ex.Message}", ex.ToString());
                 throw new UDatabaseConnectionException($"Error de conexión: {ex.Message}");
             }
-
         }
 
         public override void Update(Usuario entity)
         {
             try
             {
-                if (this.Exists(us => us.IdUsuario != entity.IdUsuario))
-                {
-                    throw new UsuarioExceptions("Usuario no encontrado en la base de datos");
-                }
+                Usuario usuarioToUpdate = this.GetEntity(entity.IdUsuario)
+                    ?? throw new UsuarioNotFoundException(
+                        "Usuario no encontrado en la base de datos");
 
-                base.SaveChanges();
+                usuarioToUpdate.IdUsuario = entity.IdUsuario;
+                usuarioToUpdate.Nombre = entity.Nombre;
+                usuarioToUpdate.Correo = entity.Correo;
+                usuarioToUpdate.UrlFoto = entity.UrlFoto;
+                usuarioToUpdate.NombreFoto = entity.NombreFoto;
+                usuarioToUpdate.Clave = entity.Clave;
+                usuarioToUpdate.EsActivo = entity.EsActivo;
+                usuarioToUpdate.FechaRegistro = entity.FechaRegistro;
+                usuarioToUpdate.UserMod = entity.UserMod;
+                usuarioToUpdate.ModifyDate = entity.ModifyDate;
+
+                this.context.Usuario.Update(usuarioToUpdate);
+                this.context.SaveChanges();
+                this.logger.LogInformation("Actualización de usuario exitosa.");
+            }
+            catch (UsuarioExceptions ex)
+            {
+                this.logger.LogError($"Error al actualizar usuario: {ex.Message}");
+                throw;
             }
             catch (Exception ex)
             {
+                this.logger.LogError($"Error al actualizar usuario: {ex.Message}", ex.ToString());
+                throw new UDatabaseConnectionException($"Error de conexión: {ex.Message}");
+            }
+        }
+
+        public override void Remove(Usuario entity)
+        {
+            try
+            {
+                Usuario usuarioToRemove = this.GetEntity(entity.IdUsuario)
+                      ?? throw new UsuarioNotFoundException(
+                          "Usuario no encontrado en la base de datos");
+
+                usuarioToRemove.Deleted = entity.Deleted;
+                usuarioToRemove.UserDeleted = entity.UserDeleted;
+                usuarioToRemove.DeletedDate = entity.DeletedDate;
+
+                this.context.Update(usuarioToRemove);
+                this.context.SaveChanges();
+                this.logger.LogInformation("Eliminación de usuario exitosa.");
+            }
+            catch (UsuarioExceptions ex)
+            {
+                this.logger.LogError($"Error al eliminar usuario: {ex.Message}");
+                throw;
+            }
+            catch (Exception ex)
+            {
+                this.logger.LogError($"Error al eliminar usuario: {ex.Message}", ex.ToString());
                 throw new UDatabaseConnectionException($"Error de conexión: {ex.Message}");
             }
         }
     }
 }
+

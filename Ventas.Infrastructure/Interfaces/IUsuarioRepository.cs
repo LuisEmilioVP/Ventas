@@ -9,6 +9,6 @@ namespace Ventas.Infrastructure.Interfaces
     {
         List<UsuarioModels> GetAllUser();
 
-        List<UsuarioModels> GetUser(int IdUsuario);
+        UsuarioModels GetUserById(int id);
     }
 }

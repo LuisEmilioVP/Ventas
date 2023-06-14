@@ -61,3 +61,5 @@ C:\project\Ventas\Ventas.API\bin\Debug\net6.0\Ventas.Domain.dll
 C:\project\Ventas\Ventas.API\bin\Debug\net6.0\Ventas.Infrastructure.dll
 C:\project\Ventas\Ventas.API\bin\Debug\net6.0\Ventas.Infrastructure.pdb
 C:\project\Ventas\Ventas.API\bin\Debug\net6.0\Ventas.Domain.pdb
+C:\project\Ventas\Ventas.API\bin\Debug\net6.0\Ventas.Application.dll
+C:\project\Ventas\Ventas.API\bin\Debug\net6.0\Ventas.Application.pdb

@@ -2,7 +2,7 @@
 
 namespace Ventas.Infrastructure.Exceptions
 {
-    /* Excepción de Usuario duplicado en la base de datos: */
+    /* Excepción de Usuarios */
     public class UsuarioExceptions : Exception
     {
         public UsuarioExceptions(string message) : base(message) 

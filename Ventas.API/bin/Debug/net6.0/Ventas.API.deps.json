@@ -9,6 +9,7 @@
       "Ventas.API/1.0.0": {
         "dependencies": {
           "Swashbuckle.AspNetCore": "6.2.3",
+          "Ventas.Application": "1.0.0",
           "Ventas.Infrastructure": "1.0.0"
         },
         "runtime": {
@@ -979,6 +980,11 @@
           "System.Xml.XmlDocument": "4.3.0"
         }
       },
+      "Ventas.Application/1.0.0": {
+        "runtime": {
+          "Ventas.Application.dll": {}
+        }
+      },
       "Ventas.Domain/1.0.0": {
         "dependencies": {
           "System.ComponentModel.Annotations": "5.0.0"
@@ -1732,6 +1738,11 @@
       "sha512": "sha512-MYoTCP7EZ98RrANESW05J5ZwskKDoN0AuZ06ZflnowE50LTpbR5yRg3tHckTVm5j/m47stuGgCrCHWePyHS70Q==",
       "path": "system.xml.xmlserializer/4.3.0",
       "hashPath": "system.xml.xmlserializer.4.3.0.nupkg.sha512"
+    },
+    "Ventas.Application/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
     },
     "Ventas.Domain/1.0.0": {
       "type": "project",
