@@ -1,12 +1,13 @@
 ﻿using System.Collections.Generic;
 using Ventas.Domain.Repository;
+using Ventas.Infrastructure.Models;
 
 namespace Ventas.Infrastructure.Interfaces
 {
-    public interface IUsuarioRepository : IBaseRepository<Usuario>
+    public interface INegocioRepository : IBaseRepository<NegocioModel>
     {
-        List<NegocioModels> GetAllUser();
+        List<NegocioModel> GetAllNegocio();
 
-        List<NegocioModels> GetUser(int idUser);
+        NegocioModel GetNegocio(int idNegocio);
     }
 }

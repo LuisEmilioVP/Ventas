@@ -1,10 +1,28 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Text;
 
-namespace Ventas.Infrastructure.Exception
+namespace Ventas.Infrastructure.Exceptions
 {
-    internal class NegocioException
+    /* Excepción de Categoria duplicado en la base de datos: */
+    public class NegocioExceptions : Exception
     {
+        public NegocioExceptions(string message) : base(message)
+        {
+        }
+    }
+
+    /* Excepción de Categoria no encontrado en la base de datos */
+    public class NegocioNotFoundException : Exception
+    {
+        public NegocioNotFoundException(string message) : base(message)
+        {
+        }
+    }
+
+    /* Excepción de Error de conexión a la base de datos */
+    public class CDatabaseConnectionException : Exception
+    {
+        public CDatabaseConnectionException(string message) : base(message)
+        {
+        }
     }
 }

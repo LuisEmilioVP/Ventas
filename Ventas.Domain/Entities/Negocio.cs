@@ -1,10 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
+﻿using Ventas.Domain.Core;
 
 namespace Ventas.Domain.Entities
 {
-    public class Negocio
+    public class Negocio : BaseEntity
     {
         public int idNegocio { get; set; }
         public string? urlLogo { get; set; }

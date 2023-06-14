@@ -3,7 +3,7 @@ using System;
 
 namespace Ventas.Infrastructure.Models
 {
-    public class UsuarioModels
+    public class NegocioModel
     {
 
         public int idNegocio { get; set; }
