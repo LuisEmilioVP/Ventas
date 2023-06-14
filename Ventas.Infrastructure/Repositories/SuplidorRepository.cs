@@ -15,7 +15,7 @@ namespace Ventas.Infrastructure.Repositories
         private readonly ILogger<SuplidorRepository> logger;
         private readonly VentasContext context;
 
-        public SuplidorRepository(ILogger<SuplidorRepository> logger, 
+        public SuplidorRepository(ILogger<SuplidorRepository> logger,
             VentasContext context) : base(context)
         {
             this.logger = logger;
@@ -29,17 +29,7 @@ namespace Ventas.Infrastructure.Repositories
 
         public List<SuplidorModels> Getsuplidor(int idSuplidor)
         {
-            List<SuplidorModels> suplidor = new List<SuplidorModels>();
-            try
-            {
-                this.logger.LogInformation($"He pasado: {idSuplidor}");
-   
-            }
-            catch (Exception ex)
-            {
-                this.logger.LogError($"Error con el suplidor:{ex.Message}", ex.ToString());
-            }
-
+            throw new NotImplementedException();
         }
     }
 }
