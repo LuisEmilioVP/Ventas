@@ -41,11 +41,11 @@ namespace Ventas.Infrastructure.Core
         {
             this.entities.RemoveRange(entities);
         }
-        public virtual void Save(TEntity entity)
+        public virtual void Add(TEntity entity)
         {
             this.entities.Add(entity);
         }
-        public virtual void Save(TEntity[] entities)
+        public virtual void Add(TEntity[] entities)
         {
             this.entities.AddRange(entities);
         }

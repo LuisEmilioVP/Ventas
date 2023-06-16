@@ -6,7 +6,6 @@ namespace Ventas.Infrastructure.Models
 {
     public class ProductoModels
     {
-        public int IdProducto { get; set; }
         public string? CodigoBarra { get; set; }
         public string? Marca { get; set; }
         public string? ProductoDescripcion { get; set; }
@@ -14,11 +13,9 @@ namespace Ventas.Infrastructure.Models
         public string? UrlImagen { get; set; }
         public string? NombreImagen { get; set; }
         public decimal? Precio { get; set; }
+        public bool? EsActivo { get; set; }
         public DateTime? FechaRegistro { get; set; }
-        public int? IdSuplidor { get; set; }
-        public string NombreSuplidor { get; set; }
-        public int? IdCategoria { get; set; }
-        public string? CategoriaDescripcion { get; set; }
+        
 
 
 

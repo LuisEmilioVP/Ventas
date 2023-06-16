@@ -9,7 +9,7 @@ namespace Ventas.Infrastructure.Interfaces
 {
     public interface IProductoRepository : IBaseRepository<Producto>
     {
-        List<ProductoModels> GetProducto();
-        List <ProductoModels> GetProducto(int idproducto);
+        List<ProductoModels> GetAllProducto();
+        List <ProductoModels> GetProductoById(int idproducto);
     }
 }

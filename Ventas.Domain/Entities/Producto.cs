@@ -7,16 +7,17 @@ namespace Ventas.Domain.Entities
 {
     public class Producto : SeconEntity
     {
-        public int idProducto { get; set; }
-        public string? codigoBarra { get; set; }
-        public string? marca { get; set; }
-        public int? idCategoria { get; set;  }
-        public int? idSuplidor { get; set; }
-        public int? stock { get; set; }
-        public string? urlImagen { get; set; }
-        public string? nombreImagen { get; set; }
-        public decimal? precio { get; set; }
-        public DateTime? fechaRegistro { get; set; }
+        public int IdProducto { get; set; }
+        public string? CodigoBarra { get; set; }
+        public string? Marca { get; set; }
+        public int? IdCategoria { get; set;  }
+        public int? IdSuplidor { get; set; }
+        public int? Stock { get; set; }
+        public string? ProductoDescripcion { get; set; }
+        public string? UrlImagen { get; set; }
+        public string? NombreImagen { get; set; }
+        public decimal? Precio { get; set; }
+       
         
 
 

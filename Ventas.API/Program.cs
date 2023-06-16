@@ -1,3 +1,8 @@
+using Microsoft.EntityFrameworkCore;
+using Ventas.Infrastructure.Context;
+using Ventas.Infrastructure.Interfaces;
+using Ventas.Infrastructure.Repositories;
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
@@ -6,6 +11,14 @@ builder.Services.AddControllers();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
+
+builder.Services.AddDbContext<VentasContext>();
+builder.Services.AddDbContext<VentasContext>(option =>
+option.UseSqlServer(builder.Configuration.GetConnectionString("VentasContext")));
+
+//Repositorio//
+
+builder.Services.AddTransient<IProductoRepository, ProductoRepository>();
 
 var app = builder.Build();
 
