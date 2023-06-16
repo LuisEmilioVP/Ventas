@@ -52,8 +52,8 @@ namespace Ventas.API.Controllers
                Pais = suplidorAdd.Pais,
                Telefono = suplidorAdd.Telefono,
                Fax = suplidorAdd.Fax,
-               CreationUser = suplidorAdd.CreationUser,
-               CreationDate = suplidorAdd.CreationDate
+               CreationUser = suplidorAdd.ChangeUser,
+               CreationDate = suplidorAdd.ChangeDate,
             });
             return Ok();
         }
@@ -62,6 +62,23 @@ namespace Ventas.API.Controllers
         [HttpPut("Update")]
         public IActionResult Put([FromBody] SuplidorUpdateDto suplidorUpdate)
         {
+           Suplidor suplidorToUpdate = new Suplidor()
+            {
+                IdSuplidor = suplidorUpdate.IdSuplidor,
+                Nombre = suplidorUpdate.Nombre,
+                Contacto = suplidorUpdate.Contacto,
+                Direccion = suplidorUpdate.Direccion,
+                Ciudad = suplidorUpdate.Ciudad,
+                Region = suplidorUpdate.Region,
+                Codigo_postal = suplidorUpdate.Codigo_postal,
+                Pais = suplidorUpdate.Pais,
+                Telefono = suplidorUpdate.Telefono,
+                Fax = suplidorUpdate.Fax,
+                UserMod = suplidorUpdate.ChangeUser,
+                ModifyDate = suplidorUpdate.ChangeDate,
+            };
+
+            this.suplidorRepository.Update(suplidorToUpdate);
             return Ok();
         }
 
@@ -69,6 +86,16 @@ namespace Ventas.API.Controllers
         [HttpDelete("Remove")]
         public IActionResult Delete([FromBody] SuplidorRemoveDto suplidorRemove)
         {
+            Suplidor suplidorToDelete = new Suplidor()
+            {
+                IdSuplidor = suplidorRemove.IdSuplidor,
+                UserDeleted = suplidorRemove.ChangeUser,
+                DeletedDate = suplidorRemove.ChangeDate,
+                Deleted = suplidorRemove.Deleted,
+              
+            };
+
+            this.suplidorRepository.Update(suplidorToDelete);
             return Ok();
         }
     }
