@@ -8,8 +8,8 @@ namespace Ventas.Domain.Repository
     {
         //void para especificar que el método no devuelve un valor. 
 
-        void Save(TEntity entity);
-        void Save(TEntity[] entities);
+        void Add(TEntity entity);
+        void Add(TEntity[] entities);
         void Update(TEntity entity);
         void Update(TEntity[] entities);
         void Remove(TEntity entity);

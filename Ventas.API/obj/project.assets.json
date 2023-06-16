@@ -1779,6 +1779,16 @@
           "lib/netstandard1.3/System.Xml.XmlSerializer.dll": {}
         }
       },
+      "Ventas.Application/1.0.0": {
+        "type": "project",
+        "framework": ".NETStandard,Version=v2.1",
+        "compile": {
+          "bin/placeholder/Ventas.Application.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/Ventas.Application.dll": {}
+        }
+      },
       "Ventas.Domain/1.0.0": {
         "type": "project",
         "framework": ".NETStandard,Version=v2.1",
@@ -6109,6 +6119,11 @@
         "system.xml.xmlserializer.nuspec"
       ]
     },
+    "Ventas.Application/1.0.0": {
+      "type": "project",
+      "path": "../Ventas.Application/Ventas.Application.csproj",
+      "msbuildProject": "../Ventas.Application/Ventas.Application.csproj"
+    },
     "Ventas.Domain/1.0.0": {
       "type": "project",
       "path": "../Ventas.Domain/Ventas.Domain.csproj",
@@ -6123,6 +6138,7 @@
   "projectFileDependencyGroups": {
     "net6.0": [
       "Swashbuckle.AspNetCore >= 6.2.3",
+      "Ventas.Application >= 1.0.0",
       "Ventas.Infrastructure >= 1.0.0"
     ]
   },
@@ -6153,6 +6169,9 @@
         "net6.0": {
           "targetAlias": "net6.0",
           "projectReferences": {
+            "C:\\Proyecto\\Ventas\\Ventas.Application\\Ventas.Application.csproj": {
+              "projectPath": "C:\\Proyecto\\Ventas\\Ventas.Application\\Ventas.Application.csproj"
+            },
             "C:\\Proyecto\\Ventas\\Ventas.Infrastructure\\Ventas.Infrastructure.csproj": {
               "projectPath": "C:\\Proyecto\\Ventas\\Ventas.Infrastructure\\Ventas.Infrastructure.csproj"
             }

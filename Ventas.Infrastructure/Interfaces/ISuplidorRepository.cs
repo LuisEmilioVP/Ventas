@@ -10,9 +10,8 @@ namespace Ventas.Infrastructure.Interfaces
 {
     public  interface ISuplidorRepository : IBaseRepository<Suplidor>
     {
-
         List<SuplidorModels> GetAllSuplidor();
-        List<SuplidorModels> Getsuplidor(int idSuplidor);
+       SuplidorModels GetsuplidorById(int id);
 
     }
 }

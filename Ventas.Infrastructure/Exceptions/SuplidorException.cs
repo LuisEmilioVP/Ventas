@@ -1,10 +1,21 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Text;
 
 namespace Ventas.Infrastructure.Exceptions
 {
-    internal class SuplidorException
+    public class SuplidorException : Exception
     {
+        public SuplidorException(string message) : base(message)
+        {
+
+        }
+
+        // Excepción Se produjo un error al establecer la conexión con la base de datos. 
+        public class ConnectionException : Exception
+        {
+            public ConnectionException(string message) : base(message)
+            {
+            }
+
+        }
     }
 }

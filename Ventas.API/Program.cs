@@ -16,7 +16,7 @@ builder.Services.AddSwaggerGen();
 builder.Services.AddDbContext<VentasContext>(options => options.UseSqlServer(builder.Configuration.GetConnectionString("VentasContext")));
 
 
-// Repositorios
+// Repositorio
 builder.Services.AddTransient<ISuplidorRepository, SuplidorRepository>();
 
 
