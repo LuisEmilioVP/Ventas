@@ -46,6 +46,7 @@ namespace Ventas.API.Controllers
                 CreationUser = usuarioAdd.ChangeUser,
                 CreationDate = usuarioAdd.ChangeDate,
             });
+
             return Ok();
         }
 

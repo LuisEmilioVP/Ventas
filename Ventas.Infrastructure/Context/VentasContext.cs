@@ -14,7 +14,7 @@ namespace Ventas.Infrastructure.Context
         {
         }
 
-        public DbSet<Usuario> Usuario { get; set; }
-        public DbSet<Categoria> Categoria { get; set; }
+        public DbSet<Usuario>? Usuario { get; set; }
+        public DbSet<Categoria>? Categoria { get; set; }
     }
 }

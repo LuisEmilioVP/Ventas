@@ -6,7 +6,6 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Folder Include="Dtos\Categoria\" />
     <Folder Include="Models\" />
   </ItemGroup>
 
