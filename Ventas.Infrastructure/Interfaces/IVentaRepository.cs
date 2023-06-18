@@ -6,7 +6,7 @@ using Ventas.Infrastructure.Models;
 
 namespace Ventas.Infrastructure.Interfaces
 {
-    public interface IVentaRepository : IBaseRepository<Venta>
+    public interface IVentaRepository : IBaseRepository<Venta> ,IVentaRepository
     {
         List<Venta> GetAllVentas();
 
