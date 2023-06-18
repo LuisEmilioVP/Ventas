@@ -30,7 +30,7 @@ namespace Ventas.API.Controllers
         }
 
         // GET api/<SuplidorController>/5
-        [HttpGet("{id}")]
+        [HttpGet("ID")]
         public IActionResult Get(int id)
         {
             var supli = this.suplidorRepository.GetsuplidorById(id);
@@ -92,10 +92,9 @@ namespace Ventas.API.Controllers
                 UserDeleted = suplidorRemove.ChangeUser,
                 DeletedDate = suplidorRemove.ChangeDate,
                 Deleted = suplidorRemove.Deleted,
-              
             };
 
-            this.suplidorRepository.Update(suplidorToDelete);
+            this.suplidorRepository.Remove(suplidorToDelete);
             return Ok();
         }
     }

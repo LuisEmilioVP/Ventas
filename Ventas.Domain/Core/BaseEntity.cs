@@ -5,6 +5,7 @@ namespace Ventas.Domain.Core
 
     public abstract class BaseEntity
     {
+        
         public BaseEntity()
         {
             this.CreationDate = DateTime.Now;
