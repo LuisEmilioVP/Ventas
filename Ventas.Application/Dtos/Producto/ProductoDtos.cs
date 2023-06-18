@@ -3,7 +3,7 @@
 
 namespace Ventas.Application.Dtos.Producto
 {
-    public class ProductoDtos : DtosBase
+    public class ProductoDtos : DtosSecon
     {
         public string CodigoBarra { get; set; }
         public string Marca { get; set; }
@@ -15,7 +15,7 @@ namespace Ventas.Application.Dtos.Producto
         public string ProductoDescripcion { get; set; }
         public string NombreSuplidor { get; set; }
         public string CategoriaDescripcion { get; set; }
-        public DateTime? FechaRegistro { get; set; }
+        
 
     }
 }

@@ -4,7 +4,7 @@ using System.Text;
 
 namespace Ventas.Application.Dtos.Producto
 {
-    public class ProductoAddDto
+    public class ProductoAddDto : ProductoDtos
     {
     }
 }

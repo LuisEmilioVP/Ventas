@@ -11,7 +11,6 @@ using Ventas.Infrastructure.Models;
 namespace Ventas.Infrastructure.Repositories
 {
     public class ProductoRepository : BaseRepository<Producto>, IProductoRepository
-
     {
 
         private readonly ILogger<ProductoRepository> logger;
@@ -31,16 +30,15 @@ namespace Ventas.Infrastructure.Repositories
             List<ProductoModels> producto = new List<ProductoModels>();
             try
             {
-
                 this.logger.LogInformation("Obteniendo Producto...");
-                producto = this.context.Productos
+                producto = this.context.Producto
                     .Where(pro => !pro.Deleted)
                     .Select(pro => new ProductoModels()
 
                     {
                         CodigoBarra = pro.CodigoBarra,
                         Marca = pro.Marca,
-                        ProductoDescripcion = pro.ProductoDescripcion,
+                        Descripcion = pro.Descripcion,
                         Stock = pro.Stock,
                         UrlImagen = pro.UrlImagen,
                         NombreImagen = pro.NombreImagen,
@@ -49,13 +47,12 @@ namespace Ventas.Infrastructure.Repositories
                         FechaRegistro = pro.FechaRegistro
                     }).ToList();
             }
-            catch (Exception ex)
+            catch (Exception e)
             {
-                this.logger.LogError("Error obteniendo los productos", ex.ToString());
+                this.logger.LogError("Error obteniendo los productos", e.ToString());
             }
 
             return producto;
-
         }
 
         public ProductoModels GetProductoById(int idproducto)
@@ -63,45 +60,66 @@ namespace Ventas.Infrastructure.Repositories
             ProductoModels productoModels = new ProductoModels();
             try
             {
-                this.logger.LogInformation($"Obteniendo un Producto: {idproducto}");
+                this.logger.LogInformation($"Obteniendo un Producto");
                 Producto producto = this.GetEntity(idproducto);
 
                 productoModels.CodigoBarra = producto.CodigoBarra;
                 productoModels.Marca = producto.Marca;
-                productoModels.ProductoDescripcion = producto.ProductoDescripcion;
+                productoModels.Descripcion = producto.Descripcion;
                 productoModels.Stock = producto.Stock;
                 productoModels.UrlImagen = producto.UrlImagen;
                 productoModels.NombreImagen = producto.NombreImagen;
                 productoModels.Precio = producto.Precio;
                 productoModels.EsActivo = producto.EsActivo;
                 productoModels.FechaRegistro = producto.FechaRegistro;
-
             }
-            catch (Exception ex)
+            catch (Exception e)
             {
-                this.logger.LogError($"Error al cargar el producto {ex.Message}", ex.ToString());
-
+                this.logger.LogError($"Error al cargar el producto {e.Message}", e.ToString());
+                throw new DbConnectionException($"Error de Conexión: {e.Message}");
             }
+            
             return productoModels;
         }
 
         public override void Add(Producto entity)
         {
-            base.Add(entity);
-        }
-
-
-        public override void Update(Producto entity)
-        {
-
             try
             {
-                Producto ProductoToUpdate = this.GetEntity(entity.IdProducto);
+                if (this.Exists(pro => pro.CodigoBarra == entity.CodigoBarra)) 
+                {
+                    throw new ProductoExceptions("Este codigo de barra ya existe");
+
+                }
+
+                base.Add(entity);
+                base.SaveChanges();
+                this.logger.LogInformation($"Nuevo codigo de barra agregado:{entity.CodigoBarra}");
+            }
+            catch (ProductoExceptions e)
+            {
+                this.logger.LogError($"Error al agregar el codigo de barra: {e.Message}", e.ToString());
+                throw;
+            }
+            catch (Exception e)
+            {
+                this.logger.LogError($"Error al cargar el codigo de barra{e.Message}", e.ToString());
+                throw new DbConnectionException($"Error de Conexión: {e.Message}");
+            }
+        }
+      
+        public override void Update(Producto entity)
+        {
+            try
+            {
+               Producto ProductoToUpdate = this.GetEntity(entity.IdProducto)
+                    ?? throw new ProductoNotFoundException(
+                        "Producto no encontrado en la base de datos");
 
                 ProductoToUpdate.IdProducto = entity.IdProducto;
                 ProductoToUpdate.CodigoBarra = entity.CodigoBarra;
                 ProductoToUpdate.Marca = entity.Marca;
-                ProductoToUpdate.ProductoDescripcion = entity.ProductoDescripcion;
+                ProductoToUpdate.Descripcion = entity.Descripcion;
                 ProductoToUpdate.Stock = entity.Stock;
                 ProductoToUpdate.Precio = entity.Precio;
                 ProductoToUpdate.UrlImagen = entity.UrlImagen;
@@ -110,20 +128,29 @@ namespace Ventas.Infrastructure.Repositories
                 ProductoToUpdate.UserMod = entity.UserMod;
                 ProductoToUpdate.ModifyDate = entity.ModifyDate;
 
-                this.context.Productos.Update(ProductoToUpdate);
+                this.context.Producto.Update(ProductoToUpdate);         
                 this.context.SaveChanges();
             }
-            catch (Exception ex)
+            catch (ProductoNotFoundException ex)
             {
                 this.logger.LogError($"Error al actualizar el producto {ex.Message}", ex.ToString());
             }
+             catch (Exception e)
+            {
+                this.logger.LogError($"Error al cargar el producto{e.Message}", e.ToString());
+                throw new DbConnectionException($"Error de Conexión: {e.Message}");
+            }
+        
         }
 
         public override void Remove(Producto entity)
         {
             try
             {
-                Producto ProductoToRemove = this.GetEntity(entity.IdProducto);
+
+                Producto ProductoToRemove = this.GetEntity(entity.IdProducto)
+                 ?? throw new ProductoNotFoundException(
+                        "Producto no encontrado en la base de datos");
 
                 ProductoToRemove.IdProducto = entity.IdProducto;
                 ProductoToRemove.UserDeleted = entity.UserDeleted;
@@ -132,17 +159,17 @@ namespace Ventas.Infrastructure.Repositories
 
                 this.context.Update(ProductoToRemove);
                 this.context.SaveChanges();
-
+                this.logger.LogInformation("Eliminación de el producto exitosa.");
             }
-            catch (Exception ex)
+            catch (ProductoExceptions e)
             {
-                this.logger.LogError($"Error al borrar el producto {ex.Message}", ex.ToString());
+                this.logger.LogError($"Error al borrar el producto {e.Message}", e.ToString());
             }
-        }
-
-        List<ProductoModels> IProductoRepository.GetProductoById(int idproducto)
-        {
-            throw new NotImplementedException();
+            catch (Exception e)
+            {
+                this.logger.LogError($"Error al cargar el codigo de barra{e.Message}", e.ToString());
+                throw new DbConnectionException($"Error de Conexión: {e.Message}");
+            }
         }
     }
 }

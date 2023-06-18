@@ -1,6 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Text;
+
 
 namespace Ventas.Infrastructure.Models
 {
@@ -8,7 +7,7 @@ namespace Ventas.Infrastructure.Models
     {
         public string? CodigoBarra { get; set; }
         public string? Marca { get; set; }
-        public string? ProductoDescripcion { get; set; }
+        public string? Descripcion { get; set; }
         public int? Stock { get; set; }
         public string? UrlImagen { get; set; }
         public string? NombreImagen { get; set; }

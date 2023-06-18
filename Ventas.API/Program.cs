@@ -12,9 +12,8 @@ builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
-builder.Services.AddDbContext<VentasContext>();
-builder.Services.AddDbContext<VentasContext>(option =>
-option.UseSqlServer(builder.Configuration.GetConnectionString("VentasContext")));
+
+builder.Services.AddDbContext<VentasContext>(option => option.UseSqlServer(builder.Configuration.GetConnectionString("VentasContext")));
 
 //Repositorio//
 

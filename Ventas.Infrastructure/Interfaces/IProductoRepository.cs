@@ -1,4 +1,4 @@
-﻿using System;
+﻿ using System;
 using System.Collections.Generic;
 using System.Text;
 using Ventas.Domain.Entities;
@@ -10,6 +10,6 @@ namespace Ventas.Infrastructure.Interfaces
     public interface IProductoRepository : IBaseRepository<Producto>
     {
         List<ProductoModels> GetAllProducto();
-        List <ProductoModels> GetProductoById(int idproducto);
+        ProductoModels GetProductoById(int idproducto);
     }
 }

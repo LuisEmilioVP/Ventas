@@ -28,9 +28,9 @@ namespace Ventas.API.Controllers
 
         // GET api/<ProductoController>/5
         [HttpGet("{id}")]
-        public IActionResult Get(int idproducto)
+        public IActionResult Get(int id)
         {
-            var produ = this.productoRepository.GetProductoById(idproducto);
+            var produ = this.productoRepository.GetProductoById(id);
             return Ok(produ);
         }
 
@@ -38,14 +38,29 @@ namespace Ventas.API.Controllers
         [HttpPost("Save")]
         public IActionResult Post([FromBody] ProductoAddDto productoAdd)
         {
-            //this.productoRepository.Add();
+            this.productoRepository.Add(new Producto()
+            {
+
+                CodigoBarra = productoAdd.CodigoBarra,
+                Marca = productoAdd.Marca,
+                Descripcion = productoAdd.Descripcion,
+                Stock = productoAdd.Stock,
+                Precio = productoAdd.Precio,
+                UrlImagen = productoAdd.UrlImagen,
+                NombreImagen = productoAdd.NombreImagen,
+                EsActivo = productoAdd.EsActivo,
+                FechaRegistro = productoAdd.FechaRegistro,
+                CreationUser = productoAdd.ChangeUser,
+                CreationDate = productoAdd.ChangeDate,
+
+            });
 
             return Ok();
 
         }
 
         // PUT api/<ProductoController>/5
-        [HttpPost("Update")]
+        [HttpPut("Update")]
         public IActionResult Put([FromBody] ProductoUpdateDto productoUpdate)
         {
             Producto ProductoUpdateDto = new Producto()
@@ -54,11 +69,12 @@ namespace Ventas.API.Controllers
                 IdProducto = productoUpdate.IdProducto,
                 CodigoBarra = productoUpdate.CodigoBarra,
                 Marca = productoUpdate.Marca,
-                ProductoDescripcion = productoUpdate.ProductoDescripcion,
+                Descripcion = productoUpdate.Descripcion,
                 Stock = productoUpdate.Stock,
                 Precio = productoUpdate.Precio,
                 UrlImagen = productoUpdate.UrlImagen,
                 NombreImagen = productoUpdate.NombreImagen,
+                EsActivo = productoUpdate.EsActivo,
                 FechaRegistro = productoUpdate.FechaRegistro,
                 UserMod = productoUpdate.ChangeUser,
                 ModifyDate = productoUpdate.ChangeDate

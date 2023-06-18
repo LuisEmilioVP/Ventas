@@ -79,7 +79,6 @@ C:\Proyecto\Ventas\Ventas.API\obj\Debug\net6.0\Ventas.API.GeneratedMSBuildEditor
 C:\Proyecto\Ventas\Ventas.API\obj\Debug\net6.0\Ventas.API.AssemblyInfoInputs.cache
 C:\Proyecto\Ventas\Ventas.API\obj\Debug\net6.0\Ventas.API.AssemblyInfo.cs
 C:\Proyecto\Ventas\Ventas.API\obj\Debug\net6.0\Ventas.API.csproj.CoreCompileInputs.cache
-C:\Proyecto\Ventas\Ventas.API\obj\Debug\net6.0\Ventas.API.MvcApplicationPartsAssemblyInfo.cs
 C:\Proyecto\Ventas\Ventas.API\obj\Debug\net6.0\Ventas.API.MvcApplicationPartsAssemblyInfo.cache
 C:\Proyecto\Ventas\Ventas.API\obj\Debug\net6.0\staticwebassets\msbuild.Ventas.API.Microsoft.AspNetCore.StaticWebAssets.props
 C:\Proyecto\Ventas\Ventas.API\obj\Debug\net6.0\staticwebassets\msbuild.build.Ventas.API.props
@@ -95,3 +94,4 @@ C:\Proyecto\Ventas\Ventas.API\obj\Debug\net6.0\refint\Ventas.API.dll
 C:\Proyecto\Ventas\Ventas.API\obj\Debug\net6.0\Ventas.API.pdb
 C:\Proyecto\Ventas\Ventas.API\obj\Debug\net6.0\Ventas.API.genruntimeconfig.cache
 C:\Proyecto\Ventas\Ventas.API\obj\Debug\net6.0\ref\Ventas.API.dll
+C:\Proyecto\Ventas\Ventas.API\obj\Debug\net6.0\Ventas.API.MvcApplicationPartsAssemblyInfo.cs

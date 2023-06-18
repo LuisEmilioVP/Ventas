@@ -15,6 +15,6 @@ namespace Ventas.Infrastructure.Context
         {
         }
 
-        public DbSet<Producto> Productos { get; set; }
+        public DbSet<Producto> Producto { get; set; }
     }
 }
