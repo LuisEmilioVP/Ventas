@@ -14,6 +14,6 @@ namespace Ventas.Infrastructure.Context
         {
         }
 
-        public DbSet<Negocio> Negocio { get; set; }
+        public DbSet<Negocio>? Negocio { get; set; }
     }
 }

@@ -68,15 +68,5 @@ namespace Ventas.Infrastructure.Core
         {
             this.context.SaveChanges();
         }
-
-        public void Save(TEntity entity)
-        {
-            throw new NotImplementedException();
-        }
-
-        public void Save(TEntity[] entities)
-        {
-            throw new NotImplementedException();
-        }
     }
 }

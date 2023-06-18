@@ -19,9 +19,9 @@ namespace Ventas.Infrastructure.Exceptions
     }
 
     /* Excepción de Error de conexión a la base de datos */
-    public class CDatabaseConnectionException : Exception
+    public class NDatabaseConnectionException : Exception
     {
-        public CDatabaseConnectionException(string message) : base(message)
+        public NDatabaseConnectionException(string message) : base(message)
         {
         }
     }
