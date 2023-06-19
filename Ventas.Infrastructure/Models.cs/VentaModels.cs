@@ -2,7 +2,7 @@
 
 namespace Ventas.Infrastructure.Models
 {
-    public class Venta
+    public class VentaModels
     {
         public int IdVenta { get; set; }
         public string? NumeroVenta { get; set; }

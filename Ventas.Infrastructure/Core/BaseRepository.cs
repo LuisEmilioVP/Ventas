@@ -57,5 +57,10 @@ namespace Ventas.Infrastructure.Core
             this.entities.Update(entity);
             this.ventas.SaveChanges();
         }
+
+        internal void SaveChanges()
+        {
+            throw new NotImplementedException();
+        }
     }
 }

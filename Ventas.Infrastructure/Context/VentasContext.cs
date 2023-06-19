@@ -1,10 +1,13 @@
 ﻿using Microsoft.EntityFrameworkCore;
+using System.Collections.Generic;
 using Ventas.Domain.Entities;
 
 namespace Ventas.Infrastructure.Context
 {
     public class VentasContext : DbContext
     {
+        internal readonly IEnumerable<object> Venta1;
+
         public VentasContext()
         {
         }

@@ -6,10 +6,13 @@ using Ventas.Infrastructure.Models;
 
 namespace Ventas.Infrastructure.Interfaces
 {
-    public interface IVentaRepository : IBaseRepository<Venta> ,IVentaRepository
+    public interface IVentaRepository : IBaseRepository<Venta>
     {
+        void Add(Venta entity);
+        object GetAllEntities();
         List<Venta> GetAllVentas();
 
-        List<Venta> GetVenta(int idVenta);
+        List<Venta> GetVentaById(int idVenta);
+        void Update(Venta entity);
     }
 }

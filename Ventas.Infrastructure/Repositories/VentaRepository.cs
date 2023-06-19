@@ -7,7 +7,7 @@ using Ventas.Infrastructure.Context;
 using Ventas.Infrastructure.Core;
 using Ventas.Infrastructure.Interfaces;
 using Ventas.Infrastructure.Models;
-using Ventas.Infrastructure.Exceptions;
+using Ventas.Infrastructure;
 
 namespace Ventas.Infrastructure.Repositories
 {
@@ -22,15 +22,15 @@ namespace Ventas.Infrastructure.Repositories
             this.context = ventas;
         }
 
-        public List<VentaModels> GetAllVentas()
+        public List<Venta> GetAllVentas()
         {
-            List<VentaModels> ventas = new List<VentaModels>();
+            List<Venta> ventas = new List<Venta>();
             try
             {
                 this.logger.LogInformation("Obteniendo Ventas...");
                 ventas = this.context.Venta
                     .Where(v => !v.Deleted)
-                    .Select(v => new VentaModels()
+                    .Select(v => new VentaModel()
                     {
                         NumeroVenta = v.NumeroVenta,
                         FechaVenta = v.FechaVenta,
@@ -42,7 +42,7 @@ namespace Ventas.Infrastructure.Repositories
             catch (Exception ex)
             {
                 this.logger.LogError($"Error al cargar Ventas: {ex.Message}", ex.ToString());
-                throw new UDatabaseConnectionException($"Error de conexión: {ex.Message}");
+                throw new DbConnectionException($"Error de conexión: {ex.Message}");
             }
 
             return ventas;
@@ -64,7 +64,7 @@ namespace Ventas.Infrastructure.Repositories
             catch (Exception ex)
             {
                 this.logger.LogError($"Error al cargar la venta: {ex.Message}", ex.ToString());
-                throw new UDatabaseConnectionException($"Error de conexión: {ex.Message}");
+                throw new DbConnectionException($"Error de conexión: {ex.Message}");
             }
 
             return ventaModel;
@@ -84,7 +84,7 @@ namespace Ventas.Infrastructure.Repositories
             catch (Exception ex)
             {
                 this.logger.LogError($"Error al agregar la venta: {ex.Message}", ex.ToString());
-                throw new UDatabaseConnectionException($"Error de conexión: {ex.Message}");
+                throw new DbConnectionException($"Error de conexión: {ex.Message}");
             }
         }
 
@@ -113,3 +113,7 @@ namespace Ventas.Infrastructure.Repositories
             catch (Exception ex)
             {
                 this.logger.LogError($"Error al actualizar la venta: {ex.Message}", ex.ToString());
+            }
+        }
+    }
+}

@@ -4,6 +4,7 @@ using Ventas.Domain.Entities;
 using Ventas.Infrastructure.Interfaces;
 
 namespace Ventas.API.Controllers
+
 {
     [Route("api/[controller]")]
     [ApiController]
@@ -19,8 +20,8 @@ namespace Ventas.API.Controllers
         [HttpGet("ShowVentas")]
         public IActionResult Get()
         {
-            var ventas = this.ventaRepository.GetAllVentas();
-            return Ok(ventas);
+            var venta = this.ventaRepository.GetAllVentas();
+            return Ok(venta);
         }
 
         [HttpGet("ShowVentaById")]
@@ -33,7 +34,7 @@ namespace Ventas.API.Controllers
         [HttpPost("SaveVenta")]
         public IActionResult Post([FromBody] VentaAddDto ventaAdd)
         {
-            this.ventaRepository.Add(new Venta()
+            this.ventaRepository.Add(new Ventas.Domain.Entities.Venta()
             {
                 NumeroVenta = ventaAdd.NumeroVenta,
                 IdTipoDocumentoVenta = ventaAdd.IdTipoDocumentoVenta,
@@ -51,7 +52,7 @@ namespace Ventas.API.Controllers
         [HttpPut("UpdateVenta")]
         public IActionResult Put([FromBody] VentaUpdateDto ventaUpdate)
         {
-            Venta ventaToUpdate = new Venta()
+            Ventas.Domain.Entities.Venta ventaToUpdate = new Ventas.Domain.Entities.Venta()
             {
                 IdVenta = ventaUpdate.IdVenta,
                 NumeroVenta = ventaUpdate.NumeroVenta,
@@ -72,7 +73,7 @@ namespace Ventas.API.Controllers
         [HttpDelete("RemoveVenta")]
         public IActionResult Delete([FromBody] VentaRevoveDto ventaRevove)
         {
-            Venta ventaToDelete = new Venta()
+            Ventas.Domain.Entities.Venta ventaToDelete = new Ventas.Domain.Entities.Venta()
             {
                 IdVenta = ventaRevove.IdVenta,
                 UserDeleted = ventaRevove.ChangeUser,
