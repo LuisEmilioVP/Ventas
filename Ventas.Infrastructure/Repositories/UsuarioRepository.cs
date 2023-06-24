@@ -8,6 +8,7 @@ using Ventas.Infrastructure.Core;
 using Ventas.Infrastructure.Interfaces;
 using Ventas.Infrastructure.Models;
 using Ventas.Infrastructure.Exceptions;
+using Ventas.Infrastructure.Extentions;
 
 namespace Ventas.Infrastructure.Repositories
 {
@@ -21,59 +22,6 @@ namespace Ventas.Infrastructure.Repositories
         {
             this.logger = logger;
             this.context = ventas;
-        }
-
-        public List<UsuarioModels> GetAllUser()
-        {
-            List<UsuarioModels> usuarios = new List<UsuarioModels>();
-            try
-            {
-                this.logger.LogInformation("Obteniendo Usuarios...");
-                usuarios = this.context.Usuario
-                    .Where(us => !us.Deleted)
-                    .Select(use => new UsuarioModels()
-                    {
-                        Nombre = use.Nombre,
-                        Correo = use.Correo,
-                        Telefono = use.Telefono,
-                        UrlFoto = use.UrlFoto,
-                        NombreFoto = use.NombreFoto,
-                        EsActivo = use.EsActivo,
-                        FechaRegistro = use.FechaRegistro,
-                    }).ToList();
-            }
-            catch (Exception ex)
-            {
-                this.logger.LogError($"Error al cargar Usuarios {ex.Message}", ex.ToString());
-                throw new UDatabaseConnectionException($"Error de conexión: {ex.Message}");
-            }
-
-            return usuarios;
-        }
-
-        public UsuarioModels GetUserById(int id)
-        {
-            UsuarioModels usuarioModels = new UsuarioModels();
-            try
-            {
-                this.logger.LogInformation($"Obteniendo un Usuario: {id}");
-                Usuario usuario = this.GetEntity(id);
-
-                usuarioModels.Nombre = usuario.Nombre;
-                usuarioModels.Correo = usuario.Correo;
-                usuarioModels.Telefono = usuario.Telefono;
-                usuarioModels.UrlFoto = usuario.UrlFoto;
-                usuarioModels.NombreFoto = usuario.NombreFoto;
-                usuarioModels.EsActivo = usuario.EsActivo;
-                usuarioModels.FechaRegistro = usuario.FechaRegistro;
-            }
-            catch (Exception ex)
-            {
-                this.logger.LogError($"Error al cargar el usuario {ex.Message}", ex.ToString());
-                throw new UDatabaseConnectionException($"Error de conexión: {ex.Message}");
-            }
-
-            return usuarioModels;
         }
 
         public override void Add(Usuario entity)
@@ -160,6 +108,57 @@ namespace Ventas.Infrastructure.Repositories
                 this.logger.LogError($"Error al eliminar usuario: {ex.Message}", ex.ToString());
                 throw new UDatabaseConnectionException($"Error de conexión: {ex.Message}");
             }
+        }
+
+        public List<UsuarioModels> GetAllUser()
+        {
+            List<UsuarioModels> usuarios = new List<UsuarioModels>();
+            try
+            {
+                this.logger.LogInformation("Obteniendo Usuarios...");
+                usuarios = this.context.Usuario
+                    .Where(us => !us.Deleted)
+                    .Select(use => new UsuarioModels()
+                    {
+                        Nombre = use.Nombre,
+                        Correo = use.Correo,
+                        Telefono = use.Telefono,
+                        UrlFoto = use.UrlFoto,
+                        NombreFoto = use.NombreFoto,
+                        EsActivo = use.EsActivo,
+                        FechaRegistro = use.FechaRegistro,
+                    }).ToList();
+            }
+            catch (Exception ex)
+            {
+                this.logger.LogError($"Error al cargar Usuarios {ex.Message}", ex.ToString());
+                throw new UDatabaseConnectionException($"Error de conexión: {ex.Message}");
+            }
+
+            return usuarios;
+        }
+
+        public UsuarioModels GetUserById(int userId)
+        {
+            UsuarioModels usuarioModels = new UsuarioModels();
+
+            try
+            {
+                if (!base.Exists(use => use.IdUsuario == userId))
+                    throw new UsuarioNotFoundException(
+                        "Usuario no encontrado en la base de datos");
+
+                usuarioModels = base.GetEntity(userId).ConvertUserEntityToModel();
+                this.logger.LogInformation($"Obteniendo un Usuario: {userId}");
+            }
+            catch(Exception ex)
+            {
+                this.logger.LogError($"Error al cargar el usuario {ex.Message}", ex.ToString());
+                throw new UsuarioExceptions("Usuario no existe...");
+                throw new UDatabaseConnectionException($"Error de conexión: {ex.Message}");
+            }
+
+            return usuarioModels;
         }
     }
 }

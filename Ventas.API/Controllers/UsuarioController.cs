@@ -1,7 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using Ventas.Application.Contract;
 using Ventas.Application.Dtos.Usuario;
-using Ventas.Domain.Entities;
-using Ventas.Infrastructure.Interfaces;
 
 namespace Ventas.API.Controllers
 {
@@ -9,82 +8,61 @@ namespace Ventas.API.Controllers
     [ApiController]
     public class UsuarioController : ControllerBase
     {
-        private readonly IUsuarioRepository usuarioRepository;
+        private readonly IUsuarioService usuarioService;
 
-        public UsuarioController(IUsuarioRepository usuarioRepository)
+        public UsuarioController(IUsuarioService usuarioService)
         {
-            this.usuarioRepository = usuarioRepository;
+            this.usuarioService = usuarioService;
         }
 
         [HttpGet("ShowUsers")]
         public IActionResult Get()
         {
-            var users = this.usuarioRepository.GetAllUser();
-            return Ok(users);
+            var result = this.usuarioService.Get();
+            if(!result.Success)
+                return BadRequest(result);
+
+            return Ok(result);
         }
 
         [HttpGet("ShowUserById")]
         public IActionResult Get(int id)
         {
-            var user = this.usuarioRepository.GetUserById(id);
-            return Ok(user);
+            var result = this.usuarioService.GetById(id);
+            if(!result.Success)
+                return BadRequest(result);
+
+            return Ok(result);
         }
 
         [HttpPost("SaveUser")]
         public IActionResult Post([FromBody] UsuarioAddDto usuarioAdd)
         {
-            this.usuarioRepository.Add(new Usuario() 
-            {
-                Nombre = usuarioAdd.Nombre,
-                Correo = usuarioAdd.Correo,
-                Telefono = usuarioAdd.Telefono,
-                UrlFoto = usuarioAdd.UrlFoto,
-                NombreFoto = usuarioAdd.NombreFoto,
-                Clave = usuarioAdd.Clave,
-                EsActivo = usuarioAdd.State,
-                FechaRegistro = usuarioAdd.RegisterDateAndTime,
-                CreationUser = usuarioAdd.ChangeUser,
-                CreationDate = usuarioAdd.ChangeDate,
-            });
+            var result = this.usuarioService.Save(usuarioAdd);
+            if(!result.Success)
+                return BadRequest(result);
 
-            return Ok();
+            return Ok(result);
         }
 
         [HttpPut("UpdateUser")]
         public IActionResult Put([FromBody] UsuarioUpdateDto usuarioUpdate)
         {
-            Usuario usuarioToUpdate = new Usuario()
-            {
-                IdUsuario = usuarioUpdate.IdUsuario,
-                Nombre = usuarioUpdate.Nombre,
-                Telefono = usuarioUpdate.Telefono,
-                Correo = usuarioUpdate.Correo,
-                UrlFoto = usuarioUpdate.UrlFoto,
-                NombreFoto = usuarioUpdate.NombreFoto,
-                Clave = usuarioUpdate.Clave,
-                EsActivo = usuarioUpdate.State,
-                FechaRegistro = usuarioUpdate.RegisterDateAndTime,
-                UserMod = usuarioUpdate.ChangeUser,
-                ModifyDate = usuarioUpdate.ChangeDate,
-            };
+            var result = this.usuarioService.Update(usuarioUpdate);
+            if(!result.Success)
+                return BadRequest(result);
 
-            this.usuarioRepository.Update(usuarioToUpdate);
-            return Ok();
+            return Ok(result);
         }
 
         [HttpDelete("RemoveUser")]
         public IActionResult Delete([FromBody] UsuarioRevoveDto usuarioRevove)
         {
-            Usuario usuarioToDelete = new Usuario()
-            {
-                IdUsuario = usuarioRevove.IdUsuario,
-                UserDeleted = usuarioRevove.ChangeUser,
-                DeletedDate = usuarioRevove.ChangeDate,
-                Deleted = usuarioRevove.Deleted,
-            };
+            var result = this.usuarioService.Remove(usuarioRevove);
+            if(!result.Success)
+                return BadRequest(result);
 
-            this.usuarioRepository.Remove(usuarioToDelete);
-            return Ok();
+            return Ok(result);
         }
     }
 }

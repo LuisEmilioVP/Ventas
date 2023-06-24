@@ -8,7 +8,6 @@ namespace Ventas.Infrastructure.Interfaces
     public interface IUsuarioRepository : IBaseRepository<Usuario>
     {
         List<UsuarioModels> GetAllUser();
-
-        UsuarioModels GetUserById(int id);
+        UsuarioModels GetUserById(int userId);
     }
 }

@@ -6,6 +6,7 @@ using Ventas.Domain.Entities;
 using Ventas.Infrastructure.Context;
 using Ventas.Infrastructure.Core;
 using Ventas.Infrastructure.Exceptions;
+using Ventas.Infrastructure.Extentions;
 using Ventas.Infrastructure.Interfaces;
 using Ventas.Infrastructure.Models;
 
@@ -23,70 +24,25 @@ namespace Ventas.Infrastructure.Repositories
             this.context = ventas;
         }
 
-        public List<CategoriaModels> GetAllCategory()
-        {
-            List<CategoriaModels> categorias = new List<CategoriaModels>();
-            try
-            {
-                this.logger.LogInformation("Obteniendo Categorias");
-                categorias = this.context.Categoria
-                    .Where(ca => ca.EsActivo == true)
-                    .Select(cat => new CategoriaModels()
-                    {
-                        Descripcion = cat.Descripcion,
-                        EsActivo = cat.EsActivo,
-                        FechaRegistro = cat.FechaRegistro,
-                    }).ToList();
-            }
-            catch (Exception ex)
-            {
-                this.logger.LogError($"Error al cargar Categorias {ex.Message}", ex.ToString());
-                throw new CDatabaseConnectionException($"Error de conexión: {ex.Message}");
-            }
-
-            return categorias;
-        }
-
-        public CategoriaModels GetCategoryById(int id)
-        {
-            CategoriaModels categoriaModels = new CategoriaModels();
-            try
-            {
-                this.logger.LogInformation("Obteniendo Categorias");
-                Categoria categoria = this.GetEntity(id);
-
-                categoriaModels.Descripcion = categoria.Descripcion;
-                categoriaModels.EsActivo = categoria.EsActivo;
-                categoriaModels.FechaRegistro = categoria.FechaRegistro;
-            }
-            catch(Exception ex)
-            {
-                this.logger.LogError($"Error al cargar Categorias {ex.Message}", ex.ToString());
-                throw new CDatabaseConnectionException($"Error de Conexión: {ex.Message}");
-            }
-
-            return categoriaModels;
-        }
-
         public override void Add(Categoria entity)
         {
             try
             {
                 if (this.Exists(cat => cat.Descripcion == entity.Descripcion))
-                    throw new CategoriaExceptions("¡La Categoria ya existe!");
+                    throw new CategoriaExceptions("¡La Categoría ya existe!");
 
                 base.Add(entity);
                 base.SaveChanges();
-                this.logger.LogInformation($"Nueva Categoria insertada: {entity.Descripcion}");
+                this.logger.LogInformation($"Nueva Categoría insertada: {entity.Descripcion}");
             }
             catch(CategoriaExceptions ex)
             {
-                this.logger.LogError($"Error al agregar Categoria: {ex.Message}", ex.ToString());
+                this.logger.LogError($"Error al agregar Categoría: {ex.Message}", ex.ToString());
                 throw;
             }
             catch(Exception ex)
             {
-                this.logger.LogError($"Error al cargar Categoria {ex.Message}", ex.ToString());
+                this.logger.LogError($"Error al cargar Categoría {ex.Message}", ex.ToString());
                 throw new CDatabaseConnectionException($"Error de Conexión: {ex.Message}");
             }
         }
@@ -97,7 +53,7 @@ namespace Ventas.Infrastructure.Repositories
             {
                 Categoria categoriaToUpdate = this.GetEntity(entity.IdCategoria)
                     ?? throw new CategoriaNotFoundException(
-                        "Categoria no encontrada en la base de datos");
+                        "Categoría no encontrada en la base de datos");
 
                 categoriaToUpdate.IdCategoria = entity.IdCategoria;
                 categoriaToUpdate.Descripcion = entity.Descripcion;
@@ -108,16 +64,16 @@ namespace Ventas.Infrastructure.Repositories
 
                 this.context.Categoria.Update(categoriaToUpdate);
                 this.SaveChanges();
-                this.logger.LogInformation("Actualización de Categoria exitosa.");
+                this.logger.LogInformation("Actualización de Categoría exitosa.");
             }
             catch(CategoriaExceptions ex)
             {
-                this.logger.LogError($"Error al actualizar Categoria: {ex.Message}");
+                this.logger.LogError($"Error al actualizar Categoría: {ex.Message}");
                 throw;
             }
             catch (Exception ex)
             {
-                this.logger.LogError($"Error al actualizar Categoria: {ex.Message}", ex.ToString());
+                this.logger.LogError($"Error al actualizar Categoría: {ex.Message}", ex.ToString());
                 throw new UDatabaseConnectionException($"Error de Conexión: {ex.Message}");
             }
         }
@@ -128,26 +84,74 @@ namespace Ventas.Infrastructure.Repositories
             {
                 Categoria categoriaToRemove = this.GetEntity(entity.IdCategoria)
                  ?? throw new CategoriaNotFoundException(
-                     "Categoria no encontrada en la base de datos");
+                     "Categoría no encontrada en la base de datos");
 
+                categoriaToRemove.IdCategoria = entity.IdCategoria;
                 categoriaToRemove.UserDeleted = entity.UserDeleted;
                 categoriaToRemove.DeletedDate = entity.DeletedDate;
                 categoriaToRemove.Deleted = entity.Deleted;
 
                 this.context.Update(categoriaToRemove);
                 this.context.SaveChanges();
-                this.logger.LogInformation("Eliminación de categoria exitosa.");
+                this.logger.LogInformation("Eliminación de categoría exitosa.");
             }
             catch(CategoriaExceptions ex)
             {
-                this.logger.LogError($"Error al eliminar categoria: {ex.Message}");
+                this.logger.LogError($"Error al eliminar categoría: {ex.Message}");
                 throw;
             }
             catch(Exception ex)
             {
-                this.logger.LogError($"Error al eliminar categoria: {ex.Message}", ex.ToString());
+                this.logger.LogError($"Error al eliminar categoría: {ex.Message}", ex.ToString());
                 throw new CDatabaseConnectionException($"Error de conexión: {ex.Message}");
             }
+        }
+
+        public List<CategoriaModels> GetAllCategory()
+        {
+            List<CategoriaModels> categorias = new List<CategoriaModels>();
+            try
+            {
+                this.logger.LogInformation("Obteniendo Categorías...");
+                categorias = this.context.Categoria
+                    .Where(ca => !ca.Deleted)
+                    .Select(cat => new CategoriaModels()
+                    {
+                        Descripcion = cat.Descripcion,
+                        EsActivo = cat.EsActivo,
+                        FechaRegistro = cat.FechaRegistro,
+                    }).ToList();
+            }
+            catch (Exception ex)
+            {
+                this.logger.LogError($"Error al cargar Categorías {ex.Message}", ex.ToString());
+                throw new CDatabaseConnectionException($"Error de conexión: {ex.Message}");
+            }
+
+            return categorias;
+        }
+
+        public CategoriaModels GetCategoryById(int categoryId)
+        {
+            CategoriaModels categoriaModels = new CategoriaModels();
+
+            try
+            {
+                if (!base.Exists(ca => ca.IdCategoria == categoryId))
+                    throw new UsuarioNotFoundException(
+                        "Categoría no encontrado en la base de datos");
+
+                categoriaModels = base.GetEntity(categoryId).ConvertCategoryEntityToModel();
+                this.logger.LogInformation($"Obteniendo una Categoría: {categoryId}");
+            }
+            catch (Exception ex)
+            {
+                this.logger.LogError($"Error al cargar el categoría {ex.Message}", ex.ToString());
+                throw new UsuarioExceptions("Categoría no existe...");
+                throw new UDatabaseConnectionException($"Error de conexión: {ex.Message}");
+            }
+
+            return categoriaModels;
         }
     }
 }

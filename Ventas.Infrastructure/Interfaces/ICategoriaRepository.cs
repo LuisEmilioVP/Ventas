@@ -9,6 +9,6 @@ namespace Ventas.Infrastructure.Interfaces
     {
         List<CategoriaModels> GetAllCategory();
 
-        CategoriaModels GetCategoryById(int id);
+        CategoriaModels GetCategoryById(int categoryId);
     }
 }

@@ -1,7 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using Ventas.Application.Contract;
 using Ventas.Application.Dtos.Categoria;
-using Ventas.Domain.Entities;
-using Ventas.Infrastructure.Interfaces;
 
 namespace Ventas.API.Controllers
 {
@@ -9,72 +8,61 @@ namespace Ventas.API.Controllers
     [ApiController]
     public class CategoriaController : ControllerBase
     {
-        private readonly ICategoriaRepository categoriaRepository;
+        private readonly ICategoriaService categoriaService;
 
-        public CategoriaController(ICategoriaRepository categoriaRepository)
+        public CategoriaController(ICategoriaService categoriaService)
         {
-            this.categoriaRepository = categoriaRepository;
+            this.categoriaService = categoriaService;
         }
 
         [HttpGet("ShowCategory")]
         public IActionResult Get()
         {
-            var cats = this.categoriaRepository.GetAllCategory();
-            return Ok(cats);
+            var result = this.categoriaService.Get();
+            if(!result.Success)
+                return BadRequest(result);
+
+            return Ok(result);
         }
 
         [HttpGet("ShowCategoryById")]
         public IActionResult Get(int id)
         {
-            var cat = this.categoriaRepository.GetCategoryById(id);
-            return Ok(cat);
+            var result = this.categoriaService.GetById(id);
+            if(!result.Success)
+                return BadRequest(result);
+
+            return Ok(result);
         }
 
         [HttpPost("SaveCategory")]
         public IActionResult Post([FromBody] CategoriaAddDto categoriaAdd)
         {
-            this.categoriaRepository.Add(new Categoria()
-            {
-                Descripcion = categoriaAdd.Descripcion,
-                EsActivo = categoriaAdd.State,
-                FechaRegistro = categoriaAdd.RegisterDateAndTime,
-                CreationUser = categoriaAdd.ChangeUser,
-                CreationDate = categoriaAdd.ChangeDate,
-            });
+            var result = this.categoriaService.Save(categoriaAdd);
+            if(!result.Success)
+                return BadRequest(result);
 
-            return Ok();
+            return Ok(result);
         }
 
         [HttpPut("UpdateCategory")]
         public IActionResult Put([FromBody] CategoriaUpdateDto categoriaUpdate)
         {
-            Categoria categoriaToUpdate = new Categoria()
-            {
-                IdCategoria = categoriaUpdate.IdCategoria,
-                Descripcion = categoriaUpdate.Descripcion,
-                EsActivo = categoriaUpdate.State,
-                FechaRegistro = categoriaUpdate.RegisterDateAndTime,
-                UserMod = categoriaUpdate.ChangeUser,
-                ModifyDate = categoriaUpdate.ChangeDate,
-            };
+            var result = this.categoriaService.Update(categoriaUpdate);
+            if(!result.Success)
+                return BadRequest(result);
 
-            this.categoriaRepository.Update(categoriaToUpdate);
-            return Ok();
+            return Ok(result);
         }
 
         [HttpDelete("RemoveCategory")]
         public IActionResult Delete(CategoriaRemoveDto categoriaRemove)
         {
-            Categoria categoriaToDelete = new Categoria()
-            {
-                IdCategoria = categoriaRemove.IdCategoria,
-                UserDeleted = categoriaRemove.ChangeUser,
-                DeletedDate = categoriaRemove.ChangeDate,
-                Deleted = categoriaRemove.Deleted,
-            };
+            var result = this.categoriaService.Remove(categoriaRemove);
+            if(!result.Success)
+                return BadRequest(result);
 
-            this.categoriaRepository.Remove(categoriaToDelete);
-            return Ok();
+            return Ok(result);
         }
     }
 }

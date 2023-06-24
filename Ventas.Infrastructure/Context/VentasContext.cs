@@ -10,7 +10,7 @@ namespace Ventas.Infrastructure.Context
         }
 
         public VentasContext(DbContextOptions<VentasContext> options) 
-            : base(options)
+                                                      : base(options)
         {
         }
 

@@ -6,7 +6,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Folder Include="Models\" />
+    <ProjectReference Include="..\Ventas.Infrastructure\Ventas.Infrastructure.csproj" />
   </ItemGroup>
 
 </Project>
