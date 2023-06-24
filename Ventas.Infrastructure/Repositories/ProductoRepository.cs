@@ -5,6 +5,7 @@ using System.Linq;
 using Ventas.Domain.Entities;
 using Ventas.Infrastructure.Context;
 using Ventas.Infrastructure.Core;
+using Ventas.Infrastructure.Extentions;
 using Ventas.Infrastructure.Interfaces;
 using Ventas.Infrastructure.Models;
 
@@ -60,18 +61,11 @@ namespace Ventas.Infrastructure.Repositories
             ProductoModels productoModels = new ProductoModels();
             try
             {
-                this.logger.LogInformation($"Obteniendo un Producto");
-                Producto producto = this.GetEntity(idproducto);
+                if (!base.Exists(pro => pro.IdProducto == idproducto))
+                    throw new ProductoNotFoundException("Producto no encontrado en la base de datos");
 
-                productoModels.CodigoBarra = producto.CodigoBarra;
-                productoModels.Marca = producto.Marca;
-                productoModels.Descripcion = producto.Descripcion;
-                productoModels.Stock = producto.Stock;
-                productoModels.UrlImagen = producto.UrlImagen;
-                productoModels.NombreImagen = producto.NombreImagen;
-                productoModels.Precio = producto.Precio;
-                productoModels.EsActivo = producto.EsActivo;
-                productoModels.FechaRegistro = producto.FechaRegistro;
+                productoModels = base.GetEntity(idproducto).ConvertUserEntityToModel();
+                this.logger.LogInformation($"Obteniendo un usuario: {idproducto}");
             }
             catch (Exception e)
             {

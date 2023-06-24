@@ -1,6 +1,5 @@
-﻿ using System;
+﻿
 using System.Collections.Generic;
-using System.Text;
 using Ventas.Domain.Entities;
 using Ventas.Domain.Repository;
 using Ventas.Infrastructure.Models;

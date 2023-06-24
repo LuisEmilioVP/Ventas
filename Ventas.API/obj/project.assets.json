@@ -1782,6 +1782,9 @@
       "Ventas.Application/1.0.0": {
         "type": "project",
         "framework": ".NETStandard,Version=v2.1",
+        "dependencies": {
+          "Ventas.Infrastructure": "1.0.0"
+        },
         "compile": {
           "bin/placeholder/Ventas.Application.dll": {}
         },
