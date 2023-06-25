@@ -35,7 +35,7 @@ namespace Ventas.Application.Help
             if (model.UrlImagen.Length > 500)
             {
 
-                result.Message = "El Url tiene la logitud invalida.";
+                result.Message = "El UrlImagen tiene la logitud invalida.";
                 result.Success = false;
                 return result;
             }
