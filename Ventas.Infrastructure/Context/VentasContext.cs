@@ -6,7 +6,7 @@ namespace Ventas.Infrastructure.Context
 {
     public class VentasContext : DbContext
     {
-        internal readonly IEnumerable<object> Venta1;
+      
 
         public VentasContext()
         {
@@ -17,6 +17,7 @@ namespace Ventas.Infrastructure.Context
         {
         }
 
-        public DbSet<Venta> Ventas { get; set; }
+        public DbSet<Venta>? Ventas { get; set; }
+        public IEnumerable<object> Venta { get; internal set; }
     }
 }

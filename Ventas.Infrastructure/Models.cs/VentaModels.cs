@@ -13,6 +13,12 @@ namespace Ventas.Infrastructure.Models
         public decimal? SubTotal { get; set; }
         public decimal? ImpuestoTotal { get; set; }
         public decimal? Total { get; set; }
+
+        public DateTime? FechaVenta { get; set; }
+        public decimal? TotalVenta { get; set; }
         public DateTime? FechaRegistro { get; set; }
+
+    
+
     }
 }

@@ -6,8 +6,18 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Folder Include="Dtos\Department\" />
-    <Folder Include="Models\" />
+    <Compile Remove="Dtos\Department\**" />
+    <EmbeddedResource Remove="Dtos\Department\**" />
+    <None Remove="Dtos\Department\**" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Dtos\Models\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Ventas.Domain\Ventas.Domain.csproj" />
+    <ProjectReference Include="..\Ventas.Infrastructure\Ventas.Infrastructure.csproj" />
   </ItemGroup>
 
 </Project>

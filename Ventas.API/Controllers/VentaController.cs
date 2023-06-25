@@ -1,6 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Ventas.Application.Dtos.Venta;
-using Ventas.Domain.Entities;
+
 using Ventas.Infrastructure.Interfaces;
 
 namespace Ventas.API.Controllers
@@ -44,7 +44,7 @@ namespace Ventas.API.Controllers
                 SubTotal = ventaAdd.SubTotal,
                 ImpuestoTotal = ventaAdd.ImpuestoTotal,
                 Total = ventaAdd.Total,
-                FechaRegistro = ventaAdd.FechaRegistro
+           
             });
             return Ok();
         }
@@ -54,7 +54,7 @@ namespace Ventas.API.Controllers
         {
             Ventas.Domain.Entities.Venta ventaToUpdate = new Ventas.Domain.Entities.Venta()
             {
-                IdVenta = ventaUpdate.IdVenta,
+                IdVenta = ventaUpdate.IdUVenta,
                 NumeroVenta = ventaUpdate.NumeroVenta,
                 IdTipoDocumentoVenta = ventaUpdate.IdTipoDocumentoVenta,
                 IdUsuario = ventaUpdate.IdUsuario,
@@ -63,15 +63,15 @@ namespace Ventas.API.Controllers
                 SubTotal = ventaUpdate.SubTotal,
                 ImpuestoTotal = ventaUpdate.ImpuestoTotal,
                 Total = ventaUpdate.Total,
-                FechaRegistro = ventaUpdate.FechaRegistro
-            };
+               
+             };
 
             this.ventaRepository.Update(ventaToUpdate);
             return Ok();
         }
 
         [HttpDelete("RemoveVenta")]
-        public IActionResult Delete([FromBody] VentaRevoveDto ventaRevove)
+        public IActionResult Delete([FromBody] VentaRemoveDto ventaRevove)
         {
             Ventas.Domain.Entities.Venta ventaToDelete = new Ventas.Domain.Entities.Venta()
             {

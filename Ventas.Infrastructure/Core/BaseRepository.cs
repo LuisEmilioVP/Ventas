@@ -20,7 +20,17 @@ namespace Ventas.Infrastructure.Core
             this.entities = this.ventas.Set<TEntity>();
         }
 
-        public virtual bool Exists(Expression<Func<TEntity, bool>> filter)
+        public void Add(TEntity entity)
+        {
+            this.entities.Add(entity);
+        }
+
+        public void Add(TEntity[] entities)
+        {
+            this.entities.AddRange(entities);
+        }
+
+        public bool Exists(Expression<Func<TEntity, bool>> filter)
         {
             return this.entities.Any(filter);
         }
@@ -30,37 +40,19 @@ namespace Ventas.Infrastructure.Core
             return this.entities.ToList();
         }
 
-        public TEntity GetEntity(int entityId)
+        public TEntity GetEntity(int entityid)
         {
-            return this.entities.Find(entityId);
+            return this.entities.Find();
         }
 
         public void Remove(TEntity entity)
         {
-            this.entities.Remove(entity);
-        }
-
-        public void Save(TEntity entity)
-        {
-            this.entities.Add(entity);
-            this.ventas.SaveChanges();
-        }
-
-        public void Save(TEntity[] entities)
-        {
-            this.entities.AddRange(entities);
-            this.ventas.SaveChanges();
+           this.entities.Remove(entity);
         }
 
         public void Update(TEntity entity)
         {
-            this.entities.Update(entity);
-            this.ventas.SaveChanges();
-        }
-
-        internal void SaveChanges()
-        {
-            throw new NotImplementedException();
+            this.entities.RemoveRange(entities);
         }
     }
 }

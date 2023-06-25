@@ -22,44 +22,51 @@ namespace Ventas.Infrastructure.Repositories
             this.context = ventas;
         }
 
-        public List<Venta> GetAllVentas()
+    List<Venta> IVentaRepository.GetAllVentas()
         {
             List<Venta> ventas = new List<Venta>();
             try
             {
-                this.logger.LogInformation("Obteniendo Ventas...");
+                this.logger.LogInformation("Obteniendo ventas...");
                 ventas = this.context.Venta
                     .Where(v => !v.Deleted)
-                    .Select(v => new VentaModel()
+                    .Select(v => new VentaModels()
                     {
-                        NumeroVenta = v.NumeroVenta,
-                        FechaVenta = v.FechaVenta,
-                        TotalVenta = v.TotalVenta,
-                        // Agrega aquí los demás campos necesarios para la venta
-                    })
-                    .ToList();
+                        NumeroVenta = v.numeroVenta,
+                        IdUsuario = v.idUsuario,
+                        DocumentoCliente = v.documentoCliente,
+                        NombreCliente = v.nombreCliente,
+                        SubTotal = v.subTotal,
+                        ImpuestoTotal = v.impuestoTotal,
+                        Total = v.Total,
+                        FechaRegistro = v.fechaRegistro
+                    }).ToList();
             }
             catch (Exception ex)
             {
-                this.logger.LogError($"Error al cargar Ventas: {ex.Message}", ex.ToString());
+                this.logger.LogError($"Error al cargar ventas: {ex.Message}", ex.ToString());
                 throw new DbConnectionException($"Error de conexión: {ex.Message}");
             }
 
             return ventas;
         }
 
-        public VentaModels GetVentaById(int id)
+        public VentaModels GetVentaById(int ventaId)
         {
-            VentaModels ventaModel = new VentaModels();
+            VentaModels venta = new VentaModels();
+
             try
             {
-                this.logger.LogInformation($"Obteniendo una Venta: {id}");
-                Venta venta = this.GetEntity(id);
+                if (!base.Exists(v => v.IdVenta == ventaId))
+                    throw new VentaNotFoundException("Venta no encontrada en la base de datos");
 
-                ventaModel.NumeroVenta = venta.NumeroVenta;
-                ventaModel.FechaVenta = venta.FechaVenta;
-                ventaModel.TotalVenta = venta.TotalVenta;
-                // Agrega aquí los demás campos necesarios para la venta
+                venta = base.GetEntity(ventaId).ConvertVentaEntityToModel();
+                this.logger.LogInformation($"Obteniendo una venta: {ventaId}");
+            }
+            catch (VentaNotFoundException ex)
+            {
+                this.logger.LogError($"Error al cargar la venta: {ex.Message}", ex.ToString());
+                throw;
             }
             catch (Exception ex)
             {
@@ -67,53 +74,13 @@ namespace Ventas.Infrastructure.Repositories
                 throw new DbConnectionException($"Error de conexión: {ex.Message}");
             }
 
-            return ventaModel;
+            return venta;
         }
 
-        public override void Add(Venta entity)
+      
+        List<Venta> IVentaRepository.GetVentaById(int idVenta)
         {
-            try
-            {
-                // Validaciones y lógica adicional antes de agregar la venta
-                // ...
-
-                base.Add(entity);
-                base.SaveChanges();
-                this.logger.LogInformation($"Nueva venta insertada: {entity.NumeroVenta}");
-            }
-            catch (Exception ex)
-            {
-                this.logger.LogError($"Error al agregar la venta: {ex.Message}", ex.ToString());
-                throw new DbConnectionException($"Error de conexión: {ex.Message}");
-            }
-        }
-
-        public override void Update(Venta entity)
-        {
-            try
-            {
-                Venta ventaToUpdate = this.GetEntity(entity.IdVenta)
-                    ?? throw new VentaNotFoundException("Venta no encontrada en la base de datos");
-
-                ventaToUpdate.NumeroVenta = entity.NumeroVenta;
-                ventaToUpdate.FechaVenta = entity.FechaVenta;
-                ventaToUpdate.TotalVenta = entity.TotalVenta;
-                // Actualiza los demás campos necesarios para la venta
-
-                // Guarda los cambios en la base de datos
-                base.Update(ventaToUpdate);
-                base.SaveChanges();
-                this.logger.LogInformation("Actualización de venta exitosa.");
-            }
-            catch (VentaNotFoundException ex)
-            {
-                this.logger.LogError($"Error al actualizar la venta: {ex.Message}");
-                throw;
-            }
-            catch (Exception ex)
-            {
-                this.logger.LogError($"Error al actualizar la venta: {ex.Message}", ex.ToString());
-            }
+            throw new NotImplementedException();
         }
     }
 }

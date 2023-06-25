@@ -8,11 +8,10 @@ namespace Ventas.Infrastructure.Interfaces
 {
     public interface IVentaRepository : IBaseRepository<Venta>
     {
-        void Add(Venta entity);
-        object GetAllEntities();
+        dynamic GetAllVenta();
         List<Venta> GetAllVentas();
 
         List<Venta> GetVentaById(int idVenta);
-        void Update(Venta entity);
+        
     }
 }
