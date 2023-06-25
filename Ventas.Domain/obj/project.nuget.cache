@@ -1,8 +1,10 @@
 {
   "version": 2,
-  "dgSpecHash": "ta7+gH8OmjM18T8CO2esAnIvDK494/2ozfJR2cDUb9nwulS3n4YA8IOTAKKlXoBECOW3Ah8gngDGILQE8FzAew==",
+  "dgSpecHash": "DiFbofGlAD4S5XLibM8wPTiQkvch4T021bPYdTKYF+dLpuaZzjcNvp5v/w5/+G+PdjewyEyp+8VnZApKbSnufw==",
   "success": true,
   "projectFilePath": "C:\\proyecto\\Ventas\\Ventas.Domain\\Ventas.Domain.csproj",
-  "expectedPackageFiles": [],
+  "expectedPackageFiles": [
+    "C:\\Users\\Aquil\\.nuget\\packages\\system.componentmodel.annotations\\5.0.0\\system.componentmodel.annotations.5.0.0.nupkg.sha512"
+  ],
   "logs": []
 }

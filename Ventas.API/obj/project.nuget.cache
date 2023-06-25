@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "i94/p0H0lgSHZzaOIRAawmIOjeRGSUVPc1mjHGko0qUvIiFnkZ3ZWqfZsGMmHpP1lC+q7L27dDqveU2PWnFEiQ==",
+  "dgSpecHash": "3aFhFj0VCj5SZMwd9x+a3bKAEQhHHK7KiJjJ9Ler0/xbxzJuk7eHTvNWyKtu/97sdo016s1b1lA8MmhbGeQCpw==",
   "success": true,
   "projectFilePath": "C:\\proyecto\\Ventas\\Ventas.API\\Ventas.API.csproj",
   "expectedPackageFiles": [
@@ -51,7 +51,7 @@
     "C:\\Users\\Aquil\\.nuget\\packages\\system.collections.nongeneric\\4.3.0\\system.collections.nongeneric.4.3.0.nupkg.sha512",
     "C:\\Users\\Aquil\\.nuget\\packages\\system.collections.specialized\\4.3.0\\system.collections.specialized.4.3.0.nupkg.sha512",
     "C:\\Users\\Aquil\\.nuget\\packages\\system.componentmodel\\4.3.0\\system.componentmodel.4.3.0.nupkg.sha512",
-    "C:\\Users\\Aquil\\.nuget\\packages\\system.componentmodel.annotations\\4.7.0\\system.componentmodel.annotations.4.7.0.nupkg.sha512",
+    "C:\\Users\\Aquil\\.nuget\\packages\\system.componentmodel.annotations\\5.0.0\\system.componentmodel.annotations.5.0.0.nupkg.sha512",
     "C:\\Users\\Aquil\\.nuget\\packages\\system.componentmodel.primitives\\4.3.0\\system.componentmodel.primitives.4.3.0.nupkg.sha512",
     "C:\\Users\\Aquil\\.nuget\\packages\\system.componentmodel.typeconverter\\4.3.0\\system.componentmodel.typeconverter.4.3.0.nupkg.sha512",
     "C:\\Users\\Aquil\\.nuget\\packages\\system.configuration.configurationmanager\\4.5.0\\system.configuration.configurationmanager.4.5.0.nupkg.sha512",

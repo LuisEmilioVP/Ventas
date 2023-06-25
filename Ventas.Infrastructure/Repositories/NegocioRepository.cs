@@ -8,6 +8,7 @@ using Ventas.Infrastructure.Core;
 using Ventas.Infrastructure.Interfaces;
 using Ventas.Infrastructure.Models;
 using Ventas.Infrastructure.Exceptions;
+using Ventas.Infrastructure.Extensions;
 
 namespace Ventas.Infrastructure.Repositories
 {
@@ -22,60 +23,6 @@ namespace Ventas.Infrastructure.Repositories
             this.logger = logger;
             this.context = context;
         }
-
-        public List<NegocioModel> GetAllNegocio()
-        {
-            List<NegocioModel> NegocioList = new List<NegocioModel>();
-            try
-            {
-                this.logger.LogInformation($"Obteniendo Negocios");
-                NegocioList = (from use in base.GetEntities()
-                               select new NegocioModel()
-                               {
-                                   urlLogo = use.urlLogo,
-                                   nombreLogo = use.nombreLogo,
-                                   numeroDocumento = use.numeroDocumento,
-                                   nombre = use.nombre,
-                                   correo = use.correo,
-                                   direccion = use.direccion,
-                                   porcentajeImpuesto = use.porcentajeImpuesto,
-                                   simboloMoneda = use.simboloMoneda
-                               }).ToList();
-            }
-            catch (Exception ex)
-            {
-                this.logger.LogError($"Error al cargar Negocio {ex.Message}", ex.ToString());
-                throw new NDatabaseConnectionException($"Error de conexión: {ex.Message}");
-            }
-
-            return NegocioList;
-        }
-
-        public NegocioModel GetNegocio(int id)
-        {
-            NegocioModel NegocioModel = new NegocioModel();
-            try
-            {
-                this.logger.LogInformation($"Obteniendo un Usuario: {id}");
-                Negocio negocio = this.GetEntity(id);
-
-                NegocioModel.urlLogo = negocio.urlLogo;
-                NegocioModel.nombreLogo = negocio.nombreLogo;
-                NegocioModel.numeroDocumento = negocio.numeroDocumento;
-                NegocioModel.nombre = negocio.nombre;
-                NegocioModel.correo = negocio.correo;
-                NegocioModel.direccion = negocio.direccion;
-                NegocioModel.porcentajeImpuesto = negocio.porcentajeImpuesto;
-                NegocioModel.simboloMoneda = negocio.simboloMoneda;
-            }
-            catch (Exception ex)
-            {
-                this.logger.LogError($"Error al cargar Negocio {ex.Message}", ex.ToString());
-            }
-
-            return NegocioModel;
-        }
-
 
         public override void Add(Negocio entity)
         {
@@ -121,7 +68,7 @@ namespace Ventas.Infrastructure.Repositories
                 negocioToUpdate.ModifyDate = entity.ModifyDate;
 
 
-                this.context.Negocio.Update(negocioToUpdate);
+                this.context.Update(negocioToUpdate);
                 this.context.SaveChanges();
                 this.logger.LogInformation("Actualización de usuario exitosa.");
             }
@@ -166,6 +113,57 @@ namespace Ventas.Infrastructure.Repositories
 
         }
 
+        public NegocioModel GetNegocio(int idNegocio)
+        {
+            NegocioModel negociomodel = new NegocioModel();
+
+            try
+            {
+                if (!base.Exists(ne => ne.idNegocio == idNegocio))
+                    throw new NegocioNotFoundException("Negocio no ha sido encontrado en la base de datos");
+
+                negociomodel = base.GetEntity(idNegocio).ConvertUserEntityToModel();
+                this.logger.LogInformation($"Obteniendo un Negocio: {idNegocio}");
+            }
+            catch(Exception ex)
+            {
+                this.logger.LogError($"Error al cargar el negocio {ex.Message}", ex.ToString());
+                throw new NegocioExceptions("Negocio no existe");
+                throw new NDatabaseConnectionException($"Error de conexión: {ex.Message}");
+            }
+
+            return negociomodel;
+
+        }
+
+        public List<NegocioModel> GetAllNegocio()
+        {
+            List<NegocioModel> negocio = new List<NegocioModel>();
+            try
+            {
+                this.logger.LogInformation("Obteniendo Negocios...");
+                negocio = this.context.Negocio
+                    .Where(ne => !ne.Deleted)
+                    .Select(neg => new NegocioModel()
+                    {
+                        urlLogo = neg.urlLogo,
+                        nombreLogo = neg.nombreLogo,
+                        numeroDocumento = neg.numeroDocumento,
+                        nombre = neg.nombre,
+                        correo = neg.correo,
+                        direccion = neg.direccion,
+                        porcentajeImpuesto = neg.porcentajeImpuesto,
+                        simboloMoneda = neg.simboloMoneda
+                    }).ToList();
+            }
+            catch (Exception ex)
+            {
+                this.logger.LogError($"Error al cargar Negocios {ex.Message}", ex.ToString());
+                throw new NDatabaseConnectionException($"Error de conexión: {ex.Message}");
+            }
+
+            return negocio;
+        }
     }
 }
 

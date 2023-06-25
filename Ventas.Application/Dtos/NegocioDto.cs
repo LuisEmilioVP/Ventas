@@ -1,7 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
+﻿
 namespace Ventas.Application.Dtos.Negocio
 {
     public class NegocioDto : DtoSecon
