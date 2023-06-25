@@ -1,4 +1,6 @@
 using Microsoft.EntityFrameworkCore;
+using Ventas.Application.Contract;
+using Ventas.Application.Service;
 using Ventas.Infrastructure.Context;
 using Ventas.Infrastructure.Interfaces;
 using Ventas.Infrastructure.Repositories;
@@ -19,6 +21,8 @@ builder.Services.AddDbContext<VentasContext>(options => options.UseSqlServer(bui
 // Repositorio
 builder.Services.AddTransient<ISuplidorRepository, SuplidorRepository>();
 
+// Service
+builder.Services.AddTransient<ISuplidorService, SuplidorService>();
 
 
 var app = builder.Build();

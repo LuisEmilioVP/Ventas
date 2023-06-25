@@ -1,12 +1,10 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-using System.Diagnostics.Contracts;
+using Ventas.Application.Contract;
 using Ventas.Application.Dto.Suplidor;
 using Ventas.Domain.Entities;
 using Ventas.Infrastructure.Interfaces;
 
 
-
-// For more information on enabling Web API for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
 
 namespace Ventas.API.Controllers
 {
@@ -14,47 +12,41 @@ namespace Ventas.API.Controllers
     [ApiController]
     public class SuplidorController : ControllerBase
     {
-        private readonly ISuplidorRepository suplidorRepository;
+        private readonly ISuplidorService suplidorService;
 
-        public SuplidorController(ISuplidorRepository suplidorRepository) 
+        public SuplidorController(ISuplidorService suplidorService) 
         {
-            this.suplidorRepository = suplidorRepository;
+            this.suplidorService = suplidorService;
         }
 
         // GET: api/<SuplidorController>
         [HttpGet]
         public IActionResult Get()
         {
-            var suplidor = this.suplidorRepository.GetAllSuplidor();
-            return Ok(suplidor);
+            var result = this.suplidorService.Get();
+            if(!result.Success)
+                return BadRequest(result);
+            return Ok(result);
         }
 
         // GET api/<SuplidorController>/5
         [HttpGet("ID")]
         public IActionResult Get(int id)
         {
-            var supli = this.suplidorRepository.GetsuplidorById(id);
-            return Ok(supli);
+            var result = this.suplidorService.GetById(id);
+            if (!result.Success)
+                return BadRequest(result);
+            return Ok(result);
         }
 
         
         [HttpPost("Save")]
         public IActionResult Post([FromBody] SuplidorAddDto suplidorAdd)
         {
-            this.suplidorRepository.Add(new Suplidor()
-            {
-               Nombre = suplidorAdd.Nombre,
-               Contacto = suplidorAdd.Contacto,
-               Direccion = suplidorAdd.Direccion,
-               Ciudad = suplidorAdd.Ciudad,
-               Region = suplidorAdd.Region,
-               Codigo_postal = suplidorAdd.Codigo_postal,
-               Pais = suplidorAdd.Pais,
-               Telefono = suplidorAdd.Telefono,
-               Fax = suplidorAdd.Fax,
-               CreationUser = suplidorAdd.ChangeUser,
-               CreationDate = suplidorAdd.ChangeDate,
-            });
+            var result = this.suplidorService.Save(suplidorAdd);
+
+            if (!result.Success)
+                return BadRequest(result);
             return Ok();
         }
 
@@ -62,40 +54,22 @@ namespace Ventas.API.Controllers
         [HttpPut("Update")]
         public IActionResult Put([FromBody] SuplidorUpdateDto suplidorUpdate)
         {
-           Suplidor suplidorToUpdate = new Suplidor()
-            {
-                IdSuplidor = suplidorUpdate.IdSuplidor,
-                Nombre = suplidorUpdate.Nombre,
-                Contacto = suplidorUpdate.Contacto,
-                Direccion = suplidorUpdate.Direccion,
-                Ciudad = suplidorUpdate.Ciudad,
-                Region = suplidorUpdate.Region,
-                Codigo_postal = suplidorUpdate.Codigo_postal,
-                Pais = suplidorUpdate.Pais,
-                Telefono = suplidorUpdate.Telefono,
-                Fax = suplidorUpdate.Fax,
-                UserMod = suplidorUpdate.ChangeUser,
-                ModifyDate = suplidorUpdate.ChangeDate,
-            };
+            var result = this.suplidorService.Update(suplidorUpdate);
 
-            this.suplidorRepository.Update(suplidorToUpdate);
-            return Ok();
+            if (!result.Success)
+                return BadRequest(result);
+            return Ok();            
         }
 
        
         [HttpDelete("Remove")]
         public IActionResult Delete([FromBody] SuplidorRemoveDto suplidorRemove)
         {
-            Suplidor suplidorToDelete = new Suplidor()
-            {
-                IdSuplidor = suplidorRemove.IdSuplidor,
-                UserDeleted = suplidorRemove.ChangeUser,
-                DeletedDate = suplidorRemove.ChangeDate,
-                Deleted = suplidorRemove.Deleted,
-            };
+            var result = this.suplidorService.Delete(suplidorRemove);
 
-            this.suplidorRepository.Remove(suplidorToDelete);
+            if (!result.Success)
+                return BadRequest(result);
             return Ok();
-        }
+         }
     }
 }

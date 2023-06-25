@@ -5,4 +5,12 @@
     <Nullable>enable</Nullable>
   </PropertyGroup>
 
+  <ItemGroup>
+    <Folder Include="Contract\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Ventas.Infrastructure\Ventas.Infrastructure.csproj" />
+  </ItemGroup>
+
 </Project>

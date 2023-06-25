@@ -8,8 +8,10 @@ using Ventas.Domain.Entities;
 using Ventas.Infrastructure.Context;
 using Ventas.Infrastructure.Core;
 using Ventas.Infrastructure.Exceptions;
+using Ventas.Infrastructure.Extentions;
 using Ventas.Infrastructure.Interfaces;
 using Ventas.Infrastructure.Models;
+using static Ventas.Infrastructure.Exceptions.SuplidorException;
 
 namespace Ventas.Infrastructure.Repositories
 {
@@ -55,27 +57,25 @@ namespace Ventas.Infrastructure.Repositories
         public SuplidorModels GetsuplidorById(int id)
         {
             SuplidorModels suplidorModels = new SuplidorModels();
+
             try
             {
-                Suplidor suplidor = this.GetEntity(id);
+                if (!base.Exists(sup => sup.IdSuplidor == id))
+                    throw new SuplidorNotFoundException("Suplidor no encontrado");
 
-                suplidorModels.Nombre = suplidor.Nombre;
-                suplidorModels.Contacto = suplidor.Contacto;
-                suplidorModels.Direccion = suplidor.Direccion;
-                suplidorModels.Ciudad = suplidor.Ciudad;
-                suplidorModels.Region = suplidor.Region;
-                suplidorModels.Codigo_postal = suplidor.Codigo_postal;
-                suplidorModels.Pais = suplidor.Pais;
-                suplidorModels.Telefono = suplidor.Telefono;
-                suplidorModels.Fax = suplidor.Fax; 
-
+                suplidorModels = base.GetEntity(id).ConvertSuplidorEntityToModel();
+                this.logger.LogInformation($"Obteniendo un Suplidor: {id}");
             }
             catch (Exception ex)
             {
                 this.logger.LogError("Se produjo un error durante el proceso de carga del suplidor", ex.ToString());
+                throw new SuplidorException("Suplidor no existente");
+                throw new ConnectionException($"Error al conectarse con la Base de datos: {ex.Message}");
             }
+
             return suplidorModels;
         }
+
 
         public override void Add(Suplidor entity)
         {
@@ -143,5 +143,6 @@ namespace Ventas.Infrastructure.Repositories
                 this.logger.LogError("Se produjo un fallo durante el eliminado del suplidor");
             }
         }
-    }
+
+           }
 }

@@ -17,5 +17,15 @@ namespace Ventas.Infrastructure.Exceptions
             }
 
         }
+
+        public class SuplidorNotFoundException : Exception
+        {
+            public SuplidorNotFoundException(string message) : base(message)
+            {
+
+            }
+
+
+        }
     }
 }
