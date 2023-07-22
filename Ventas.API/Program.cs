@@ -1,9 +1,6 @@
 using Microsoft.EntityFrameworkCore;
-using Ventas.Application.Contract;
-using Ventas.Application.Service;
 using Ventas.Infrastructure.Context;
-using Ventas.Infrastructure.Interfaces;
-using Ventas.Infrastructure.Repositories;
+using Ventas.IOC.Dependencies;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -16,16 +13,9 @@ builder.Services.AddSwaggerGen();
 //*== Registro dependencia BD ==*//
 builder.Services.AddDbContext<VentasContext>(option => option.UseSqlServer(builder.Configuration.GetConnectionString("VentasContext")));
 
-//*== Repositorios ==*//
-builder.Services.AddTransient<IUsuarioRepository, UsuarioRepository>();
-
-builder.Services.AddTransient<ICategoriaRepository, CategoriasRepository>();
-
-//*== Referencias de app servoces ==*//
-builder.Services.AddTransient<IUsuarioService, UsuarioService>();
-
-builder.Services.AddTransient<ICategoriaService, CategoriaService>();
-
+//*== My Dependencies ==*//
+builder.Services.AddCategoriaDependency();
+builder.Services.AddUsuarioDependency();
 
 var app = builder.Build();
 
