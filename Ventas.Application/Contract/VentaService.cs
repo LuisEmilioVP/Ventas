@@ -4,7 +4,7 @@ using Ventas.Application.Dtos.Venta;
 namespace Ventas.Application.Contract
 {
     public interface IVentaService : IBaseService<VentaAddDto,
-                                                  VentaUpdateDto,
+                                                 VentaUpdateDto,
                                                   VentaRemoveDto>
     {
     }

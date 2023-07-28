@@ -7,14 +7,15 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="3.1.6" />
     <PackageReference Include="Swashbuckle.AspNetCore" Version="6.2.3" />
   </ItemGroup>
 
   <ItemGroup>
     <ProjectReference Include="..\Venta.Application\Venta.Application.csproj" />
     <ProjectReference Include="..\Ventas.Application\Ventas.Application.csproj" />
-    <ProjectReference Include="..\Ventas.Domain\Ventas.Domain.csproj" />
     <ProjectReference Include="..\Ventas.Infrastructure\Ventas.Infrastructure.csproj" />
+    <ProjectReference Include="..\Ventas.IOC\Ventas.IOC.csproj" />
   </ItemGroup>
 
 </Project>

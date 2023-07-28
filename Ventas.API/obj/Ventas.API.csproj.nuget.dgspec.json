@@ -39,6 +39,12 @@
       "frameworks": {
         "netstandard2.1": {
           "targetAlias": "netstandard2.1",
+          "dependencies": {
+            "Microsoft.EntityFrameworkCore.SqlServer": {
+              "target": "Package",
+              "version": "[3.1.6, )"
+            }
+          },
           "imports": [
             "net461",
             "net462",
@@ -90,11 +96,11 @@
               "C:\\Proyecto1\\Ventas\\Ventas.Application\\Ventas.Application.csproj": {
                 "projectPath": "C:\\Proyecto1\\Ventas\\Ventas.Application\\Ventas.Application.csproj"
               },
-              "C:\\Proyecto1\\Ventas\\Ventas.Domain\\Ventas.Domain.csproj": {
-                "projectPath": "C:\\Proyecto1\\Ventas\\Ventas.Domain\\Ventas.Domain.csproj"
-              },
               "C:\\Proyecto1\\Ventas\\Ventas.Infrastructure\\Ventas.Infrastructure.csproj": {
                 "projectPath": "C:\\Proyecto1\\Ventas\\Ventas.Infrastructure\\Ventas.Infrastructure.csproj"
+              },
+              "C:\\Proyecto1\\Ventas\\Ventas.IOC\\Ventas.IOC.csproj": {
+                "projectPath": "C:\\Proyecto1\\Ventas\\Ventas.IOC\\Ventas.IOC.csproj"
               }
             }
           }
@@ -109,6 +115,10 @@
         "net6.0": {
           "targetAlias": "net6.0",
           "dependencies": {
+            "Microsoft.EntityFrameworkCore.SqlServer": {
+              "target": "Package",
+              "version": "[3.1.6, )"
+            },
             "Swashbuckle.AspNetCore": {
               "target": "Package",
               "version": "[6.2.3, )"
@@ -179,6 +189,12 @@
       "frameworks": {
         "netstandard2.1": {
           "targetAlias": "netstandard2.1",
+          "dependencies": {
+            "Microsoft.EntityFrameworkCore.SqlServer": {
+              "target": "Package",
+              "version": "[3.1.6, )"
+            }
+          },
           "imports": [
             "net461",
             "net462",
@@ -234,6 +250,16 @@
       "frameworks": {
         "netstandard2.1": {
           "targetAlias": "netstandard2.1",
+          "dependencies": {
+            "Microsoft.EntityFrameworkCore.SqlServer": {
+              "target": "Package",
+              "version": "[3.1.6, )"
+            },
+            "System.ComponentModel.Annotations": {
+              "target": "Package",
+              "version": "[5.0.0, )"
+            }
+          },
           "imports": [
             "net461",
             "net462",
@@ -297,6 +323,81 @@
             "Microsoft.EntityFrameworkCore": {
               "target": "Package",
               "version": "[3.1.32, )"
+            },
+            "Microsoft.EntityFrameworkCore.SqlServer": {
+              "target": "Package",
+              "version": "[3.1.6, )"
+            }
+          },
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48",
+            "net481"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "NETStandard.Library": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.302\\RuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "C:\\Proyecto1\\Ventas\\Ventas.IOC\\Ventas.IOC.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "C:\\Proyecto1\\Ventas\\Ventas.IOC\\Ventas.IOC.csproj",
+        "projectName": "Ventas.IOC",
+        "projectPath": "C:\\Proyecto1\\Ventas\\Ventas.IOC\\Ventas.IOC.csproj",
+        "packagesPath": "C:\\Users\\Wang Wu\\.nuget\\packages\\",
+        "outputPath": "C:\\Proyecto1\\Ventas\\Ventas.IOC\\obj\\",
+        "projectStyle": "PackageReference",
+        "configFilePaths": [
+          "C:\\Users\\Wang Wu\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "netstandard2.1"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "netstandard2.1": {
+            "targetAlias": "netstandard2.1",
+            "projectReferences": {
+              "C:\\Proyecto1\\Ventas\\Venta.Application\\Venta.Application.csproj": {
+                "projectPath": "C:\\Proyecto1\\Ventas\\Venta.Application\\Venta.Application.csproj"
+              },
+              "C:\\Proyecto1\\Ventas\\Ventas.Application\\Ventas.Application.csproj": {
+                "projectPath": "C:\\Proyecto1\\Ventas\\Ventas.Application\\Ventas.Application.csproj"
+              },
+              "C:\\Proyecto1\\Ventas\\Ventas.Infrastructure\\Ventas.Infrastructure.csproj": {
+                "projectPath": "C:\\Proyecto1\\Ventas\\Ventas.Infrastructure\\Ventas.Infrastructure.csproj"
+              }
+            }
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "netstandard2.1": {
+          "targetAlias": "netstandard2.1",
+          "dependencies": {
+            "Microsoft.EntityFrameworkCore.SqlServer": {
+              "target": "Package",
+              "version": "[3.1.6, )"
             }
           },
           "imports": [

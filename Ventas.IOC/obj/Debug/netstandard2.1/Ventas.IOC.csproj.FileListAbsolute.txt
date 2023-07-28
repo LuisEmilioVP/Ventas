@@ -1,0 +1,5 @@
+C:\Proyecto1\Ventas\Ventas.IOC\obj\Debug\netstandard2.1\Ventas.IOC.csproj.AssemblyReference.cache
+C:\Proyecto1\Ventas\Ventas.IOC\obj\Debug\netstandard2.1\Ventas.IOC.GeneratedMSBuildEditorConfig.editorconfig
+C:\Proyecto1\Ventas\Ventas.IOC\obj\Debug\netstandard2.1\Ventas.IOC.AssemblyInfoInputs.cache
+C:\Proyecto1\Ventas\Ventas.IOC\obj\Debug\netstandard2.1\Ventas.IOC.AssemblyInfo.cs
+C:\Proyecto1\Ventas\Ventas.IOC\obj\Debug\netstandard2.1\Ventas.IOC.csproj.CoreCompileInputs.cache

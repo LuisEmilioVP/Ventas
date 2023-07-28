@@ -1,12 +1,12 @@
-﻿using System.Text.RegularExpressions;
+﻿
 using Ventas.Application.Core;
-using Ventas.Application.Dtos.Venta;
+using Ventas.Application.Dtos.DetalleVenta;
 
 namespace Ventas.Application.Helpers
 {
-    public static class VentaValidationHelper
+    public static class DetalleValidationHelper
     {
-        public static ServiceResult ValidateVentaData(VentaDto model)
+        public static ServiceResult ValidateVentaData(DetalleVentaDto model)
         {
             ServiceResult result = new ServiceResult();
 
@@ -17,30 +17,30 @@ namespace Ventas.Application.Helpers
                 return result;
             }
 
-            if (string.IsNullOrEmpty(model.DocumentoCliente))
+            if (string.IsNullOrEmpty(model.marcaProducto))
             {
-                result.Message = "El documento del cliente es requerido";
+                result.Message = "La Marca del producto es requerido";
                 result.Success = false;
                 return result;
             }
 
-            if (string.IsNullOrEmpty(model.NombreCliente))
+            if (string.IsNullOrEmpty(model.descripcionProducto))
             {
-                result.Message = "El nombre del cliente es requerido";
+                result.Message = "La descripcion Del Producto es requerido";
                 result.Success = false;
                 return result;
             }
 
-            if (model.SubTotal <= 0)
+            if (model.cantidad <= 0)
             {
-                result.Message = "El subtotal debe ser mayor a cero";
+                result.Message = "La cantida debe ser mayor a cero";
                 result.Success = false;
                 return result;
             }
 
-            if (model.ImpuestoTotal <= 0)
+            if (model.precio <= 0)
             {
-                result.Message = "El impuesto total debe ser mayor a cero";
+                result.Message = "El precio debe ser mayor a cero";
                 result.Success = false;
                 return result;
             }

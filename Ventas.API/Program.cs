@@ -1,15 +1,26 @@
+using Microsoft.EntityFrameworkCore;
+
+using Ventas.Infrastructure.Context;
+using Ventas.IOC.Dependencies;
+
 var builder = WebApplication.CreateBuilder(args);
 
-// Add services to the container.
+//*== Add services to the container. ==*//
 
 builder.Services.AddControllers();
-// Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
+//*== Registro dependencia BD ==*//
+builder.Services.AddDbContext<VentasContext>(option => option.UseSqlServer(builder.Configuration.GetConnectionString("VentasContext")));
+
+//*== My Dependencies ==*//
+builder.Services.AddCategoriaDependency();
+builder.Services.AddUsuarioDependency();
+
 var app = builder.Build();
 
-// Configure the HTTP request pipeline.
+//*== Configure the HTTP request pipeline. ==*//
 if (app.Environment.IsDevelopment())
 {
     app.UseSwagger();
@@ -17,7 +28,5 @@ if (app.Environment.IsDevelopment())
 }
 
 app.UseAuthorization();
-
 app.MapControllers();
-
 app.Run();

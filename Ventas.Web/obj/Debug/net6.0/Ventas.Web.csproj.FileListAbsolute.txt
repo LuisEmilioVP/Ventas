@@ -1,0 +1,8 @@
+C:\Proyecto1\Ventas\Ventas.Web\obj\Debug\net6.0\Ventas.Web.csproj.AssemblyReference.cache
+C:\Proyecto1\Ventas\Ventas.Web\obj\Debug\net6.0\Ventas.Web.GeneratedMSBuildEditorConfig.editorconfig
+C:\Proyecto1\Ventas\Ventas.Web\obj\Debug\net6.0\Ventas.Web.AssemblyInfoInputs.cache
+C:\Proyecto1\Ventas\Ventas.Web\obj\Debug\net6.0\Ventas.Web.AssemblyInfo.cs
+C:\Proyecto1\Ventas\Ventas.Web\obj\Debug\net6.0\Ventas.Web.csproj.CoreCompileInputs.cache
+C:\Proyecto1\Ventas\Ventas.Web\obj\Debug\net6.0\Ventas.Web.MvcApplicationPartsAssemblyInfo.cache
+C:\Proyecto1\Ventas\Ventas.Web\obj\Debug\net6.0\Ventas.Web.RazorAssemblyInfo.cache
+C:\Proyecto1\Ventas\Ventas.Web\obj\Debug\net6.0\Ventas.Web.RazorAssemblyInfo.cs

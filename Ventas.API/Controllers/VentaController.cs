@@ -1,88 +1,68 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using Ventas.Application.Contract;
 using Ventas.Application.Dtos.Venta;
 
-using Ventas.Infrastructure.Interfaces;
-
 namespace Ventas.API.Controllers
-
 {
     [Route("api/[controller]")]
     [ApiController]
     public class VentaController : ControllerBase
     {
-        private readonly IVentaRepository ventaRepository;
+        private readonly IVentaService ventaService;
 
-        public VentaController(IVentaRepository ventaRepository)
+        public VentaController(IVentaService ventaService)
         {
-            this.ventaRepository = ventaRepository;
+            this.ventaService = ventaService;
         }
 
-        [HttpGet("ShowVentas")]
+        [HttpGet("ShowUsers")]
         public IActionResult Get()
         {
-            var venta = this.ventaRepository.GetAllVentas();
-            return Ok(venta);
+            var result = this.ventaService.Get();
+            if (!result.Success)
+                return BadRequest(result);
+
+            return Ok(result);
         }
 
-        [HttpGet("ShowVentaById")]
+        [HttpGet("ShowUserById")]
         public IActionResult Get(int id)
         {
-            var venta = this.ventaRepository.GetVentaById(id);
-            return Ok(venta);
+            var result = this.ventaService.GetById(id);
+            if (!result.Success)
+                return BadRequest(result);
+
+            return Ok(result);
         }
 
-        [HttpPost("SaveVenta")]
-        public IActionResult Post([FromBody] VentaAddDto ventaAdd)
+        [HttpPost("SaveUser")]
+        public IActionResult Post([FromBody] VentaAddDto VentaAdd)
         {
-            this.ventaRepository.Add(new Ventas.Domain.Entities.Venta()
-            {
-                NumeroVenta = ventaAdd.NumeroVenta,
-                IdTipoDocumentoVenta = ventaAdd.IdTipoDocumentoVenta,
-                IdUsuario = ventaAdd.IdUsuario,
-                DocumentoCliente = ventaAdd.DocumentoCliente,
-                NombreCliente = ventaAdd.NombreCliente,
-                SubTotal = ventaAdd.SubTotal,
-                ImpuestoTotal = ventaAdd.ImpuestoTotal,
-                Total = ventaAdd.Total,
-           
-            });
-            return Ok();
+            var result = this.ventaService.Save(VentaAdd);
+            if (!result.Success)
+                return BadRequest(result);
+
+            return Ok(result);
         }
 
-        [HttpPut("UpdateVenta")]
-        public IActionResult Put([FromBody] VentaUpdateDto ventaUpdate)
+        [HttpPut("UpdateUser")]
+        public IActionResult Put([FromBody] VentaUpdateDto VentaUpdate)
         {
-            Ventas.Domain.Entities.Venta ventaToUpdate = new Ventas.Domain.Entities.Venta()
-            {
-                IdVenta = ventaUpdate.IdUVenta,
-                NumeroVenta = ventaUpdate.NumeroVenta,
-                IdTipoDocumentoVenta = ventaUpdate.IdTipoDocumentoVenta,
-                IdUsuario = ventaUpdate.IdUsuario,
-                DocumentoCliente = ventaUpdate.DocumentoCliente,
-                NombreCliente = ventaUpdate.NombreCliente,
-                SubTotal = ventaUpdate.SubTotal,
-                ImpuestoTotal = ventaUpdate.ImpuestoTotal,
-                Total = ventaUpdate.Total,
-               
-             };
+            var result = this.ventaService.Update(VentaUpdate);
+            if (!result.Success)
+                return BadRequest(result);
 
-            this.ventaRepository.Update(ventaToUpdate);
-            return Ok();
+            return Ok(result);
         }
 
-        [HttpDelete("RemoveVenta")]
-        public IActionResult Delete([FromBody] VentaRemoveDto ventaRevove)
+        [HttpDelete("RemoveUser")]
+        public IActionResult Delete([FromBody] VentaRemoveDto VentaRemove)
         {
-            Ventas.Domain.Entities.Venta ventaToDelete = new Ventas.Domain.Entities.Venta()
-            {
-                IdVenta = ventaRevove.IdVenta,
-                UserDeleted = ventaRevove.ChangeUser,
-                DeletedDate = ventaRevove.ChangeDate,
-                Deleted = ventaRevove.Deleted
-            };
+            var result = this.ventaService.Remove(VentaRemove);
+            if (!result.Success)
+                return BadRequest(result);
 
-            this.ventaRepository.Remove(ventaToDelete);
-            return Ok();
+            return Ok(result);
         }
     }
 }

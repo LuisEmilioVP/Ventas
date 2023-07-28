@@ -140,6 +140,5 @@ namespace Ventas.Application.Service
             return result;
         }
 
-
     }
 }

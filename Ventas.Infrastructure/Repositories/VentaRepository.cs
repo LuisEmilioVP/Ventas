@@ -7,7 +7,7 @@ using Ventas.Infrastructure.Context;
 using Ventas.Infrastructure.Core;
 using Ventas.Infrastructure.Interfaces;
 using Ventas.Infrastructure.Models;
-using Ventas.Infrastructure;
+using Ventas.Infrastructure.Extensions;
 
 namespace Ventas.Infrastructure.Repositories
 {
@@ -79,6 +79,11 @@ namespace Ventas.Infrastructure.Repositories
 
       
         List<Venta> IVentaRepository.GetVentaById(int idVenta)
+        {
+            throw new NotImplementedException();
+        }
+
+        public dynamic GetAllVenta()
         {
             throw new NotImplementedException();
         }

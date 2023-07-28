@@ -1,12 +1,13 @@
 ﻿using System;
-using System.Reflection;
+using System.ComponentModel.DataAnnotations;
+
 
 namespace Ventas.Domain.Entities
 {
     public class Venta
     {
         
-       public int IdVenta { get; set; }
+      [Key] public int IdVenta { get; set; }
         public string? NumeroVenta { get; set; }
         public int IdTipoDocumentoVenta { get; set; }
         public int IdUsuario { get; set; }
