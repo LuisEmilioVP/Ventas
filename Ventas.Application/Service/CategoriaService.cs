@@ -4,8 +4,8 @@ using Ventas.Application.Contract;
 using Ventas.Application.Core;
 using Ventas.Application.Dtos.Categoria;
 using Ventas.Application.Extentions;
-using Ventas.Application.Helpers;
-using Ventas.Domain.Entities;
+using Ventas.Application.Validations;
+using Ventas.Infrastructure.Exceptions;
 using Ventas.Infrastructure.Interfaces;
 
 namespace Ventas.Application.Service
@@ -32,6 +32,12 @@ namespace Ventas.Application.Service
                 result.Data = cat;
                 result.Message = "Categorías obtenidas exitosamente";
             }
+            catch (CategoriaExceptions uex)
+            {
+                result.Success = false;
+                result.Message = uex.Message;
+                this.logger.LogError($"Algo salió mal {result.Message}");
+            }
             catch (Exception ex)
             {
                 result.Success = false;
@@ -44,13 +50,24 @@ namespace Ventas.Application.Service
 
         public ServiceResult GetById(int id)
         {
-            ServiceResult result = new ServiceResult();
+            ServiceResult result = CategoriaValidator.ValidateIdCategoria(id);
+
+            if (!result.Success)
+            {
+                return result;
+            }
 
             try
             {
                 var cat = this.categoriarepository.GetCategoryById(id);
                 result.Data = cat;
-                result.Message = "Categoría obtenida exitosamente";
+                result.Message = $"Categoría obtenida exitosamente {id}";
+            }
+            catch (CategoriaExceptions uex)
+            {
+                result.Success = false;
+                result.Message = uex.Message;
+                this.logger.LogError($"Algo salió mal {result.Message}");
             }
             catch (Exception ex)
             {
@@ -64,7 +81,7 @@ namespace Ventas.Application.Service
 
         public ServiceResult Save(CategoriaAddDto model)
         {
-            ServiceResult result = CategoryValidationHelper.ValidateCategoryData(model);
+            ServiceResult result = CategoriaValidator.ValidateCategoriaAdd(model);
 
             if(!result.Success) 
             {
@@ -78,6 +95,12 @@ namespace Ventas.Application.Service
 
                 result.Message = "Categoría agregado correctamente";
             }
+            catch (CategoriaExceptions uex)
+            {
+                result.Success = false;
+                result.Message = uex.Message;
+                this.logger.LogError($"Algo salió mal {result.Message}");
+            }
             catch (Exception ex)
             {
                 result.Success = false;
@@ -90,7 +113,7 @@ namespace Ventas.Application.Service
 
         public ServiceResult Update(CategoriaUpdateDto model)
         {
-            ServiceResult result = CategoryValidationHelper.ValidateCategoryData(model);
+            ServiceResult result = CategoriaValidator.ValidateCategoriaUpdate(model);
 
             if(!result.Success)
             {
@@ -104,6 +127,12 @@ namespace Ventas.Application.Service
 
                 result.Message = "Categoría actualizada correctamente";
             }
+            catch (CategoriaExceptions uex)
+            {
+                result.Success = false;
+                result.Message = uex.Message;
+                this.logger.LogError($"Algo salió mal {result.Message}");
+            }
             catch (Exception ex)
             {
                 result.Success = false;
@@ -116,19 +145,20 @@ namespace Ventas.Application.Service
 
         public ServiceResult Remove(CategoriaRemoveDto model)
         {
-            ServiceResult result = new ServiceResult();
+            ServiceResult result = CategoriaValidator.ValidateCategoriaRemove(model);
 
             try
             {
-                this.categoriarepository.Remove(new Categoria()
-                {
-                    IdCategoria = model.IdCategoria,
-                    UserDeleted = model.ChangeUser,
-                    DeletedDate = model.ChangeDate,
-                    Deleted = model.Deleted
-                });
+                var category = model.ConvertRemoveDtoToEntity();
+                this.categoriarepository.Remove(category);
 
                 result.Message = "Categoría eliminado correctamente";
+            }
+            catch (CategoriaExceptions uex)
+            {
+                result.Success = false;
+                result.Message = uex.Message;
+                this.logger.LogError($"Algo salió mal {result.Message}");
             }
             catch (Exception ex)
             {

@@ -29,5 +29,16 @@ namespace Ventas.Application.Extentions
                 ModifyDate = categoriaUpdateDto.ChangeDate
             };
         }
+
+        public static Categoria ConvertRemoveDtoToEntity (this CategoriaRemoveDto removeDto)
+        {
+            return new Categoria()
+            {
+                IdCategoria = removeDto.IdCategoria,
+                Deleted = removeDto.Deleted,
+                UserDeleted = removeDto.ChangeUser,
+                DeletedDate = removeDto.ChangeDate
+            };
+        }
     }
 }

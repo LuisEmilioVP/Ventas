@@ -1,7 +1,18 @@
+using Microsoft.EntityFrameworkCore;
+using Ventas.Infrastructure.Context;
+using Ventas.IOC.Dependencies;
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
+
+//*== Registro dependencia BD ==*//
+builder.Services.AddDbContext<VentasContext>(option => option.UseSqlServer(builder.Configuration.GetConnectionString("VentasContext")));
+
+//*== My Dependencies ==*//
+builder.Services.AddCategoriaDependency();
+builder.Services.AddUsuarioDependency();
 
 var app = builder.Build();
 

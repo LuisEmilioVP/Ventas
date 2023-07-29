@@ -26,18 +26,24 @@ namespace Ventas.Infrastructure.Repositories
 
         public override void Add(Categoria entity)
         {
+            this.logger.LogInformation("Se agregará una nueva categoría…");
             try
             {
-                if (this.Exists(cat => cat.Descripcion == entity.Descripcion))
-                    throw new CategoriaExceptions("¡La Categoría ya existe!");
+                if (entity == null)
+                    throw new CategoriaExceptions("Una categoría no puede ser nula");
+
+                if (this.Exists(cat => cat.Descripcion == entity.Descripcion && entity.EsActivo == true))
+                    throw new CategoriaExceptions($"¡La Categoría {entity.Descripcion} ya existe!");
+
+                entity.ConvertCategoriaCreateToEntity();
 
                 base.Add(entity);
-                base.SaveChanges();
                 this.logger.LogInformation($"Nueva Categoría insertada: {entity.Descripcion}");
+                base.SaveChanges();
             }
             catch(CategoriaExceptions ex)
             {
-                this.logger.LogError($"Error al agregar Categoría: {ex.Message}", ex.ToString());
+                this.logger.LogError($"Algo salió mal: {ex.Message}");
                 throw;
             }
             catch(Exception ex)
@@ -51,30 +57,30 @@ namespace Ventas.Infrastructure.Repositories
         {
             try
             {
-                Categoria categoriaToUpdate = this.GetEntity(entity.IdCategoria)
+                this.logger.LogInformation($"Se actualizará la categoría con el, Id: {entity.IdCategoria}");
+
+                Categoria categoriaToUpdate = base.GetEntity(entity.IdCategoria)
                     ?? throw new CategoriaNotFoundException(
-                        "Categoría no encontrada en la base de datos");
+                        "Usuario no encontrado en la base de datos");
 
-                categoriaToUpdate.IdCategoria = entity.IdCategoria;
-                categoriaToUpdate.Descripcion = entity.Descripcion;
-                categoriaToUpdate.EsActivo = entity.EsActivo;
-                categoriaToUpdate.FechaRegistro = entity.FechaRegistro;
-                categoriaToUpdate.UserMod = entity.UserMod;
-                categoriaToUpdate.ModifyDate = entity.ModifyDate;
+                if (categoriaToUpdate.EsActivo == false && categoriaToUpdate.Deleted == false)
+                    throw new CategoriaExceptions("La categoría a actualizar ya está eliminada");
 
-                this.context.Categoria.Update(categoriaToUpdate);
+                categoriaToUpdate.ConvertCategoriaUpdateToEntity(entity);
+
+                base.Update(categoriaToUpdate);
+                this.logger.LogInformation($"La categoria de Id: {entity.IdCategoria} ha sido actualizada");
                 this.SaveChanges();
-                this.logger.LogInformation("Actualización de Categoría exitosa.");
             }
-            catch(CategoriaExceptions ex)
+            catch (CategoriaExceptions ex)
             {
-                this.logger.LogError($"Error al actualizar Categoría: {ex.Message}");
+                this.logger.LogError($"Algo salió mal: {ex.Message}");
                 throw;
             }
             catch (Exception ex)
             {
                 this.logger.LogError($"Error al actualizar Categoría: {ex.Message}", ex.ToString());
-                throw new UDatabaseConnectionException($"Error de Conexión: {ex.Message}");
+                throw new CDatabaseConnectionException($"Error de Conexión: {ex.Message}");
             }
         }
 
@@ -82,22 +88,24 @@ namespace Ventas.Infrastructure.Repositories
         {
             try
             {
+                this.logger.LogInformation($"Se eliminará la categoría con el, Id: {entity.IdCategoria}");
+
                 Categoria categoriaToRemove = this.GetEntity(entity.IdCategoria)
                  ?? throw new CategoriaNotFoundException(
                      "Categoría no encontrada en la base de datos");
 
-                categoriaToRemove.IdCategoria = entity.IdCategoria;
-                categoriaToRemove.UserDeleted = entity.UserDeleted;
-                categoriaToRemove.DeletedDate = entity.DeletedDate;
-                categoriaToRemove.Deleted = entity.Deleted;
+                if (categoriaToRemove.EsActivo == false)
+                    throw new CategoriaExceptions("La categoria ya ha sido eliminado");
+
+                categoriaToRemove.ConvertCategoriaRemoveToEntity(entity);
 
                 this.context.Update(categoriaToRemove);
+                this.logger.LogInformation($"La categoría de Id: {entity.IdCategoria} ha sido eliminado");
                 this.context.SaveChanges();
-                this.logger.LogInformation("Eliminación de categoría exitosa.");
             }
             catch(CategoriaExceptions ex)
             {
-                this.logger.LogError($"Error al eliminar categoría: {ex.Message}");
+                this.logger.LogError($"Algo salió mal: {ex.Message}");
                 throw;
             }
             catch(Exception ex)
@@ -113,14 +121,22 @@ namespace Ventas.Infrastructure.Repositories
             try
             {
                 this.logger.LogInformation("Obteniendo Categorías...");
-                categorias = this.context.Categoria
-                    .Where(ca => !ca.Deleted)
-                    .Select(cat => new CategoriaModels()
-                    {
-                        Descripcion = cat.Descripcion,
-                        EsActivo = cat.EsActivo,
-                        FechaRegistro = cat.FechaRegistro,
-                    }).ToList();
+                
+                List<Categoria> category = base.GetEntities()
+                    .Where(cat => !cat.Deleted && cat.EsActivo == true).ToList()
+                    ?? throw new CategoriaNotFoundException(
+                        "Categoría no encontrado en la base de datos");
+
+                foreach (Categoria categoria in category)
+                {
+                    CategoriaModels categoriaModels = categoria.ConvertCategoryEntityToModel();
+                    categorias.Add(categoriaModels);
+                }
+            }
+            catch (CategoriaExceptions ex)
+            {
+                this.logger.LogError($"Algo salió mal: {ex.Message}");
+                throw;
             }
             catch (Exception ex)
             {
@@ -137,18 +153,25 @@ namespace Ventas.Infrastructure.Repositories
 
             try
             {
-                if (!base.Exists(ca => ca.IdCategoria == categoryId))
-                    throw new UsuarioNotFoundException(
-                        "Categoría no encontrado en la base de datos");
+                this.logger.LogInformation($"Obteniendo Categoría de Id: {categoryId}");
 
-                categoriaModels = base.GetEntity(categoryId).ConvertCategoryEntityToModel();
-                this.logger.LogInformation($"Obteniendo una Categoría: {categoryId}");
+                Categoria category = context.Categoria.FirstOrDefault(cat => cat.IdCategoria == categoryId
+                && cat.EsActivo == true)
+                    ?? throw new CategoriaNotFoundException(
+                        $"Categoría de id: {categoryId} no encontrado en la base de datos");
+
+                categoriaModels = category.ConvertCategoryEntityToModel();
+                this.logger.LogInformation($"Obteniendo la categoría de Id: {categoryId}");
+            }
+            catch (UsuarioExceptions ex)
+            {
+                this.logger.LogError($"Algo salió mal: {ex.Message}");
+                throw;
             }
             catch (Exception ex)
             {
                 this.logger.LogError($"Error al cargar el categoría {ex.Message}", ex.ToString());
-                throw new UsuarioExceptions("Categoría no existe...");
-                throw new UDatabaseConnectionException($"Error de conexión: {ex.Message}");
+                throw new CDatabaseConnectionException($"Error de conexión: {ex.Message}");
             }
 
             return categoriaModels;

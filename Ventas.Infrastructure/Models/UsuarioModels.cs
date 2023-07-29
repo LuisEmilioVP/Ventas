@@ -10,6 +10,6 @@ namespace Ventas.Infrastructure.Models
         public string? UrlFoto { get; set; }
         public string? NombreFoto { get; set; }
         public bool? EsActivo { get; set; }
-        public DateTime? FechaRegistro { get; set; }
+        public DateTime FechaRegistro { get; set; }
     }
 }

@@ -39,5 +39,16 @@ namespace Ventas.Application.Extentions
                 ModifyDate = usuarioUpdateDto.ChangeDate
             };
         }
+
+        public static Usuario ConvertRemoveDtoToEntity (this UsuarioRevoveDto usuarioRevoveDto)
+        {
+            return new Usuario()
+            {
+                IdUsuario = usuarioRevoveDto.IdUsuario,
+                Deleted = usuarioRevoveDto.Deleted,
+                UserDeleted = usuarioRevoveDto.ChangeUser,
+                DeletedDate = usuarioRevoveDto.ChangeDate
+            };
+        }
     }
 }

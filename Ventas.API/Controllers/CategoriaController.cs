@@ -19,6 +19,7 @@ namespace Ventas.API.Controllers
         public IActionResult Get()
         {
             var result = this.categoriaService.Get();
+
             if(!result.Success)
                 return BadRequest(result);
 
@@ -29,6 +30,7 @@ namespace Ventas.API.Controllers
         public IActionResult Get(int id)
         {
             var result = this.categoriaService.GetById(id);
+
             if(!result.Success)
                 return BadRequest(result);
 
@@ -39,6 +41,7 @@ namespace Ventas.API.Controllers
         public IActionResult Post([FromBody] CategoriaAddDto categoriaAdd)
         {
             var result = this.categoriaService.Save(categoriaAdd);
+
             if(!result.Success)
                 return BadRequest(result);
 
@@ -49,6 +52,7 @@ namespace Ventas.API.Controllers
         public IActionResult Put([FromBody] CategoriaUpdateDto categoriaUpdate)
         {
             var result = this.categoriaService.Update(categoriaUpdate);
+
             if(!result.Success)
                 return BadRequest(result);
 
@@ -56,9 +60,10 @@ namespace Ventas.API.Controllers
         }
 
         [HttpDelete("RemoveCategory")]
-        public IActionResult Delete(CategoriaRemoveDto categoriaRemove)
+        public IActionResult Delete([FromBody] CategoriaRemoveDto categoriaRemove)
         {
             var result = this.categoriaService.Remove(categoriaRemove);
+
             if(!result.Success)
                 return BadRequest(result);
 

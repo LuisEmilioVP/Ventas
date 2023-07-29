@@ -26,18 +26,28 @@ namespace Ventas.Infrastructure.Repositories
 
         public override void Add(Usuario entity)
         {
+            this.logger.LogInformation("Se agregará un nuevo usuario…");
             try
             {
-                if (this.Exists(us => us.Nombre == entity.Nombre))
-                    throw new UsuarioExceptions("¡El usuario ya existe!");
+                if (entity == null)
+                    throw new UsuarioExceptions("Un usuario no puede ser nulo");
+
+                // Capturar nombre de usuario y correo para evitar que se repitan
+                string? name = entity.Nombre;
+                string? email = entity.Correo;
+
+                if (this.Exists(us => us.Correo == entity.Correo && entity.EsActivo == true))
+                    throw new UsuarioExceptions($"¡El correo: {email} ya existe!");
+
+                entity.ConvertUsuarioCreateToEntity();
 
                 base.Add(entity);
+                this.logger.LogInformation($"Agregando el usuario: {name} con el correo: {email}");
                 base.SaveChanges();
-                this.logger.LogInformation($"Nuevo usuario insertado: {entity.Nombre}");
             }
             catch (UsuarioExceptions ex)
             {
-                this.logger.LogError($"Error al agregar usuario: {ex.Message}", ex.ToString());
+                this.logger.LogError($"Algo salió mal: {ex.Message}");
                 throw;
             }
             catch (Exception ex)
@@ -51,28 +61,24 @@ namespace Ventas.Infrastructure.Repositories
         {
             try
             {
-                Usuario usuarioToUpdate = this.GetEntity(entity.IdUsuario)
+                this.logger.LogInformation($"Se actualizará el usuario con el, Id: {entity.IdUsuario}");
+
+                Usuario usuarioToUpdate = base.GetEntity(entity.IdUsuario)
                     ?? throw new UsuarioNotFoundException(
                         "Usuario no encontrado en la base de datos");
 
-                usuarioToUpdate.IdUsuario = entity.IdUsuario;
-                usuarioToUpdate.Nombre = entity.Nombre;
-                usuarioToUpdate.Correo = entity.Correo;
-                usuarioToUpdate.UrlFoto = entity.UrlFoto;
-                usuarioToUpdate.NombreFoto = entity.NombreFoto;
-                usuarioToUpdate.Clave = entity.Clave;
-                usuarioToUpdate.EsActivo = entity.EsActivo;
-                usuarioToUpdate.FechaRegistro = entity.FechaRegistro;
-                usuarioToUpdate.UserMod = entity.UserMod;
-                usuarioToUpdate.ModifyDate = entity.ModifyDate;
+                if (usuarioToUpdate.EsActivo == false && usuarioToUpdate.Deleted == false)
+                    throw new UsuarioExceptions("El usuario a actualizar está eliminado");
 
-                this.context.Usuario.Update(usuarioToUpdate);
+                usuarioToUpdate.ConvertUsuarioUpdateToEntity(entity);
+
+                base.Update(usuarioToUpdate);
+                this.logger.LogInformation($"El usuario de Id: {entity.IdUsuario} ha sido actualizado");
                 this.context.SaveChanges();
-                this.logger.LogInformation("Actualización de usuario exitosa.");
             }
             catch (UsuarioExceptions ex)
             {
-                this.logger.LogError($"Error al actualizar usuario: {ex.Message}");
+                this.logger.LogError($"Algo salió mal: {ex.Message}");
                 throw;
             }
             catch (Exception ex)
@@ -86,21 +92,24 @@ namespace Ventas.Infrastructure.Repositories
         {
             try
             {
-                Usuario usuarioToRemove = this.GetEntity(entity.IdUsuario)
+                this.logger.LogInformation($"Se eliminará el usuario con el, Id: {entity.IdUsuario}");
+
+                Usuario usuarioToRemove = base.GetEntity(entity.IdUsuario)
                       ?? throw new UsuarioNotFoundException(
                           "Usuario no encontrado en la base de datos");
 
-                usuarioToRemove.Deleted = entity.Deleted;
-                usuarioToRemove.UserDeleted = entity.UserDeleted;
-                usuarioToRemove.DeletedDate = entity.DeletedDate;
+                if (usuarioToRemove.EsActivo == false)
+                    throw new UsuarioExceptions("El usuario ya ha sido eliminado");
+
+                usuarioToRemove.ConvertUsuarioRemoveToEntity(entity);
 
                 this.context.Update(usuarioToRemove);
+                this.logger.LogInformation($"El usuario de Id: {entity.IdUsuario} ha sido eliminado");
                 this.context.SaveChanges();
-                this.logger.LogInformation("Eliminación de usuario exitosa.");
             }
             catch (UsuarioExceptions ex)
             {
-                this.logger.LogError($"Error al eliminar usuario: {ex.Message}");
+                this.logger.LogError($"Algo salió mal: {ex.Message}");
                 throw;
             }
             catch (Exception ex)
@@ -116,18 +125,22 @@ namespace Ventas.Infrastructure.Repositories
             try
             {
                 this.logger.LogInformation("Obteniendo Usuarios...");
-                usuarios = this.context.Usuario
-                    .Where(us => !us.Deleted)
-                    .Select(use => new UsuarioModels()
-                    {
-                        Nombre = use.Nombre,
-                        Correo = use.Correo,
-                        Telefono = use.Telefono,
-                        UrlFoto = use.UrlFoto,
-                        NombreFoto = use.NombreFoto,
-                        EsActivo = use.EsActivo,
-                        FechaRegistro = use.FechaRegistro,
-                    }).ToList();
+
+                List<Usuario> users = base.GetEntities()
+                    .Where(use => !use.Deleted && use.EsActivo == true).ToList()
+                    ?? throw new UsuarioNotFoundException(
+                        "Usuario no encontrado en la base de datos");
+
+                foreach (Usuario usuario in users)
+                {
+                    UsuarioModels usuarioModels = usuario.ConvertUserEntityToModel();
+                    usuarios.Add(usuarioModels);
+                }
+            }
+            catch (UsuarioExceptions ex)
+            {
+                this.logger.LogError($"Algo salió mal: {ex.Message}");
+                throw;
             }
             catch (Exception ex)
             {
@@ -144,17 +157,24 @@ namespace Ventas.Infrastructure.Repositories
 
             try
             {
-                if (!base.Exists(use => use.IdUsuario == userId))
-                    throw new UsuarioNotFoundException(
-                        "Usuario no encontrado en la base de datos");
+                this.logger.LogInformation($"Obteniendo Usuario de Id: {userId}");
 
-                usuarioModels = base.GetEntity(userId).ConvertUserEntityToModel();
-                this.logger.LogInformation($"Obteniendo un Usuario: {userId}");
+                Usuario user = context.Usuario.FirstOrDefault(uid => uid.IdUsuario == userId 
+                && uid.EsActivo == true)
+                    ?? throw new UsuarioNotFoundException(
+                        $"Usuario de id: {userId} no encontrado en la base de datos");
+
+                usuarioModels = user.ConvertUserEntityToModel();
+                this.logger.LogInformation($"Obteniendo al usuario de Id: {userId}");
             }
-            catch(Exception ex)
+            catch (UsuarioExceptions ex)
+            {
+                this.logger.LogError($"Algo salió mal: {ex.Message}");
+                throw;
+            }
+            catch (Exception ex)
             {
                 this.logger.LogError($"Error al cargar el usuario {ex.Message}", ex.ToString());
-                throw new UsuarioExceptions("Usuario no existe...");
                 throw new UDatabaseConnectionException($"Error de conexión: {ex.Message}");
             }
 

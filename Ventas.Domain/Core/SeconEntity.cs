@@ -10,7 +10,7 @@ namespace Ventas.Domain.Core
             this.EsActivo = false;
         }
 
-        public DateTime? FechaRegistro { get; set;}
+        public DateTime FechaRegistro { get; set;}
         public bool? EsActivo { get; set; }
     }
 }

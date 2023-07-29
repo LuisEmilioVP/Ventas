@@ -4,8 +4,8 @@ using Ventas.Application.Contract;
 using Ventas.Application.Core;
 using Ventas.Application.Dtos.Usuario;
 using Ventas.Application.Extentions;
-using Ventas.Application.Helpers;
-using Ventas.Domain.Entities;
+using Ventas.Application.Validations;
+using Ventas.Infrastructure.Exceptions;
 using Ventas.Infrastructure.Interfaces;
 
 namespace Ventas.Application.Service
@@ -32,6 +32,12 @@ namespace Ventas.Application.Service
                 result.Data = users;
                 result.Message = "Usuarios obtenidos exitosamente";
             }
+            catch (UsuarioExceptions uex)
+            {
+                result.Success = false;
+                result.Message = uex.Message;
+                this.logger.LogError($"Algo salió mal {result.Message}");
+            }
             catch (Exception ex)
             {
                 result.Success = false;
@@ -44,13 +50,24 @@ namespace Ventas.Application.Service
 
         public ServiceResult GetById(int id)
         {
-            ServiceResult result = new ServiceResult();
+            ServiceResult result = UsuarioValidator.ValidateIdUsuario(id);
+
+            if (!result.Success)
+            {
+                return result;
+            }
 
             try
             {
                 var user = this.usuarioRepository.GetUserById(id);
                 result.Data = user;
-                result.Message = "Usuario obtenido exitosamente";
+                result.Message = $"Usuario obtenido exitosamente {id}";
+            }
+            catch (UsuarioExceptions uex)
+            {
+                result.Success = false;
+                result.Message = uex.Message;
+                this.logger.LogError($"Algo salió mal {result.Message}");
             }
             catch (Exception ex)
             {
@@ -64,7 +81,7 @@ namespace Ventas.Application.Service
 
         public ServiceResult Save(UsuarioAddDto model)
         {
-            ServiceResult result = UserValidationHelper.ValidateUserData(model);
+            ServiceResult result = UsuarioValidator.ValidateUsuarioAdd(model);
 
             if (!result.Success)
             {
@@ -78,6 +95,12 @@ namespace Ventas.Application.Service
 
                 result.Message = "Usuario agregado correctamente";
             }
+            catch (UsuarioExceptions uex)
+            {
+                result.Success = false;
+                result.Message = uex.Message;
+                this.logger.LogError($"Algo salió mal {result.Message}");
+            }
             catch (Exception ex)
             {
                 result.Success = false;
@@ -90,7 +113,7 @@ namespace Ventas.Application.Service
 
         public ServiceResult Update(UsuarioUpdateDto model)
         {
-            ServiceResult result = UserValidationHelper.ValidateUserData(model);
+            ServiceResult result = UsuarioValidator.ValidateUsuarioUpdate(model);
 
             if (!result.Success)
             {
@@ -104,6 +127,12 @@ namespace Ventas.Application.Service
 
                 result.Message = "Usuario actualizado correctamente";
             }
+            catch (UsuarioExceptions uex)
+            {
+                result.Success = false;
+                result.Message = uex.Message;
+                this.logger.LogError($"Algo salió mal {result.Message}");
+            }
             catch (Exception ex)
             {
                 result.Success = false;
@@ -116,19 +145,20 @@ namespace Ventas.Application.Service
 
         public ServiceResult Remove(UsuarioRevoveDto model)
         {
-            ServiceResult result = new ServiceResult();
+            ServiceResult result = UsuarioValidator.ValidateUsuarioRemove(model);
 
             try
             {
-                this.usuarioRepository.Remove(new Usuario()
-                {
-                    IdUsuario = model.IdUsuario,
-                    UserDeleted = model.ChangeUser,
-                    DeletedDate = model.ChangeDate,
-                    Deleted = model.Deleted
-                });
+               var usuario = model.ConvertRemoveDtoToEntity();
+                this.usuarioRepository.Remove(usuario);
 
                 result.Message = "Usuario eliminado correctamente";
+            }
+            catch (UsuarioExceptions uex)
+            {
+                result.Success = false;
+                result.Message = uex.Message;
+                this.logger.LogError($"Algo salió mal {result.Message}");
             }
             catch (Exception ex)
             {
@@ -139,7 +169,5 @@ namespace Ventas.Application.Service
 
             return result;
         }
-
-      
     }
 }

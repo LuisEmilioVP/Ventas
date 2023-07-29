@@ -19,7 +19,8 @@ namespace Ventas.API.Controllers
         public IActionResult Get()
         {
             var result = this.usuarioService.Get();
-            if(!result.Success)
+
+            if (!result.Success)
                 return BadRequest(result);
 
             return Ok(result);
@@ -29,7 +30,8 @@ namespace Ventas.API.Controllers
         public IActionResult Get(int id)
         {
             var result = this.usuarioService.GetById(id);
-            if(!result.Success)
+
+            if (!result.Success)
                 return BadRequest(result);
 
             return Ok(result);
@@ -39,7 +41,8 @@ namespace Ventas.API.Controllers
         public IActionResult Post([FromBody] UsuarioAddDto usuarioAdd)
         {
             var result = this.usuarioService.Save(usuarioAdd);
-            if(!result.Success)
+
+            if (!result.Success)
                 return BadRequest(result);
 
             return Ok(result);
@@ -49,7 +52,8 @@ namespace Ventas.API.Controllers
         public IActionResult Put([FromBody] UsuarioUpdateDto usuarioUpdate)
         {
             var result = this.usuarioService.Update(usuarioUpdate);
-            if(!result.Success)
+
+            if (!result.Success)
                 return BadRequest(result);
 
             return Ok(result);
@@ -59,7 +63,8 @@ namespace Ventas.API.Controllers
         public IActionResult Delete([FromBody] UsuarioRevoveDto usuarioRevove)
         {
             var result = this.usuarioService.Remove(usuarioRevove);
-            if(!result.Success)
+
+            if (!result.Success)
                 return BadRequest(result);
 
             return Ok(result);
