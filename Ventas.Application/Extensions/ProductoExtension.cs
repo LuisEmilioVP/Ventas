@@ -1,6 +1,4 @@
-﻿
-
-using Ventas.Application.Dtos.Producto;
+﻿using Ventas.Application.Dtos.Producto;
 using Ventas.Domain.Entities;
 
 namespace Ventas.Application.Extensions

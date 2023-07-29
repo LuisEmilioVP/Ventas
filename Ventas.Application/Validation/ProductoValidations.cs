@@ -1,6 +1,4 @@
-﻿
-
-using Ventas.Application.Core;
+﻿using Ventas.Application.Core;
 using Ventas.Application.Dtos.Producto;
 
 namespace Ventas.Application.Help

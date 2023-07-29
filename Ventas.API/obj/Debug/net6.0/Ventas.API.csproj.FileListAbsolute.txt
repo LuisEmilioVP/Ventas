@@ -95,3 +95,5 @@ C:\Proyecto\Ventas\Ventas.API\obj\Debug\net6.0\Ventas.API.pdb
 C:\Proyecto\Ventas\Ventas.API\obj\Debug\net6.0\Ventas.API.genruntimeconfig.cache
 C:\Proyecto\Ventas\Ventas.API\obj\Debug\net6.0\ref\Ventas.API.dll
 C:\Proyecto\Ventas\Ventas.API\obj\Debug\net6.0\Ventas.API.MvcApplicationPartsAssemblyInfo.cs
+C:\Proyecto\Ventas\Ventas.API\bin\Debug\net6.0\Ventas.IOC.dll
+C:\Proyecto\Ventas\Ventas.API\bin\Debug\net6.0\Ventas.IOC.pdb
