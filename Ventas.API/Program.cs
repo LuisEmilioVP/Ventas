@@ -1,41 +1,35 @@
 using Microsoft.EntityFrameworkCore;
-using Ventas.Application.Contract;
-using Ventas.Application.Service;
 using Ventas.Infrastructure.Context;
-using Ventas.Infrastructure.Interfaces;
-using Ventas.Infrastructure.Repositories;
+using Ventas.IOC.Dependencie;
 
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
+builder.Services.AddControllersWithViews();
 
-builder.Services.AddControllers();
-// Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
-builder.Services.AddEndpointsApiExplorer();
-builder.Services.AddSwaggerGen();
-
-// Registro de dependencia base de datos
+//Registro de dependencia de la base de datos //
 builder.Services.AddDbContext<VentasContext>(options => options.UseSqlServer(builder.Configuration.GetConnectionString("VentasContext")));
 
 
-// Repositorio
-builder.Services.AddTransient<ISuplidorRepository, SuplidorRepository>();
-
-// Service
-builder.Services.AddTransient<ISuplidorService, SuplidorService>();
-
+//my Dependencie
+builder.Services.AddSuplidorDependency();
 
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
-if (app.Environment.IsDevelopment())
+if (!app.Environment.IsDevelopment())
 {
-    app.UseSwagger();
-    app.UseSwaggerUI();
+    app.UseExceptionHandler("/Home/Error");
 }
+
+app.UseStaticFiles();
+
+app.UseRouting();
 
 app.UseAuthorization();
 
-app.MapControllers();
+app.MapControllerRoute(
+    name: "default",
+    pattern: "{controller=Home}/{action=Index}/{id?}");
 
 app.Run();

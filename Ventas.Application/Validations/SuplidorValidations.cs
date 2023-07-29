@@ -122,7 +122,7 @@ namespace Ventas.Application.Validations
 
 
             // Fax
-            if (model.Fax.Length > 15)
+            if (model.Fax.Length > 24)
             {
                 result.Message = "Has excedido el maximo de caractres en el Fax";
                 result.Success = false;

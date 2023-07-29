@@ -4,8 +4,8 @@ using Ventas.Application.Dto.Suplidor;
 
 namespace Ventas.Application.Contract
 {
-    public interface ISuplidorService : IBaseService<SuplidorAddDto, 
-                                                     SuplidorUpdateDto, 
+    public interface ISuplidorService : IBaseService<SuplidorAddDto,
+                                                     SuplidorUpdateDto,
                                                      SuplidorRemoveDto>
     {
     }
