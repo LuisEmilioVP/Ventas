@@ -61,7 +61,7 @@ namespace Ventas.Application.Service
             {
                 var user = this.usuarioRepository.GetUserById(id);
                 result.Data = user;
-                result.Message = $"Usuario obtenido exitosamente {id}";
+                result.Message = $"Usuario obtenido exitosamente. Id de usuario: {id}";
             }
             catch (UsuarioExceptions uex)
             {
@@ -72,7 +72,7 @@ namespace Ventas.Application.Service
             catch (Exception ex)
             {
                 result.Success = false;
-                result.Message = "Error al obtener usuario";
+                result.Message = $"Error al obtener usuario Id: {id}";
                 this.logger.LogError($"{result.Message}", ex.ToString());
             }
 
@@ -104,7 +104,7 @@ namespace Ventas.Application.Service
             catch (Exception ex)
             {
                 result.Success = false;
-                result.Message = "Error guardando el usuario";
+                result.Message = "Error agregando el usuario";
                 this.logger.LogError($"{result.Message}", ex.ToString());
             }
 

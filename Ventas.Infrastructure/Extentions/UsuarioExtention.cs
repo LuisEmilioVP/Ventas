@@ -10,10 +10,12 @@ namespace Ventas.Infrastructure.Extentions
         {
             UsuarioModels userModel = new UsuarioModels()
             {
+                IdUsuario = usuario.IdUsuario,
                 Nombre = usuario.Nombre,
                 Correo = usuario.Correo,
                 Telefono = usuario.Telefono,
                 UrlFoto = usuario.UrlFoto,
+                Clave = usuario.Clave,
                 NombreFoto = usuario.NombreFoto,
                 EsActivo = usuario.EsActivo,
                 FechaRegistro = usuario.FechaRegistro
@@ -60,7 +62,7 @@ namespace Ventas.Infrastructure.Extentions
                                                            Usuario usuario) 
         {
             usuarioToRemove.EsActivo = false;
-            usuarioToRemove.Deleted = usuario.Deleted;
+            usuarioToRemove.Deleted = true;
             usuarioToRemove.UserDeleted = usuario.UserDeleted;
             usuarioToRemove.DeletedDate = usuario.DeletedDate = DateTime.Now;
 

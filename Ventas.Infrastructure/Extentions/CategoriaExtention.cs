@@ -10,6 +10,7 @@ namespace Ventas.Infrastructure.Extentions
         {
             CategoriaModels categoriaModels = new CategoriaModels()
             {
+                IdCategoria = categoria.IdCategoria,
                 Descripcion = categoria.Descripcion,
                 EsActivo = categoria.EsActivo,
                 FechaRegistro = categoria.FechaRegistro
@@ -47,7 +48,7 @@ namespace Ventas.Infrastructure.Extentions
                                                              Categoria categoria)
         {
             categoryToRemove.EsActivo = false;
-            categoryToRemove.Deleted = categoria.Deleted;
+            categoryToRemove.Deleted = true;
             categoryToRemove.UserDeleted = categoria.UserDeleted;
             categoryToRemove.DeletedDate = categoria.DeletedDate = DateTime.Now;
 

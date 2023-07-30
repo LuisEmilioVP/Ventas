@@ -27,6 +27,7 @@ namespace Ventas.Infrastructure.Repositories
         public override void Add(Usuario entity)
         {
             this.logger.LogInformation("Se agregará un nuevo usuario…");
+
             try
             {
                 if (entity == null)
@@ -67,7 +68,7 @@ namespace Ventas.Infrastructure.Repositories
                     ?? throw new UsuarioNotFoundException(
                         "Usuario no encontrado en la base de datos");
 
-                if (usuarioToUpdate.EsActivo == false && usuarioToUpdate.Deleted == false)
+                if (usuarioToUpdate.EsActivo == false && usuarioToUpdate.Deleted == true)
                     throw new UsuarioExceptions("El usuario a actualizar está eliminado");
 
                 usuarioToUpdate.ConvertUsuarioUpdateToEntity(entity);
@@ -92,7 +93,7 @@ namespace Ventas.Infrastructure.Repositories
         {
             try
             {
-                this.logger.LogInformation($"Se eliminará el usuario con el, Id: {entity.IdUsuario}");
+                this.logger.LogInformation($"Se eliminará el usuario con el Id: {entity.IdUsuario}");
 
                 Usuario usuarioToRemove = base.GetEntity(entity.IdUsuario)
                       ?? throw new UsuarioNotFoundException(
@@ -127,8 +128,10 @@ namespace Ventas.Infrastructure.Repositories
                 this.logger.LogInformation("Obteniendo Usuarios...");
 
                 List<Usuario> users = base.GetEntities()
-                    .Where(use => !use.Deleted && use.EsActivo == true).ToList()
-                    ?? throw new UsuarioNotFoundException(
+                    .Where(use => !use.Deleted && use.EsActivo == true).ToList();
+                    
+                if (users == null)
+                    throw new UsuarioNotFoundException(
                         "Usuario no encontrado en la base de datos");
 
                 foreach (Usuario usuario in users)
@@ -159,12 +162,15 @@ namespace Ventas.Infrastructure.Repositories
             {
                 this.logger.LogInformation($"Obteniendo Usuario de Id: {userId}");
 
-                Usuario user = context.Usuario.FirstOrDefault(uid => uid.IdUsuario == userId 
-                && uid.EsActivo == true)
-                    ?? throw new UsuarioNotFoundException(
+                Usuario user = context.Usuario.FirstOrDefault(use => use.IdUsuario == userId
+                && use.EsActivo == true);
+
+                if (user == null)
+                throw new UsuarioNotFoundException(
                         $"Usuario de id: {userId} no encontrado en la base de datos");
 
                 usuarioModels = user.ConvertUserEntityToModel();
+
                 this.logger.LogInformation($"Obteniendo al usuario de Id: {userId}");
             }
             catch (UsuarioExceptions ex)

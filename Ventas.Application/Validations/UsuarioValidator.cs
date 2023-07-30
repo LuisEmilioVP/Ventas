@@ -17,6 +17,13 @@ namespace Ventas.Application.Validations
                 return result;
             }
 
+            if (id == null)
+            {
+                result.Message = $"Un usuario no puede ser nulo";
+                result.Success = false;
+                return result;
+            }
+
             return result;
         }
 
@@ -26,7 +33,7 @@ namespace Ventas.Application.Validations
 
             if (addDto.ChangeUser == null)
             {
-                result.Message = "Usuario no detectado. Indique quién realiza la operación.";
+                result.Message = "ID no detectado. Indique quién creará un usuario";
                 result.Success = false;
                 return result;
             }
@@ -116,14 +123,28 @@ namespace Ventas.Application.Validations
         {
             ServiceResult result = new ServiceResult();
 
-            if (updateDto.ChangeUser == null || updateDto.IdUsuario == null)
+            if (updateDto.IdUsuario != updateDto.IdUsuario)
             {
-                result.Message = "Usuario no detectado. Indique quién realiza la operación.";
+                result.Message = "ID no detectado. Indique el usuario a actualizar";
                 result.Success = false;
                 return result;
             }
 
-            if (updateDto.ChangeUser <= 0 || updateDto.IdUsuario <= 0)
+            if (updateDto.IdUsuario <= 0)
+            {
+                result.Message = "Id de usuario inválido";
+                result.Success = false;
+                return result;
+            }
+
+            if (updateDto.ChangeUser == null)
+            {
+                result.Message = "ID no detectado. Indique quien actualizara";
+                result.Success = false;
+                return result;
+            }
+
+            if (updateDto.ChangeUser <= 0)
             {
                 result.Message = "Id de usuario inválido";
                 result.Success = false;
@@ -208,14 +229,28 @@ namespace Ventas.Application.Validations
         {
             ServiceResult result = new ServiceResult();
 
-            if (removeDto.ChangeUser == null || removeDto.IdUsuario == null)
+            if (removeDto.IdUsuario != removeDto.IdUsuario)
             {
-                result.Message = "Usuario no detectado. Indique quién realiza la operación.";
+                result.Message = "ID no detectado. Indique el usuario a eliminar";
                 result.Success = false;
                 return result;
             }
 
-            if (removeDto.ChangeUser <= 0 || removeDto.IdUsuario <= 0)
+            if (removeDto.IdUsuario <= 0)
+            {
+                result.Message = "Id de usuario inválido";
+                result.Success = false;
+                return result;
+            }
+
+            if (removeDto.ChangeUser == null)
+            {
+                result.Message = "ID no detectado. Indique quien eliminara";
+                result.Success = false;
+                return result;
+            }
+
+            if (removeDto.ChangeUser <= 0)
             {
                 result.Message = "Id de usuario inválido";
                 result.Success = false;

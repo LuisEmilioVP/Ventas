@@ -121,10 +121,12 @@ namespace Ventas.Infrastructure.Repositories
             try
             {
                 this.logger.LogInformation("Obteniendo Categorías...");
-                
+
                 List<Categoria> category = base.GetEntities()
-                    .Where(cat => !cat.Deleted && cat.EsActivo == true).ToList()
-                    ?? throw new CategoriaNotFoundException(
+                    .Where(cat => !cat.Deleted && cat.EsActivo == true).ToList();
+                
+                if (category == null)
+                    throw new CategoriaNotFoundException(
                         "Categoría no encontrado en la base de datos");
 
                 foreach (Categoria categoria in category)
@@ -156,8 +158,10 @@ namespace Ventas.Infrastructure.Repositories
                 this.logger.LogInformation($"Obteniendo Categoría de Id: {categoryId}");
 
                 Categoria category = context.Categoria.FirstOrDefault(cat => cat.IdCategoria == categoryId
-                && cat.EsActivo == true)
-                    ?? throw new CategoriaNotFoundException(
+                && cat.EsActivo == true);
+
+                if (category == null)
+                    throw new CategoriaNotFoundException(
                         $"Categoría de id: {categoryId} no encontrado en la base de datos");
 
                 categoriaModels = category.ConvertCategoryEntityToModel();

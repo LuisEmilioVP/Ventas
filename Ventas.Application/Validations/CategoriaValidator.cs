@@ -16,6 +16,13 @@ namespace Ventas.Application.Validations
                 return result;
             }
 
+            if (id == null)
+            {
+                result.Message = $"Un usuario no puede ser nulo";
+                result.Success = false;
+                return result;
+            }
+
             return result;
         }
 
@@ -23,16 +30,16 @@ namespace Ventas.Application.Validations
         {
             ServiceResult result = new ServiceResult();
 
-            if (addDto.ChangeUser == null)
+            if (addDto.ChangeUser != addDto.ChangeUser)
             {
-                result.Message = "Categoría no detectado. Indique quién realiza la operación.";
+                result.Message = "ID no detectado. Indique quién creará la categoría";
                 result.Success = false;
                 return result;
             }
 
             if (addDto.ChangeUser <= 0)
             {
-                result.Message = "Id de categoría inválido";
+                result.Message = "Id de usuario inválido";
                 result.Success = false;
                 return result;
             }
@@ -58,16 +65,30 @@ namespace Ventas.Application.Validations
         {
             ServiceResult result = new ServiceResult();
 
-            if (updateDto.ChangeUser == null || updateDto.IdCategoria == null)
+            if (updateDto.IdCategoria != updateDto.IdCategoria)
             {
-                result.Message = "Categoría no detectado. Indique quién realiza la operación.";
+                result.Message = "ID no detectado. Indique la categoría a actualizar";
                 result.Success = false;
                 return result;
             }
 
-            if (updateDto.ChangeUser <= 0 || updateDto.IdCategoria <= 0)
+            if (updateDto.IdCategoria <= 0)
             {
                 result.Message = "Id de categoría inválido";
+                result.Success = false;
+                return result;
+            }
+
+            if (updateDto.ChangeUser == null)
+            {
+                result.Message = "ID no detectado. Indique quien actualizara";
+                result.Success = false;
+                return result;
+            }
+
+            if (updateDto.ChangeUser <= 0)
+            {
+                result.Message = "Id de usuario inválido";
                 result.Success = false;
                 return result;
             }
@@ -93,16 +114,30 @@ namespace Ventas.Application.Validations
         {
             ServiceResult result = new ServiceResult();
 
-            if (removeDto.ChangeUser == null || removeDto.IdCategoria == null)
+            if (removeDto.IdCategoria != removeDto.IdCategoria)
             {
-                result.Message = "Categoría no detectado. Indique quién realiza la operación.";
+                result.Message = "ID no detectado. Indique la categoría a eliminar";
                 result.Success = false;
                 return result;
             }
 
-            if (removeDto.ChangeUser <= 0 || removeDto.IdCategoria <= 0)
+            if (removeDto.IdCategoria <= 0)
             {
                 result.Message = "Id de categoría inválido";
+                result.Success = false;
+                return result;
+            }
+
+            if (removeDto.ChangeUser == null)
+            {
+                result.Message = "ID no detectado. Indique quien eliminara";
+                result.Success = false;
+                return result;
+            }
+
+            if (removeDto.ChangeUser <= 0)
+            {
+                result.Message = "Id de usuario inválido";
                 result.Success = false;
                 return result;
             }

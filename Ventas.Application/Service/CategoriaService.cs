@@ -61,7 +61,7 @@ namespace Ventas.Application.Service
             {
                 var cat = this.categoriarepository.GetCategoryById(id);
                 result.Data = cat;
-                result.Message = $"Categoría obtenida exitosamente {id}";
+                result.Message = $"Categoría obtenida exitosamente. Id de usuario: {id}";
             }
             catch (CategoriaExceptions uex)
             {
@@ -72,7 +72,7 @@ namespace Ventas.Application.Service
             catch (Exception ex)
             {
                 result.Success = false;
-                result.Message = "Error obteniendo categoría";
+                result.Message = $"Error obteniendo categoría de Id: {id}";
                 this.logger.LogError($"{result.Message}", ex.ToString());
             }
 
