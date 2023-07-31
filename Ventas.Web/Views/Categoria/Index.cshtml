@@ -1,0 +1,52 @@
+﻿@model IEnumerable<Ventas.Web.Models.Categoria.Response.CategoriaResponse>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<div class="row pt-4">
+    <div class="col-9">
+        <h1>Categorias</h1>
+    </div>
+    <div class="col-2">
+        <br />
+        <a class="btn btn-primary" asp-action="Create">Nuevo Categoría</a>
+    </div>
+</div>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Descripcion)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.EsActivo)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.FechaRegistro)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Descripcion)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.EsActivo)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.FechaRegistro)
+            </td>
+            <td>
+                    @Html.ActionLink("Editar", "Edit", new {  id=item.IdCategoria  }, new { @class = "btn btn-warning" })
+                    @Html.ActionLink("Detalle", "Details", new { id=item.IdCategoria }, new { @class = "btn btn-primary" })
+                    @Html.ActionLink("Eliminar", "Delete", new { id=item.IdCategoria }, new { @class = "btn btn-danger" })
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

@@ -30,7 +30,7 @@ namespace Ventas.Application.Validations
         {
             ServiceResult result = new ServiceResult();
 
-            if (addDto.ChangeUser != addDto.ChangeUser)
+            if (addDto.ChangeUser == null)
             {
                 result.Message = "ID no detectado. Indique quién creará la categoría";
                 result.Success = false;

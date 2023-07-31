@@ -61,7 +61,7 @@ namespace Ventas.Application.Service
             {
                 var cat = this.categoriarepository.GetCategoryById(id);
                 result.Data = cat;
-                result.Message = $"Categoría obtenida exitosamente. Id de usuario: {id}";
+                result.Message = $"Categoría obtenida exitosamente. Id de categoría: {id}";
             }
             catch (CategoriaExceptions uex)
             {
