@@ -15,7 +15,7 @@ namespace Ventas.API.Controllers
             this.usuarioService = usuarioService;
         }
 
-        [HttpGet("ShowUsers")]
+        [HttpGet("GetUsers")]
         public IActionResult Get()
         {
             var result = this.usuarioService.Get();
