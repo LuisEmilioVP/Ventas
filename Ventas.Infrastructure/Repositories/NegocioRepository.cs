@@ -64,8 +64,8 @@ namespace Ventas.Infrastructure.Repositories
                 negocioToUpdate.direccion = entity.direccion;
                 negocioToUpdate.porcentajeImpuesto = entity.porcentajeImpuesto;
                 negocioToUpdate.simboloMoneda = entity.simboloMoneda;
-                negocioToUpdate.UserMod = entity.UserMod;
-                negocioToUpdate.ModifyDate = entity.ModifyDate;
+                negocioToUpdate.UserMod = 1;//entity.UserMod;
+                negocioToUpdate.ModifyDate = DateTime.Now;
 
 
                 this.context.Update(negocioToUpdate);
@@ -146,6 +146,7 @@ namespace Ventas.Infrastructure.Repositories
                     .Where(ne => !ne.Deleted)
                     .Select(neg => new NegocioModel()
                     {
+                        idNegocio = neg.idNegocio,
                         urlLogo = neg.urlLogo,
                         nombreLogo = neg.nombreLogo,
                         numeroDocumento = neg.numeroDocumento,

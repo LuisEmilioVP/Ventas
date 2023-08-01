@@ -81,6 +81,8 @@ namespace Ventas.Application.Helpers
                 return result;
             }
 
+            return result;
+
         }
 
         // Coreo, Teléfono y URL

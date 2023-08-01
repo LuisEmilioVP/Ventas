@@ -8,3 +8,8 @@ C:\proyecto\Ventas\Ventas.Application\obj\Debug\netstandard2.1\Ventas.Applicatio
 C:\proyecto\Ventas\Ventas.Application\obj\Debug\netstandard2.1\Ventas.Application.csproj.CoreCompileInputs.cache
 C:\proyecto\Ventas\Ventas.Application\obj\Debug\netstandard2.1\Ventas.Application.dll
 C:\proyecto\Ventas\Ventas.Application\obj\Debug\netstandard2.1\Ventas.Application.pdb
+C:\proyecto\Ventas\Ventas.Application\bin\Debug\netstandard2.1\Ventas.Domain.dll
+C:\proyecto\Ventas\Ventas.Application\bin\Debug\netstandard2.1\Ventas.Infrastructure.dll
+C:\proyecto\Ventas\Ventas.Application\bin\Debug\netstandard2.1\Ventas.Infrastructure.pdb
+C:\proyecto\Ventas\Ventas.Application\bin\Debug\netstandard2.1\Ventas.Domain.pdb
+C:\proyecto\Ventas\Ventas.Application\obj\Debug\netstandard2.1\Ventas.Application.csproj.CopyComplete

@@ -1,10 +1,9 @@
 ﻿
-using System;
-
 namespace Ventas.Infrastructure.Models
 {
     public class NegocioModel
     {
+        public int idNegocio { get; set; }
         public string? urlLogo { get; set; }
         public string? nombreLogo { get; set; }
         public string? numeroDocumento { get; set; }

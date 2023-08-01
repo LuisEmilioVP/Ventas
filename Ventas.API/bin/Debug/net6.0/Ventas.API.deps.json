@@ -10,7 +10,7 @@
         "dependencies": {
           "Swashbuckle.AspNetCore": "6.2.3",
           "Ventas.Application": "1.0.0",
-          "Ventas.Infrastructure": "1.0.0"
+          "Ventas.IOC": "1.0.0"
         },
         "runtime": {
           "Ventas.API.dll": {}
@@ -981,6 +981,9 @@
         }
       },
       "Ventas.Application/1.0.0": {
+        "dependencies": {
+          "Ventas.Infrastructure": "1.0.0"
+        },
         "runtime": {
           "Ventas.Application.dll": {}
         }
@@ -1001,6 +1004,14 @@
         },
         "runtime": {
           "Ventas.Infrastructure.dll": {}
+        }
+      },
+      "Ventas.IOC/1.0.0": {
+        "dependencies": {
+          "Ventas.Application": "1.0.0"
+        },
+        "runtime": {
+          "Ventas.IOC.dll": {}
         }
       }
     }
@@ -1750,6 +1761,11 @@
       "sha512": ""
     },
     "Ventas.Infrastructure/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "Ventas.IOC/1.0.0": {
       "type": "project",
       "serviceable": false,
       "sha512": ""

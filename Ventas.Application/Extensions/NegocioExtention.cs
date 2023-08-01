@@ -28,6 +28,7 @@ namespace Ventas.Application.Extensions
 
             return new Negocio()
             {
+                idNegocio = negocioUpdateDto.idNegocio,
                 urlLogo = negocioUpdateDto.urlLogo,
                 nombreLogo = negocioUpdateDto.nombreLogo,
                 numeroDocumento = negocioUpdateDto.numeroDocumento,

@@ -1,0 +1,17 @@
+C:\proyecto\Ventas\Ventas.IOC\bin\Debug\netstandard2.1\Ventas.IOC.deps.json
+C:\proyecto\Ventas\Ventas.IOC\bin\Debug\netstandard2.1\Ventas.IOC.dll
+C:\proyecto\Ventas\Ventas.IOC\bin\Debug\netstandard2.1\Ventas.IOC.pdb
+C:\proyecto\Ventas\Ventas.IOC\bin\Debug\netstandard2.1\Ventas.Application.dll
+C:\proyecto\Ventas\Ventas.IOC\bin\Debug\netstandard2.1\Ventas.Domain.dll
+C:\proyecto\Ventas\Ventas.IOC\bin\Debug\netstandard2.1\Ventas.Infrastructure.dll
+C:\proyecto\Ventas\Ventas.IOC\bin\Debug\netstandard2.1\Ventas.Application.pdb
+C:\proyecto\Ventas\Ventas.IOC\bin\Debug\netstandard2.1\Ventas.Domain.pdb
+C:\proyecto\Ventas\Ventas.IOC\bin\Debug\netstandard2.1\Ventas.Infrastructure.pdb
+C:\proyecto\Ventas\Ventas.IOC\obj\Debug\netstandard2.1\Ventas.IOC.csproj.AssemblyReference.cache
+C:\proyecto\Ventas\Ventas.IOC\obj\Debug\netstandard2.1\Ventas.IOC.GeneratedMSBuildEditorConfig.editorconfig
+C:\proyecto\Ventas\Ventas.IOC\obj\Debug\netstandard2.1\Ventas.IOC.AssemblyInfoInputs.cache
+C:\proyecto\Ventas\Ventas.IOC\obj\Debug\netstandard2.1\Ventas.IOC.AssemblyInfo.cs
+C:\proyecto\Ventas\Ventas.IOC\obj\Debug\netstandard2.1\Ventas.IOC.csproj.CoreCompileInputs.cache
+C:\proyecto\Ventas\Ventas.IOC\obj\Debug\netstandard2.1\Ventas.IOC.csproj.CopyComplete
+C:\proyecto\Ventas\Ventas.IOC\obj\Debug\netstandard2.1\Ventas.IOC.dll
+C:\proyecto\Ventas\Ventas.IOC\obj\Debug\netstandard2.1\Ventas.IOC.pdb

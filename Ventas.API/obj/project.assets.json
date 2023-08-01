@@ -1819,6 +1819,19 @@
         "runtime": {
           "bin/placeholder/Ventas.Infrastructure.dll": {}
         }
+      },
+      "Ventas.IOC/1.0.0": {
+        "type": "project",
+        "framework": ".NETStandard,Version=v2.1",
+        "dependencies": {
+          "Ventas.Application": "1.0.0"
+        },
+        "compile": {
+          "bin/placeholder/Ventas.IOC.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/Ventas.IOC.dll": {}
+        }
       }
     }
   },
@@ -6136,13 +6149,18 @@
       "type": "project",
       "path": "../Ventas.Infrastructure/Ventas.Infrastructure.csproj",
       "msbuildProject": "../Ventas.Infrastructure/Ventas.Infrastructure.csproj"
+    },
+    "Ventas.IOC/1.0.0": {
+      "type": "project",
+      "path": "../Ventas.IOC/Ventas.IOC.csproj",
+      "msbuildProject": "../Ventas.IOC/Ventas.IOC.csproj"
     }
   },
   "projectFileDependencyGroups": {
     "net6.0": [
       "Swashbuckle.AspNetCore >= 6.2.3",
       "Ventas.Application >= 1.0.0",
-      "Ventas.Infrastructure >= 1.0.0"
+      "Ventas.IOC >= 1.0.0"
     ]
   },
   "packageFolders": {
@@ -6175,8 +6193,8 @@
             "C:\\proyecto\\Ventas\\Ventas.Application\\Ventas.Application.csproj": {
               "projectPath": "C:\\proyecto\\Ventas\\Ventas.Application\\Ventas.Application.csproj"
             },
-            "C:\\proyecto\\Ventas\\Ventas.Infrastructure\\Ventas.Infrastructure.csproj": {
-              "projectPath": "C:\\proyecto\\Ventas\\Ventas.Infrastructure\\Ventas.Infrastructure.csproj"
+            "C:\\proyecto\\Ventas\\Ventas.IOC\\Ventas.IOC.csproj": {
+              "projectPath": "C:\\proyecto\\Ventas\\Ventas.IOC\\Ventas.IOC.csproj"
             }
           }
         }

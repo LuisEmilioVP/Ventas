@@ -1,0 +1,73 @@
+﻿@model Ventas.Infrastructure.Models.NegocioModel
+
+@{
+    ViewData["Title"] = "Edit";
+}
+
+<h1>Edit</h1>
+
+<h4>NegocioModel</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Edit">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="idNegocio" class="control-label"></label>
+                <input asp-for="idNegocio" class="form-control" />
+                <span asp-validation-for="idNegocio" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="urlLogo" class="control-label"></label>
+                <input asp-for="urlLogo" class="form-control" />
+                <span asp-validation-for="urlLogo" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="nombreLogo" class="control-label"></label>
+                <input asp-for="nombreLogo" class="form-control" />
+                <span asp-validation-for="nombreLogo" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="numeroDocumento" class="control-label"></label>
+                <input asp-for="numeroDocumento" class="form-control" />
+                <span asp-validation-for="numeroDocumento" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="nombre" class="control-label"></label>
+                <input asp-for="nombre" class="form-control" />
+                <span asp-validation-for="nombre" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="correo" class="control-label"></label>
+                <input asp-for="correo" class="form-control" />
+                <span asp-validation-for="correo" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="direccion" class="control-label"></label>
+                <input asp-for="direccion" class="form-control" />
+                <span asp-validation-for="direccion" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="porcentajeImpuesto" class="control-label"></label>
+                <input asp-for="porcentajeImpuesto" class="form-control" />
+                <span asp-validation-for="porcentajeImpuesto" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="simboloMoneda" class="control-label"></label>
+                <input asp-for="simboloMoneda" class="form-control" />
+                <span asp-validation-for="simboloMoneda" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Save" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

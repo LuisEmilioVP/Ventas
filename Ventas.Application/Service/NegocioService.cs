@@ -117,7 +117,28 @@ namespace Ventas.Application.Service
 
         public ServiceResult Update(NegocioUpdateDto model)
         {
-            throw new NotImplementedException();
+            ServiceResult result = NegocioValidationHelper.ValidateNegocioData(model);
+
+            if (!result.Success)
+            {
+                return result;
+            }
+
+            try
+            {
+                var Negocio = model.ConvertDtoUpdateToEntity();
+                this.NegocioRepository.Update(Negocio);
+
+                result.Message = "Negocio actualizada correctamente";
+            }
+            catch (Exception ex)
+            {
+                result.Success = false;
+                result.Message = "Error actualizando la venta";
+                this.logger.LogError($"{result.Message}", ex.ToString());
+            }
+
+            return result;
         }
     }
 }

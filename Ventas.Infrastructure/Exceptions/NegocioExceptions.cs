@@ -2,7 +2,7 @@
 
 namespace Ventas.Infrastructure.Exceptions
 {
-    /* Excepción de Categoria duplicado en la base de datos: */
+    /* Excepción de Negocio duplicado en la base de datos: */
     public class NegocioExceptions : Exception
     {
         public NegocioExceptions(string message) : base(message)
@@ -10,7 +10,7 @@ namespace Ventas.Infrastructure.Exceptions
         }
     }
 
-    /* Excepción de Categoria no encontrado en la base de datos */
+    /* Excepción de Negocio no encontrado en la base de datos */
     public class NegocioNotFoundException : Exception
     {
         public NegocioNotFoundException(string message) : base(message)

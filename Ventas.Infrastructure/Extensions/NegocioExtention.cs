@@ -9,6 +9,7 @@ namespace Ventas.Infrastructure.Extensions
         {
             NegocioModel negocioModel = new NegocioModel()
             {
+                idNegocio = negocio.idNegocio,
                 urlLogo = negocio.urlLogo,
                 nombreLogo = negocio.nombreLogo,
                 numeroDocumento = negocio.numeroDocumento,
