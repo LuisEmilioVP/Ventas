@@ -1,17 +1,17 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Text;
 using Ventas.Domain.Entities;
 using Ventas.Domain.Repository;
-
+using Ventas.Infrastructure.Core;
+using Ventas.Infrastructure.Models;
 
 namespace Ventas.Infrastructure.Interfaces
 {
-    public interface IVentaRepository : IBaseRepository<Venta>
+    public  interface IVentaRepository : IBaseRepository<Venta>
     {
-        dynamic GetAllVenta();
-        List<Venta> GetAllVentas();
+        List<VentaModels> GetAllVenta();
+        VentaModels GetVentaById(int id);
 
-        List<Venta> GetVentaById(int idVenta);
-        void Update(object venta);
     }
 }

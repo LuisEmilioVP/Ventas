@@ -1,9 +1,10 @@
 ﻿
+
 namespace Ventas.Application.Core
 {
     public class ServiceResult
     {
-        public  ServiceResult()
+        public ServiceResult()
         {
             this.Success = true;
         }

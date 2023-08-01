@@ -1,8 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq.Expressions;
-using System.Linq;
 using Microsoft.EntityFrameworkCore;
+using System.Linq;
+using System.Linq.Expressions;
 using Ventas.Domain.Repository;
 using Ventas.Infrastructure.Context;
 
@@ -20,39 +20,47 @@ namespace Ventas.Infrastructure.Core
             this.entities = this.ventas.Set<TEntity>();
         }
 
-        public void Add(TEntity entity)
-        {
-            this.entities.Add(entity);
-        }
-
-        public void Add(TEntity[] entities)
-        {
-            this.entities.AddRange(entities);
-        }
-
-        public bool Exists(Expression<Func<TEntity, bool>> filter)
+        public virtual bool Exists(Expression<Func<TEntity, bool>> filter)
         {
             return this.entities.Any(filter);
         }
 
-        public IEnumerable<TEntity> GetEntities()
+        public virtual IEnumerable<TEntity> GetEntities()
         {
             return this.entities.ToList();
         }
-
-        public TEntity GetEntity(int entityid)
+        public virtual TEntity GetEntity(int id)
         {
-            return this.entities.Find();
+            return this.entities.Find(id);
         }
-
-        public void Remove(TEntity entity)
+        public virtual void Remove(TEntity entity)
         {
-           this.entities.Remove(entity);
-        }
+            this.entities.Remove(entity);
 
-        public void Update(TEntity entity)
+        }
+        public virtual void Remove(TEntity[] entities)
         {
             this.entities.RemoveRange(entities);
+        }
+        public virtual void Add(TEntity entity)
+        {
+            this.entities.Add(entity);
+        }
+        public virtual void Add(TEntity[] entities)
+        {
+            this.entities.AddRange(entities);
+        }
+        public virtual void Update(TEntity entity)
+        {
+            this.entities.Update(entity);
+        }
+        public virtual void Update(TEntity[] entities)
+        {
+            this.entities.UpdateRange(entities);
+        }
+        public virtual void SaveChanges()
+        {
+            this.ventas.SaveChanges();
         }
     }
 }

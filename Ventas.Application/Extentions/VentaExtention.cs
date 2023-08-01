@@ -1,41 +1,44 @@
-﻿using Ventas.Application.Dtos.Venta;
+﻿
+using Ventas.Application.Dto.Venta;
 using Ventas.Domain.Entities;
 
-namespace Ventas.Application.Extensions
+namespace Ventas.Application.Extentions
 {
-    public static class VentaExtension
+    public static class VentaExtention
     {
-        public static Venta ConvertDtoToAddEntity(this VentaAddDto ventaAddDto)
+        public static Venta ConvertDtoAddToEntity(this VentaAddDto VentaAddDto)
         {
             return new Venta()
             {
-                NumeroVenta = ventaAddDto.NumeroVenta,
-                IdUsuario = ventaAddDto.IdUsuario,
-                DocumentoCliente = ventaAddDto.DocumentoCliente,
-                NombreCliente = ventaAddDto.NombreCliente,
-                SubTotal = ventaAddDto.SubTotal,
-                ImpuestoTotal = ventaAddDto.ImpuestoTotal,
-                Total = ventaAddDto.Total,
-                
-              
+                NumeroVenta = VentaAddDto.NumeroVenta,
+                IdUsuario = VentaAddDto.IdUsuario,
+                DocumentoCliente = VentaAddDto.DocumentoCliente,
+                NombreCliente = VentaAddDto.NombreCliente,
+                SubTotal = VentaAddDto.SubTotal,
+                ImpuestoTotal = VentaAddDto.ImpuestoTotal,
+                Total = VentaAddDto.Total,
+
             };
         }
 
-        public static Venta ConvertDtoToUpdateEntity(this VentaUpdateDto ventaUpdateDto)
+        public static Venta ConvertDtoUpdateToEntity(this VentaUpdateDto VentaUpdateDto)
         {
             return new Venta()
             {
-                IdVenta = ventaUpdateDto.IdUVenta,
-                NumeroVenta = ventaUpdateDto.NumeroVenta,
-                IdUsuario = ventaUpdateDto.IdUsuario,
-                DocumentoCliente = ventaUpdateDto.DocumentoCliente,
-                NombreCliente = ventaUpdateDto.NombreCliente,
-                SubTotal = ventaUpdateDto.SubTotal,
-                ImpuestoTotal = ventaUpdateDto.ImpuestoTotal,
-                Total = ventaUpdateDto.Total,
-              
             
+                NumeroVenta = VentaUpdateDto.NumeroVenta,
+                IdUsuario = VentaUpdateDto.IdUsuario,
+                DocumentoCliente = VentaUpdateDto.DocumentoCliente,
+                NombreCliente = VentaUpdateDto.NombreCliente,
+                SubTotal = VentaUpdateDto.SubTotal,
+                ImpuestoTotal = VentaUpdateDto.ImpuestoTotal,
+                Total = VentaUpdateDto.Total,
+
+
             };
         }
+
+
+
     }
 }

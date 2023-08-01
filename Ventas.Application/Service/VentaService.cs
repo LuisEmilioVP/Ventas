@@ -2,9 +2,9 @@
 using Microsoft.Extensions.Logging;
 using Ventas.Application.Contract;
 using Ventas.Application.Core;
-using Ventas.Application.Dtos.Venta;
-using Ventas.Application.Extensions;
-using Ventas.Application.Helpers;
+using Ventas.Application.Dto.Venta;
+using Ventas.Application.Extentions;
+using Ventas.Application.Validations;
 using Ventas.Domain.Entities;
 using Ventas.Infrastructure.Interfaces;
 
@@ -12,30 +12,30 @@ namespace Ventas.Application.Service
 {
     public class VentaService : IVentaService
     {
-        private readonly IVentaRepository ventaRepository;
+        private readonly IVentaRepository VentaRepository;
         private readonly ILogger<VentaService> logger;
 
-        public VentaService(IVentaRepository ventaRepository,
-                            ILogger<VentaService> logger)
+        public VentaService(IVentaRepository VentaRepository, 
+                                     ILogger<VentaService> logger)
         {
-            this.ventaRepository = ventaRepository;
+            this.VentaRepository = VentaRepository;
             this.logger = logger;
         }
 
+        
         public ServiceResult Get()
         {
-            ServiceResult result = new ServiceResult();
-
+           ServiceResult result = new ServiceResult();
             try
             {
-                var ventas = this.ventaRepository.GetAllVenta();
-                result.Data = ventas;
-                result.Message = "Ventas obtenidas exitosamente";
+                var Vent = this.VentaRepository.GetAllVenta();
+                result.Data = Vent;
+                result.Message = "Ventas obtenidos exitosamente";
             }
-            catch (Exception ex)
+            catch(Exception ex)
             {
                 result.Success = false;
-                result.Message = "Error obteniendo las ventas";
+                result.Message = "Error al tener al Ventas";
                 this.logger.LogError($"{result.Message}", ex.ToString());
             }
 
@@ -48,24 +48,23 @@ namespace Ventas.Application.Service
 
             try
             {
-                var venta = this.ventaRepository.GetVentaById(id);
-                result.Data = venta;
-                result.Message = "Venta obtenida exitosamente";
+                var Vent = this.VentaRepository.GetVentaById(id);
+                result.Data = Vent;
+                result.Message = "Venta obtenido exitosamente";
             }
-            catch (Exception ex)
+            catch(Exception ex)
             {
                 result.Success = false;
-                result.Message = "Error al obtener la venta";
+                result.Message = "Error al tener al Suplidores";
                 this.logger.LogError($"{result.Message}", ex.ToString());
             }
-
             return result;
         }
 
         public ServiceResult Save(VentaAddDto model)
         {
-            ServiceResult result = VentaValidationHelper.ValidateVentaData(model);
-
+            ServiceResult result = VentaValidations.ValidateVenta(model);
+          
             if (!result.Success)
             {
                 return result;
@@ -73,24 +72,25 @@ namespace Ventas.Application.Service
 
             try
             {
-                var venta = model.ConvertDtoToAddEntity();
-                this.ventaRepository.Add(venta);
+                var Venta = model.ConvertDtoAddToEntity();
+                this.VentaRepository.Add(Venta);
 
-                result.Message = "Venta agregada correctamente";
+                result.Message = "Venta agregado satisfactoriamente";
             }
             catch (Exception ex)
             {
                 result.Success = false;
-                result.Message = "Error guardando la venta";
+                result.Message = "Error al guardar el Venta";
                 this.logger.LogError($"{result.Message}", ex.ToString());
             }
-
             return result;
+
+
         }
 
         public ServiceResult Update(VentaUpdateDto model)
         {
-            ServiceResult result = VentaValidationHelper.ValidateVentaData(model);
+            ServiceResult result = VentaValidations.ValidateVenta(model);
 
             if (!result.Success)
             {
@@ -99,46 +99,50 @@ namespace Ventas.Application.Service
 
             try
             {
-                var venta = model.ConvertDtoToUpdateEntity();
-                this.ventaRepository.Update(venta);
+                var Venta = model.ConvertDtoUpdateToEntity();
+                this.VentaRepository.Update(Venta);
 
-                result.Message = "Venta actualizada correctamente";
+                result.Message = "El Venta ha sido actualizado satisfactoriamente";
             }
             catch (Exception ex)
             {
                 result.Success = false;
-                result.Message = "Error actualizando la venta";
+                result.Message = "Ocurrio un error al actualizar el Venta";
                 this.logger.LogError($"{result.Message}", ex.ToString());
             }
 
             return result;
         }
 
-        public ServiceResult Remove(VentaRemoveDto model)
+        public ServiceResult Delete(VentaRemoveDto model)
         {
             ServiceResult result = new ServiceResult();
 
             try
             {
-                this.ventaRepository.Remove(new Venta()
+                this.VentaRepository.Remove(new Venta()
                 {
+
                     IdVenta = model.IdVenta,
                     UserDeleted = model.ChangeUser,
                     DeletedDate = model.ChangeDate,
                     Deleted = model.Deleted
-                });
+            });
 
-                result.Message = "Venta eliminada correctamente";
+                result.Message = "Venta ha sido eliminado satisfactoriamente";
             }
             catch (Exception ex)
             {
                 result.Success = false;
-                result.Message = "Error al intentar eliminar la venta";
+                result.Message = "Ocurrio un error al eliminar el Venta";
                 this.logger.LogError($"{result.Message}", ex.ToString());
             }
 
             return result;
         }
 
+ 
     }
+
+    
 }

@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Proyecto1\\Ventas\\Ventas.Domain\\Ventas.Domain.csproj": {}
+    "C:\\Users\\Wang Wu\\Pictures\\THANS GOOD\\Ventas\\Ventas.Domain\\Ventas.Domain.csproj": {}
   },
   "projects": {
-    "C:\\Proyecto1\\Ventas\\Ventas.Domain\\Ventas.Domain.csproj": {
+    "C:\\Users\\Wang Wu\\Pictures\\THANS GOOD\\Ventas\\Ventas.Domain\\Ventas.Domain.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Proyecto1\\Ventas\\Ventas.Domain\\Ventas.Domain.csproj",
+        "projectUniqueName": "C:\\Users\\Wang Wu\\Pictures\\THANS GOOD\\Ventas\\Ventas.Domain\\Ventas.Domain.csproj",
         "projectName": "Ventas.Domain",
-        "projectPath": "C:\\Proyecto1\\Ventas\\Ventas.Domain\\Ventas.Domain.csproj",
+        "projectPath": "C:\\Users\\Wang Wu\\Pictures\\THANS GOOD\\Ventas\\Ventas.Domain\\Ventas.Domain.csproj",
         "packagesPath": "C:\\Users\\Wang Wu\\.nuget\\packages\\",
-        "outputPath": "C:\\Proyecto1\\Ventas\\Ventas.Domain\\obj\\",
+        "outputPath": "C:\\Users\\Wang Wu\\Pictures\\THANS GOOD\\Ventas\\Ventas.Domain\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\Wang Wu\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -40,10 +40,6 @@
         "netstandard2.1": {
           "targetAlias": "netstandard2.1",
           "dependencies": {
-            "Microsoft.EntityFrameworkCore.SqlServer": {
-              "target": "Package",
-              "version": "[3.1.6, )"
-            },
             "System.ComponentModel.Annotations": {
               "target": "Package",
               "version": "[5.0.0, )"

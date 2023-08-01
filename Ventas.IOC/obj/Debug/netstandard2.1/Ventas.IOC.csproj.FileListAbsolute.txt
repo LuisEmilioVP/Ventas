@@ -1,5 +1,34 @@
-C:\Proyecto1\Ventas\Ventas.IOC\obj\Debug\netstandard2.1\Ventas.IOC.csproj.AssemblyReference.cache
-C:\Proyecto1\Ventas\Ventas.IOC\obj\Debug\netstandard2.1\Ventas.IOC.GeneratedMSBuildEditorConfig.editorconfig
-C:\Proyecto1\Ventas\Ventas.IOC\obj\Debug\netstandard2.1\Ventas.IOC.AssemblyInfoInputs.cache
-C:\Proyecto1\Ventas\Ventas.IOC\obj\Debug\netstandard2.1\Ventas.IOC.AssemblyInfo.cs
-C:\Proyecto1\Ventas\Ventas.IOC\obj\Debug\netstandard2.1\Ventas.IOC.csproj.CoreCompileInputs.cache
+C:\Proyecto\Ventas\Ventas.IOC\bin\Debug\netstandard2.1\Ventas.IOC.deps.json
+C:\Proyecto\Ventas\Ventas.IOC\bin\Debug\netstandard2.1\Ventas.IOC.dll
+C:\Proyecto\Ventas\Ventas.IOC\bin\Debug\netstandard2.1\Ventas.IOC.pdb
+C:\Proyecto\Ventas\Ventas.IOC\bin\Debug\netstandard2.1\Ventas.Application.dll
+C:\Proyecto\Ventas\Ventas.IOC\bin\Debug\netstandard2.1\Ventas.Domain.dll
+C:\Proyecto\Ventas\Ventas.IOC\bin\Debug\netstandard2.1\Ventas.Infrastructure.dll
+C:\Proyecto\Ventas\Ventas.IOC\bin\Debug\netstandard2.1\Ventas.Application.pdb
+C:\Proyecto\Ventas\Ventas.IOC\bin\Debug\netstandard2.1\Ventas.Domain.pdb
+C:\Proyecto\Ventas\Ventas.IOC\bin\Debug\netstandard2.1\Ventas.Infrastructure.pdb
+C:\Proyecto\Ventas\Ventas.IOC\obj\Debug\netstandard2.1\Ventas.IOC.csproj.AssemblyReference.cache
+C:\Proyecto\Ventas\Ventas.IOC\obj\Debug\netstandard2.1\Ventas.IOC.GeneratedMSBuildEditorConfig.editorconfig
+C:\Proyecto\Ventas\Ventas.IOC\obj\Debug\netstandard2.1\Ventas.IOC.AssemblyInfoInputs.cache
+C:\Proyecto\Ventas\Ventas.IOC\obj\Debug\netstandard2.1\Ventas.IOC.AssemblyInfo.cs
+C:\Proyecto\Ventas\Ventas.IOC\obj\Debug\netstandard2.1\Ventas.IOC.csproj.CoreCompileInputs.cache
+C:\Proyecto\Ventas\Ventas.IOC\obj\Debug\netstandard2.1\Ventas.IOC.csproj.CopyComplete
+C:\Proyecto\Ventas\Ventas.IOC\obj\Debug\netstandard2.1\Ventas.IOC.dll
+C:\Proyecto\Ventas\Ventas.IOC\obj\Debug\netstandard2.1\Ventas.IOC.pdb
+C:\Users\Wang Wu\Pictures\THANS GOOD\Ventas\Ventas.IOC\bin\Debug\netstandard2.1\Ventas.IOC.deps.json
+C:\Users\Wang Wu\Pictures\THANS GOOD\Ventas\Ventas.IOC\bin\Debug\netstandard2.1\Ventas.IOC.dll
+C:\Users\Wang Wu\Pictures\THANS GOOD\Ventas\Ventas.IOC\bin\Debug\netstandard2.1\Ventas.IOC.pdb
+C:\Users\Wang Wu\Pictures\THANS GOOD\Ventas\Ventas.IOC\bin\Debug\netstandard2.1\Ventas.Application.dll
+C:\Users\Wang Wu\Pictures\THANS GOOD\Ventas\Ventas.IOC\bin\Debug\netstandard2.1\Ventas.Domain.dll
+C:\Users\Wang Wu\Pictures\THANS GOOD\Ventas\Ventas.IOC\bin\Debug\netstandard2.1\Ventas.Infrastructure.dll
+C:\Users\Wang Wu\Pictures\THANS GOOD\Ventas\Ventas.IOC\bin\Debug\netstandard2.1\Ventas.Application.pdb
+C:\Users\Wang Wu\Pictures\THANS GOOD\Ventas\Ventas.IOC\bin\Debug\netstandard2.1\Ventas.Domain.pdb
+C:\Users\Wang Wu\Pictures\THANS GOOD\Ventas\Ventas.IOC\bin\Debug\netstandard2.1\Ventas.Infrastructure.pdb
+C:\Users\Wang Wu\Pictures\THANS GOOD\Ventas\Ventas.IOC\obj\Debug\netstandard2.1\Ventas.IOC.csproj.AssemblyReference.cache
+C:\Users\Wang Wu\Pictures\THANS GOOD\Ventas\Ventas.IOC\obj\Debug\netstandard2.1\Ventas.IOC.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Wang Wu\Pictures\THANS GOOD\Ventas\Ventas.IOC\obj\Debug\netstandard2.1\Ventas.IOC.AssemblyInfoInputs.cache
+C:\Users\Wang Wu\Pictures\THANS GOOD\Ventas\Ventas.IOC\obj\Debug\netstandard2.1\Ventas.IOC.AssemblyInfo.cs
+C:\Users\Wang Wu\Pictures\THANS GOOD\Ventas\Ventas.IOC\obj\Debug\netstandard2.1\Ventas.IOC.csproj.CoreCompileInputs.cache
+C:\Users\Wang Wu\Pictures\THANS GOOD\Ventas\Ventas.IOC\obj\Debug\netstandard2.1\Ventas.IOC.csproj.CopyComplete
+C:\Users\Wang Wu\Pictures\THANS GOOD\Ventas\Ventas.IOC\obj\Debug\netstandard2.1\Ventas.IOC.dll
+C:\Users\Wang Wu\Pictures\THANS GOOD\Ventas\Ventas.IOC\obj\Debug\netstandard2.1\Ventas.IOC.pdb

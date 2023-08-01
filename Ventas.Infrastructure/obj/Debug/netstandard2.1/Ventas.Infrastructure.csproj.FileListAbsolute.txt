@@ -1,5 +1,26 @@
-C:\Proyecto1\Ventas\Ventas.Infrastructure\obj\Debug\netstandard2.1\Ventas.Infrastructure.csproj.AssemblyReference.cache
-C:\Proyecto1\Ventas\Ventas.Infrastructure\obj\Debug\netstandard2.1\Ventas.Infrastructure.GeneratedMSBuildEditorConfig.editorconfig
-C:\Proyecto1\Ventas\Ventas.Infrastructure\obj\Debug\netstandard2.1\Ventas.Infrastructure.AssemblyInfoInputs.cache
-C:\Proyecto1\Ventas\Ventas.Infrastructure\obj\Debug\netstandard2.1\Ventas.Infrastructure.AssemblyInfo.cs
-C:\Proyecto1\Ventas\Ventas.Infrastructure\obj\Debug\netstandard2.1\Ventas.Infrastructure.csproj.CoreCompileInputs.cache
+C:\Proyecto\Ventas\Ventas.Infrastructure\bin\Debug\netstandard2.1\Ventas.Infrastructure.deps.json
+C:\Proyecto\Ventas\Ventas.Infrastructure\bin\Debug\netstandard2.1\Ventas.Infrastructure.dll
+C:\Proyecto\Ventas\Ventas.Infrastructure\bin\Debug\netstandard2.1\Ventas.Infrastructure.pdb
+C:\Proyecto\Ventas\Ventas.Infrastructure\bin\Debug\netstandard2.1\Ventas.Domain.dll
+C:\Proyecto\Ventas\Ventas.Infrastructure\bin\Debug\netstandard2.1\Ventas.Domain.pdb
+C:\Proyecto\Ventas\Ventas.Infrastructure\obj\Debug\netstandard2.1\Ventas.Infrastructure.csproj.AssemblyReference.cache
+C:\Proyecto\Ventas\Ventas.Infrastructure\obj\Debug\netstandard2.1\Ventas.Infrastructure.GeneratedMSBuildEditorConfig.editorconfig
+C:\Proyecto\Ventas\Ventas.Infrastructure\obj\Debug\netstandard2.1\Ventas.Infrastructure.AssemblyInfoInputs.cache
+C:\Proyecto\Ventas\Ventas.Infrastructure\obj\Debug\netstandard2.1\Ventas.Infrastructure.AssemblyInfo.cs
+C:\Proyecto\Ventas\Ventas.Infrastructure\obj\Debug\netstandard2.1\Ventas.Infrastructure.csproj.CoreCompileInputs.cache
+C:\Proyecto\Ventas\Ventas.Infrastructure\obj\Debug\netstandard2.1\Ventas.Infrastructure.csproj.CopyComplete
+C:\Proyecto\Ventas\Ventas.Infrastructure\obj\Debug\netstandard2.1\Ventas.Infrastructure.dll
+C:\Proyecto\Ventas\Ventas.Infrastructure\obj\Debug\netstandard2.1\Ventas.Infrastructure.pdb
+C:\Users\Wang Wu\Pictures\THANS GOOD\Ventas\Ventas.Infrastructure\bin\Debug\netstandard2.1\Ventas.Infrastructure.deps.json
+C:\Users\Wang Wu\Pictures\THANS GOOD\Ventas\Ventas.Infrastructure\bin\Debug\netstandard2.1\Ventas.Infrastructure.dll
+C:\Users\Wang Wu\Pictures\THANS GOOD\Ventas\Ventas.Infrastructure\bin\Debug\netstandard2.1\Ventas.Infrastructure.pdb
+C:\Users\Wang Wu\Pictures\THANS GOOD\Ventas\Ventas.Infrastructure\bin\Debug\netstandard2.1\Ventas.Domain.dll
+C:\Users\Wang Wu\Pictures\THANS GOOD\Ventas\Ventas.Infrastructure\bin\Debug\netstandard2.1\Ventas.Domain.pdb
+C:\Users\Wang Wu\Pictures\THANS GOOD\Ventas\Ventas.Infrastructure\obj\Debug\netstandard2.1\Ventas.Infrastructure.csproj.AssemblyReference.cache
+C:\Users\Wang Wu\Pictures\THANS GOOD\Ventas\Ventas.Infrastructure\obj\Debug\netstandard2.1\Ventas.Infrastructure.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Wang Wu\Pictures\THANS GOOD\Ventas\Ventas.Infrastructure\obj\Debug\netstandard2.1\Ventas.Infrastructure.AssemblyInfoInputs.cache
+C:\Users\Wang Wu\Pictures\THANS GOOD\Ventas\Ventas.Infrastructure\obj\Debug\netstandard2.1\Ventas.Infrastructure.AssemblyInfo.cs
+C:\Users\Wang Wu\Pictures\THANS GOOD\Ventas\Ventas.Infrastructure\obj\Debug\netstandard2.1\Ventas.Infrastructure.csproj.CoreCompileInputs.cache
+C:\Users\Wang Wu\Pictures\THANS GOOD\Ventas\Ventas.Infrastructure\obj\Debug\netstandard2.1\Ventas.Infrastructure.csproj.CopyComplete
+C:\Users\Wang Wu\Pictures\THANS GOOD\Ventas\Ventas.Infrastructure\obj\Debug\netstandard2.1\Ventas.Infrastructure.dll
+C:\Users\Wang Wu\Pictures\THANS GOOD\Ventas\Ventas.Infrastructure\obj\Debug\netstandard2.1\Ventas.Infrastructure.pdb

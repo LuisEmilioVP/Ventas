@@ -1,12 +1,13 @@
 ﻿
+
 namespace Ventas.Application.Core
 {
-    public abstract class BaseService<TModelAdd, TModelMod, TModelRem>
+    public abstract class BaseService<ModelAdd, ModelMod, ModelRem>
     {
         public abstract ServiceResult Get();
-        public abstract ServiceResult GetById(int id);
-        public abstract ServiceResult Save(TModelAdd model);
-        public abstract ServiceResult Update(TModelMod model);
-        public abstract ServiceResult Remove(TModelRem model);
+        public abstract ServiceResult GetBuId(int id);
+        public abstract ServiceResult Save(ModelAdd model);
+        public abstract ServiceResult Delete(ModelMod model);
+        public abstract ServiceResult Update(ModelRem model);
     }
 }
