@@ -2,8 +2,8 @@
 using Ventas.Application.Contract;
 using Ventas.Infrastructure.Models;
 using Ventas.Web.Controllers.Extentions;
+using Ventas.Web.Models.Usuario;
 using Ventas.Web.Models.Usuario.Request;
-using Ventas.Web.Models.Usuario.Response;
 
 namespace Ventas.Web.Controllers
 {
@@ -29,7 +29,7 @@ namespace Ventas.Web.Controllers
                 var listUser = result.Data as List<UsuarioModels>
                     ?? throw new Exception("No se encontraron usuarios");
 
-                List<UsuarioResponse> usuarioResponses = listUser
+                List<BaseUsuarioModel> usuarioResponses = listUser
                     .Select(use => use.ConverterModelTousuarioResponse()).ToList();
 
                 return View(usuarioResponses);
@@ -54,7 +54,7 @@ namespace Ventas.Web.Controllers
                 var listUserById = result.Data as UsuarioModels
                     ?? throw new Exception("El usuario no existe");
 
-                UsuarioResponse usuarioResponse = listUserById.ConverterModelTousuarioResponse();
+                BaseUsuarioModel usuarioResponse = listUserById.ConverterModelTousuarioResponse();
 
                 return View(usuarioResponse);
             }
@@ -140,7 +140,7 @@ namespace Ventas.Web.Controllers
         // GET: UsuarioController/Delete/5
         public ActionResult Delete(int id)
         {
-            UsuarioRemoveRequest usuarioRemove = new UsuarioRemoveRequest(id);
+            UsuarioRemoveRequest usuarioRemove = new(id);
 
             return View(usuarioRemove);
         }

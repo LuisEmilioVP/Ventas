@@ -9,6 +9,6 @@ namespace Ventas.Web.APIs.ApiServices.Interfaces
                                                       UsuarioAddRequest,
                                                       UsuarioUpdateRequest,
                                                       UsuarioRemoveRequest>
-    {                               
+    {                         
     }
 }

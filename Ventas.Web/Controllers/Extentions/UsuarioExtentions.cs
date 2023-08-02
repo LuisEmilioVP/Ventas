@@ -1,15 +1,16 @@
 ﻿using Ventas.Application.Dtos.Usuario;
 using Ventas.Infrastructure.Models;
+using Ventas.Web.Models.Usuario;
 using Ventas.Web.Models.Usuario.Request;
-using Ventas.Web.Models.Usuario.Response;
 
 namespace Ventas.Web.Controllers.Extentions
 {
     public static class UsuarioExtentions
     {
-        public static UsuarioResponse ConverterModelTousuarioResponse(this UsuarioModels usuario)
+        //* Para Api y sin Api
+        public static BaseUsuarioModel ConverterModelTousuarioResponse(this UsuarioModels usuario)
         {
-            return new UsuarioResponse
+            return new BaseUsuarioModel
             {
                 IdUsuario = usuario.IdUsuario,
                 Nombre = usuario.Nombre,
@@ -22,22 +23,7 @@ namespace Ventas.Web.Controllers.Extentions
                 FechaRegistro = usuario.FechaRegistro
             };
         }
-
-        public static UsuarioAddDto ConvertAddRequestToAddDto (this UsuarioAddRequest usuarioAdd)
-        {
-            return new UsuarioAddDto()
-            {
-                Nombre = usuarioAdd.Nombre,
-                Correo = usuarioAdd.Correo,
-                Telefono = usuarioAdd.Telefono,
-                Clave = usuarioAdd.Clave,
-                UrlFoto = usuarioAdd.UrlFoto,
-                NombreFoto = usuarioAdd.NombreFoto,
-                ChangeUser = usuarioAdd.ChangeUser,
-                ChangeDate = usuarioAdd.ChangeDate
-            };
-        }
-
+        //* Sin Api
         public static UsuarioUpdateRequest ConvertUsuarioToUpdateRequest (this UsuarioModels usuario)
         {
             return new UsuarioUpdateRequest()
@@ -51,7 +37,36 @@ namespace Ventas.Web.Controllers.Extentions
                 NombreFoto = usuario.NombreFoto
             };
         }
-
+        //* Con Api
+        public static UsuarioUpdateRequest ConvertUsuarioToUpdateRequest(this BaseUsuarioModel usuario)
+        {
+            return new UsuarioUpdateRequest()
+            {
+                IdUsuario = usuario.IdUsuario,
+                Nombre = usuario.Nombre,
+                Correo = usuario.Correo,
+                Telefono = usuario.Telefono,
+                Clave = usuario.Clave,
+                UrlFoto = usuario.UrlFoto,
+                NombreFoto = usuario.NombreFoto
+            };
+        }
+        //* Para Api y sin Api
+        public static UsuarioAddDto ConvertAddRequestToAddDto(this UsuarioAddRequest usuarioAdd)
+        {
+            return new UsuarioAddDto()
+            {
+                Nombre = usuarioAdd.Nombre,
+                Correo = usuarioAdd.Correo,
+                Telefono = usuarioAdd.Telefono,
+                Clave = usuarioAdd.Clave,
+                UrlFoto = usuarioAdd.UrlFoto,
+                NombreFoto = usuarioAdd.NombreFoto,
+                ChangeUser = usuarioAdd.ChangeUser,
+                ChangeDate = usuarioAdd.ChangeDate
+            };
+        }
+        //* Para Api y sin Api
         public static UsuarioUpdateDto ConvertUpdateRequestToUpdateDto (this UsuarioUpdateRequest usuarioUpdate)
         {
             return new UsuarioUpdateDto()
@@ -67,7 +82,7 @@ namespace Ventas.Web.Controllers.Extentions
                 ChangeDate = usuarioUpdate.ChangeDate
             };
         }
-
+        //* Para Api y sin Api
         public static UsuarioRevoveDto ConvertRemoveDtoToRemoveRequest (this UsuarioRemoveRequest usuarioRemove)
         {
             return new UsuarioRevoveDto()

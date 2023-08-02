@@ -1,15 +1,15 @@
 ﻿using Ventas.Application.Dtos.Categoria;
 using Ventas.Infrastructure.Models;
+using Ventas.Web.Models.Categoria;
 using Ventas.Web.Models.Categoria.Request;
-using Ventas.Web.Models.Categoria.Response;
 
 namespace Ventas.Web.Controllers.Extentions
 {
     public static class CategoriaExtentions
     {
-        public static CategoriaResponse ConverterModelToCategoriaResponse(this CategoriaModels categoria)
+        public static BaseCategoriaModel ConverterModelToCategoriaResponse(this CategoriaModels categoria)
         {
-            return new CategoriaResponse
+            return new BaseCategoriaModel
             {
                 IdCategoria = categoria.IdCategoria,
                 Descripcion = categoria.Descripcion,

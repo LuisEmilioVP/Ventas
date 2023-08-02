@@ -26,7 +26,7 @@ namespace Ventas.API.Controllers
             return Ok(result);
         }
 
-        [HttpGet("ShowUserById")]
+        [HttpGet("GetUserById")]
         public IActionResult Get(int id)
         {
             var result = this.usuarioService.GetById(id);
@@ -48,7 +48,7 @@ namespace Ventas.API.Controllers
             return Ok(result);
         }
 
-        [HttpPut("UpdateUser")]
+        [HttpPost("UpdateUser")]
         public IActionResult Put([FromBody] UsuarioUpdateDto usuarioUpdate)
         {
             var result = this.usuarioService.Update(usuarioUpdate);
@@ -59,7 +59,7 @@ namespace Ventas.API.Controllers
             return Ok(result);
         }
 
-        [HttpDelete("RemoveUser")]
+        [HttpPost("RemoveUser")]
         public IActionResult Delete([FromBody] UsuarioRevoveDto usuarioRevove)
         {
             var result = this.usuarioService.Remove(usuarioRevove);

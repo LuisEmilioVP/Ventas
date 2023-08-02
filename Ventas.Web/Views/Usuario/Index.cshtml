@@ -1,4 +1,4 @@
-﻿@model IEnumerable<Ventas.Web.Models.Usuario.Response.UsuarioResponse>
+﻿@model IEnumerable<Ventas.Web.Models.Usuario.BaseUsuarioModel>
 
 @{
     ViewData["Title"] = "Index";
@@ -6,7 +6,7 @@
 
 <div class="row pt-4">
     <div class="col-9">
-        <h1>Usuarios Api</h1>
+        <h1>Usuarios</h1>
     </div>
     <div class="col-2">
         <br />
@@ -65,7 +65,7 @@
             <td>
                 @Html.DisplayFor(modelItem => item.FechaRegistro)
             </td>
-            <td class="m-5">
+            <td class="d-grid gap-2">
                     @Html.ActionLink("Editar", "Edit", new { id=item.IdUsuario }, new { @class = "btn btn-warning" })
                     @Html.ActionLink("Detalle", "Details", new { id=item.IdUsuario }, new { @class = "btn btn-primary" })
                     @Html.ActionLink("Eliminar", "Delete", new { id=item.IdUsuario }, new { @class = "btn btn-danger" })

@@ -15,7 +15,7 @@ namespace Ventas.API.Controllers
             this.categoriaService = categoriaService;
         }
 
-        [HttpGet("ShowCategory")]
+        [HttpGet("GetCategory")]
         public IActionResult Get()
         {
             var result = this.categoriaService.Get();
@@ -26,7 +26,7 @@ namespace Ventas.API.Controllers
             return Ok(result);
         }
 
-        [HttpGet("ShowCategoryById")]
+        [HttpGet("GetCategoryById")]
         public IActionResult Get(int id)
         {
             var result = this.categoriaService.GetById(id);

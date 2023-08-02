@@ -2,8 +2,8 @@
 using Ventas.Application.Contract;
 using Ventas.Infrastructure.Models;
 using Ventas.Web.Controllers.Extentions;
+using Ventas.Web.Models.Categoria;
 using Ventas.Web.Models.Categoria.Request;
-using Ventas.Web.Models.Categoria.Response;
 
 namespace Ventas.Web.Controllers
 {
@@ -29,7 +29,7 @@ namespace Ventas.Web.Controllers
                 var listCat = result.Data as List<CategoriaModels>
                     ?? throw new Exception("No se encontraron usuarios");
 
-                List<CategoriaResponse> categoriaResponses = listCat
+                List<BaseCategoriaModel> categoriaResponses = listCat
                     .Select(cat => cat.ConverterModelToCategoriaResponse()).ToList();
 
                 return View(categoriaResponses);
@@ -54,7 +54,7 @@ namespace Ventas.Web.Controllers
                 var listCatById = result.Data as CategoriaModels
                     ?? throw new Exception("El usuario no existe");
 
-                CategoriaResponse categoriaResponse = listCatById.ConverterModelToCategoriaResponse();
+                BaseCategoriaModel categoriaResponse = listCatById.ConverterModelToCategoriaResponse();
 
                 return View(categoriaResponse);
             }
@@ -140,7 +140,7 @@ namespace Ventas.Web.Controllers
         // GET: CategoriaController/Delete/5
         public ActionResult Delete(int id)
         {
-            CategoriaRemoveRequest categoriaRemove = new CategoriaRemoveRequest(id);
+            CategoriaRemoveRequest categoriaRemove = new(id);
 
             return View(categoriaRemove);
         }
