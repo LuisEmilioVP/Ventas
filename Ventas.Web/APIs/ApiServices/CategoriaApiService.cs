@@ -36,7 +36,7 @@ namespace Ventas.Web.APIs.ApiServices
                 categoriaList = new CategoriaListResponse
                 {
                     Success = false,
-                    Message = $"Ocurrió un error en la solicitud (GetCategory) a la Api, url: {urlApi}"
+                    Message = $"Ocurrió un error en la solicitud (Get) a la Api, url: {urlApi}"
                 };
 
                 logger.LogError(categoriaList.Message, ex.ToString());
@@ -62,7 +62,7 @@ namespace Ventas.Web.APIs.ApiServices
                 categoriaDetails = new CategoriaDetailsResponse
                 {
                     Success = false,
-                    Message = $"Ocurrió un error en la solicitud (GetCategoryById) a la Api, url: {urlApi}"
+                    Message = $"Ocurrió un error en la solicitud (GetById) a la Api, url: {urlApi}"
                 };
 
                 logger.LogError(categoriaDetails.Message, ex.ToString());
@@ -90,7 +90,7 @@ namespace Ventas.Web.APIs.ApiServices
                 response = new()
                 {
                     Success = false,
-                    Message = $"Ocurrió un error en la solicitud (SaveCategory) a la Api, url: {urlApi}"
+                    Message = $"Ocurrió un error en la solicitud (Add) a la Api, url: {urlApi}"
                 };
 
                 logger.LogError(response.Message, ex.ToString());
@@ -118,7 +118,7 @@ namespace Ventas.Web.APIs.ApiServices
                 response = new()
                 {
                     Success = false,
-                    Message = $"Ocurrió un error en la solicitud (UpdateCategory) a la Api, url: {urlApi}"
+                    Message = $"Ocurrió un error en la solicitud (Update) a la Api, url: {urlApi}"
                 };
 
                 logger.LogError(response.Message, ex.ToString());
@@ -146,7 +146,7 @@ namespace Ventas.Web.APIs.ApiServices
                 response = new()
                 {
                     Success = false,
-                    Message = $"Ocurrió un error en la solicitud (RemoveCategory) a la Api, url: {urlApi}"
+                    Message = $"Ocurrió un error en la solicitud (Remove) a la Api, url: {urlApi}"
                 };
 
                 logger.LogError(response.Message, ex.ToString());

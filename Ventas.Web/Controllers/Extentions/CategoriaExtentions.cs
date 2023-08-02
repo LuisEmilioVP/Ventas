@@ -7,6 +7,7 @@ namespace Ventas.Web.Controllers.Extentions
 {
     public static class CategoriaExtentions
     {
+        //* Para Api y sin Api
         public static BaseCategoriaModel ConverterModelToCategoriaResponse(this CategoriaModels categoria)
         {
             return new BaseCategoriaModel
@@ -17,7 +18,25 @@ namespace Ventas.Web.Controllers.Extentions
                 FechaRegistro = categoria.FechaRegistro
             };
         }
-
+        //* Sin Api
+        public static CategoriaUpdateRequest ConvertCategoriaToUpdateRequest(this CategoriaModels categoria)
+        {
+            return new CategoriaUpdateRequest()
+            {
+                IdCategoria = categoria.IdCategoria,
+                Descripcion = categoria.Descripcion
+            };
+        }
+        //* Con Api
+        public static CategoriaUpdateRequest ConvertUsuarioToUpdateRequest(this BaseCategoriaModel baseCategoria)
+        {
+            return new CategoriaUpdateRequest()
+            {
+                IdCategoria = baseCategoria.IdCategoria,
+                Descripcion = baseCategoria.Descripcion
+            };
+        }
+        //* Para Api y sin Api
         public static CategoriaAddDto ConvertAddRequestToAddDto(this CategoriaAddRequest categoriaAdd)
         {
             return new CategoriaAddDto()
@@ -27,16 +46,7 @@ namespace Ventas.Web.Controllers.Extentions
                 ChangeDate = categoriaAdd.ChangeDate
             };
         }
-
-        public static CategoriaUpdateRequest ConvertCategoriaToUpdateRequest(this CategoriaModels categoria)
-        {
-            return new CategoriaUpdateRequest()
-            {
-                IdCategoria = categoria.IdCategoria,
-                Descripcion = categoria.Descripcion
-            };
-        }
-
+        //* Para Api y sin Api
         public static CategoriaUpdateDto ConvertUpdateRequestToUpdateDto(this CategoriaUpdateRequest categoriaUpdate)
         {
             return new CategoriaUpdateDto()
@@ -47,7 +57,7 @@ namespace Ventas.Web.Controllers.Extentions
                 ChangeDate = categoriaUpdate.ChangeDate
             };
         }
-
+        //* Para Api y sin Api
         public static CategoriaRemoveDto ConvertRemoveDtoToRemoveRequest(this CategoriaRemoveRequest categoriaRemove)
         {
             return new CategoriaRemoveDto()

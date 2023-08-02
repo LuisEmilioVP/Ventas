@@ -48,7 +48,7 @@ namespace Ventas.API.Controllers
             return Ok(result);
         }
 
-        [HttpPut("UpdateCategory")]
+        [HttpPost("UpdateCategory")]
         public IActionResult Put([FromBody] CategoriaUpdateDto categoriaUpdate)
         {
             var result = this.categoriaService.Update(categoriaUpdate);
@@ -59,7 +59,7 @@ namespace Ventas.API.Controllers
             return Ok(result);
         }
 
-        [HttpDelete("RemoveCategory")]
+        [HttpPost("RemoveCategory")]
         public IActionResult Delete([FromBody] CategoriaRemoveDto categoriaRemove)
         {
             var result = this.categoriaService.Remove(categoriaRemove);

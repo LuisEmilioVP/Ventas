@@ -41,10 +41,10 @@
             <td>
                 @Html.DisplayFor(modelItem => item.FechaRegistro)
             </td>
-            <td>
-                    @Html.ActionLink("Editar", "Edit", new {  id=item.IdCategoria  }, new { @class = "btn btn-warning" })
-                    @Html.ActionLink("Detalle", "Details", new { id=item.IdCategoria }, new { @class = "btn btn-primary" })
-                    @Html.ActionLink("Eliminar", "Delete", new { id=item.IdCategoria }, new { @class = "btn btn-danger" })
+            <td class="d-grid gap-2">
+                @Html.ActionLink("Editar", "Edit", new {  id=item.IdCategoria  }, new { @class = "btn btn-warning" })
+                @Html.ActionLink("Detalle", "Details", new { id=item.IdCategoria }, new { @class = "btn btn-primary" })
+                @Html.ActionLink("Eliminar", "Delete", new { id=item.IdCategoria }, new { @class = "btn btn-danger" })
             </td>
         </tr>
 }
