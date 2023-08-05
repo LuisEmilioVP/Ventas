@@ -38,7 +38,7 @@ namespace Ventas.Web.APIs
         {
             using (var httpClient = new HttpClient(httpClientHandler))
             {
-                StringContent content = new StringContent(JsonConvert.SerializeObject(request), Encoding.UTF8, "application/json");
+                StringContent content = new(JsonConvert.SerializeObject(request), Encoding.UTF8, "application/json");
 
                 using (var result = httpClient.PostAsync(url, content).Result)
                 {

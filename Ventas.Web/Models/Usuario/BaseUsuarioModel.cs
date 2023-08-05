@@ -1,4 +1,5 @@
-﻿namespace Ventas.Web.Models.Usuario
+﻿
+namespace Ventas.Web.Models.Usuario
 {
     public class BaseUsuarioModel
     {

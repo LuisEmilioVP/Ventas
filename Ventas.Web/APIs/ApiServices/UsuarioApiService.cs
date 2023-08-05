@@ -71,7 +71,7 @@ namespace Ventas.Web.APIs.ApiServices
 
         public BaseResponse Add(UsuarioAddRequest add)
         {
-            BaseResponse? response = new BaseResponse();
+            BaseResponse? response = new();
 
             UsuarioAddDto usuarioAdd = add.ConvertAddRequestToAddDto();
             string urlApi = $" {apiKey}SaveUser";
@@ -98,7 +98,7 @@ namespace Ventas.Web.APIs.ApiServices
 
         public BaseResponse Update(UsuarioUpdateRequest update)
         {
-            BaseResponse? response = new BaseResponse();
+            BaseResponse? response = new();
 
             UsuarioUpdateDto usuarioUpdate = update.ConvertUpdateRequestToUpdateDto();
             string urlApi = $" {apiKey}UpdateUser";
@@ -125,7 +125,7 @@ namespace Ventas.Web.APIs.ApiServices
 
         public BaseResponse Remove(UsuarioRemoveRequest remove)
         {
-            BaseResponse? response = new BaseResponse();
+            BaseResponse? response = new();
 
             UsuarioRevoveDto usuarioRevove = remove.ConvertRemoveDtoToRemoveRequest();
             string urlApi = $"  {apiKey}RemoveUser"; 
