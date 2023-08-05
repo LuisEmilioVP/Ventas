@@ -6,7 +6,7 @@ namespace Ventas.Infrastructure.Models
 {
     public class SuplidorModels
     {
-        public int idSuplidor { get; set; }
+        public int IdSuplidor { get; set; }
         public string Nombre { get; set; }
         public string Contacto { get; set; }
         public string Direccion { get; set; }
@@ -17,11 +17,11 @@ namespace Ventas.Infrastructure.Models
         public string Telefono { get; set; }
         public string? Fax { get; set; }
 
-         // public int idProducto { get; set; }
-        //public string? marca { get; set; }
-       // public string? descripcion { get; set; }
-      //public string? precio { get; set; }
 
+       // public int idProducto { get; set; }
+       // public string? marca { get; set; }
+       // public string? descripcion { get; set; }
+       // public string? precio { get; set; }
 
 
     }

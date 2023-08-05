@@ -51,7 +51,7 @@ namespace Ventas.API.Controllers
         }
 
        
-        [HttpPut("Update")]
+        [HttpPost("Update")]
         public IActionResult Put([FromBody] SuplidorUpdateDto suplidorUpdate)
         {
             var result = this.suplidorService.Update(suplidorUpdate);
@@ -62,7 +62,7 @@ namespace Ventas.API.Controllers
         }
 
        
-        [HttpDelete("Remove")]
+        [HttpPost("Remove")]
         public IActionResult Delete([FromBody] SuplidorRemoveDto suplidorRemove)
         {
             var result = this.suplidorService.Delete(suplidorRemove);

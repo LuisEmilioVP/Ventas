@@ -1,4 +1,4 @@
-﻿@model IEnumerable<Ventas.Infrastructure.Models.SuplidorModels>
+﻿@model IEnumerable<Ventas.Web.Models.Suplidor.Response.SuplidorResponse>
 
 @{
     ViewData["Title"] = "Index";
@@ -12,7 +12,6 @@
 <table class="table">
     <thead>
         <tr>
-            
             <th>
                 @Html.DisplayNameFor(model => model.Nombre)
             </th>
@@ -46,7 +45,6 @@
     <tbody>
 @foreach (var item in Model) {
         <tr>
-            
             <td>
                 @Html.DisplayFor(modelItem => item.Nombre)
             </td>
@@ -75,9 +73,9 @@
                 @Html.DisplayFor(modelItem => item.Fax)
             </td>
             <td>
-                @Html.ActionLink("Edit", "Edit", new { id = item.idSuplidor }) |
-                    @Html.ActionLink("Details", "Details", new { id = item.idSuplidor }) |
-                @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })
+                @Html.ActionLink("Edit", "Edit", new { id=item.IdSuplidor }) |
+                    @Html.ActionLink("Details", "Details", new { id=item.IdSuplidor }) |
+                    @Html.ActionLink("Delete", "Delete", new { id=item.IdSuplidor })
             </td>
         </tr>
 }

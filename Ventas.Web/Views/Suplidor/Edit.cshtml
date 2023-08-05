@@ -1,4 +1,4 @@
-﻿@model Ventas.Infrastructure.Models.SuplidorModels
+﻿@model Ventas.Web.Models.Suplidor.Request.SuplidorUpdateRequest
 
 @{
     ViewData["Title"] = "Edit";
@@ -6,16 +6,16 @@
 
 <h1>Edit</h1>
 
-<h4>SuplidorModels</h4>
+<h4>SuplidorUpdateRequest</h4>
 <hr />
 <div class="row">
     <div class="col-md-4">
         <form asp-action="Edit">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <div class="form-group">
-                <label asp-for="idSuplidor" class="control-label"></label>
-                <input asp-for="idSuplidor" class="form-control" />
-                <span asp-validation-for="idSuplidor" class="text-danger"></span>
+                <label asp-for="IdSuplidor" class="control-label"></label>
+                <input asp-for="IdSuplidor" class="form-control" />
+                <span asp-validation-for="IdSuplidor" class="text-danger"></span>
             </div>
             <div class="form-group">
                 <label asp-for="Nombre" class="control-label"></label>
@@ -61,6 +61,16 @@
                 <label asp-for="Fax" class="control-label"></label>
                 <input asp-for="Fax" class="form-control" />
                 <span asp-validation-for="Fax" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="ChangeUser" class="control-label"></label>
+                <input asp-for="ChangeUser" class="form-control" />
+                <span asp-validation-for="ChangeUser" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="ChangeDate" class="control-label"></label>
+                <input asp-for="ChangeDate" class="form-control" />
+                <span asp-validation-for="ChangeDate" class="text-danger"></span>
             </div>
             <div class="form-group">
                 <input type="submit" value="Save" class="btn btn-primary" />

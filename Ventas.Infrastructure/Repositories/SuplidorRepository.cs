@@ -28,99 +28,95 @@ namespace Ventas.Infrastructure.Repositories
         }
 
 
-        public List<SuplidorModels> GetAllSuplidor()
+        public override void Add(Suplidor entity)
         {
-            List<SuplidorModels> suplidor = new List<SuplidorModels>();
+            this.logger.LogInformation("Se va agregar un nuevo suplidor");
 
             try
             {
-                suplidor = this.context.Suplidor.Where(sup => sup.Deleted).Select(su => new SuplidorModels()
-                {
-                    Nombre = su.Nombre,
-                    Contacto = su.Contacto,
-                    Direccion = su.Direccion,
-                    Ciudad = su.Ciudad,
-                    Region = su.Region,
-                    Codigo_postal = su.Codigo_postal,
-                    Pais = su.Pais,
-                    Telefono = su.Telefono,
-                    Fax = su.Fax
-                }).ToList();
+                if (entity == null)
+                    throw new SuplidorException("Un Suplidor no puede ser nulo");
+
+              
+                entity.ConvertSuplidorCreateToEntity();
+
+                base.Add(entity);
+                this.logger.LogInformation($"Un nuevo suplidor insertado: {entity.Nombre}");
+                base.SaveChanges();
+            }
+            catch (SuplidorException ex)
+            {
+                this.logger.LogError($"Algo ha fallado: {ex.Message}");
+                throw;
             }
             catch (Exception ex)
             {
-                this.logger.LogError("Se produjo un error durante el proceso de carga del suplidor", ex.ToString());
+                this.logger.LogError($"Error al cargar el Suplidor {ex.Message}", ex.ToString());
+                throw new ConnectionException($"Error de Conexión con la base de datos: {ex.Message}");
             }
-            return suplidor;
         }
 
-        public SuplidorModels GetsuplidorById(int id)
+        public SuplidorModels GetsuplidorById(int idsuplidor)
         {
             SuplidorModels suplidorModels = new SuplidorModels();
 
             try
             {
-                if (!base.Exists(sup => sup.IdSuplidor == id))
-                    throw new SuplidorNotFoundException("Suplidor no encontrado");
+                this.logger.LogInformation($"Obteniendo Suplidor de id: {idsuplidor}");
 
-                suplidorModels = base.GetEntity(id).ConvertSuplidorEntityToModel();
-                this.logger.LogInformation($"Obteniendo un Suplidor: {id}");
+                Suplidor suplidor = context.Suplidor.FirstOrDefault(supl => supl.IdSuplidor == idsuplidor);
+
+                if (suplidor == null)
+                    throw new SuplidorNotFoundException(
+                        $"El suplidor de id: {idsuplidor} no encontrado en la base de datos");
+
+                suplidorModels = suplidor.ConvertSuplidorEntityToModel();
+                this.logger.LogInformation($"Obteniendo el suplidor de Id: {idsuplidor}");
+            }
+            catch (SuplidorException ex)
+            {
+                this.logger.LogError($"Algo ha fallado: {ex.Message}");
+                throw;
             }
             catch (Exception ex)
             {
-                this.logger.LogError("Se produjo un error durante el proceso de carga del suplidor", ex.ToString());
-                throw new SuplidorException("Suplidor no existente");
-                throw new ConnectionException($"Error al conectarse con la Base de datos: {ex.Message}");
+                this.logger.LogError($"Error al cargar suplidor {ex.Message}", ex.ToString());
+                throw new ConnectionException($"Error de Conexión con la base de datos: {ex.Message}");
             }
 
             return suplidorModels;
         }
-
-
-        public override void Add(Suplidor entity)
-        {
-            try
-            {
-                if (this.Exists(sup => sup.Nombre == entity.Nombre))
-                {
-                    throw new SuplidorException("Suplidor existente");
-                }
-                base.Add(entity);
-                base.SaveChanges();
-            }
-            catch(Exception ex)
-            {
-                this.logger.LogError("Se produjo un fallo durante la agregacion del suplidor");
-            }
-        }
+    
 
         public override void Update(Suplidor entity)
         {
             try
             {
-                Suplidor suplidorUpdate = this.GetEntity(entity.IdSuplidor);
+                this.logger.LogInformation($"Se actualizará el suplidor con el id: {entity.IdSuplidor}");
 
-                suplidorUpdate.IdSuplidor = entity.IdSuplidor;
-                suplidorUpdate.Nombre = entity.Nombre;
-                suplidorUpdate.Contacto = entity.Contacto;
-                suplidorUpdate.Direccion = entity.Direccion;
-                suplidorUpdate.Ciudad = entity.Ciudad;
-                suplidorUpdate.Region = entity.Region;
-                suplidorUpdate.Codigo_postal = entity.Codigo_postal;
-                suplidorUpdate.Pais = entity.Pais;
-                suplidorUpdate.Telefono = entity.Telefono;
-                suplidorUpdate.Fax = entity.Fax;
+                Suplidor suplidorToUpdate = base.GetEntity(entity.IdSuplidor)  ?? throw new SuplidorNotFoundException(
+                        "Suplidor no encontrado en la base de datos");
 
-                suplidorUpdate.UserMod = entity.UserMod;
-                suplidorUpdate.ModifyDate = entity.ModifyDate;
 
-                this.context.Suplidor.Update(suplidorUpdate);
-                this.context.SaveChanges();
+                if (suplidorToUpdate.Deleted == true)
+                    throw new SuplidorException("El Suplidor a actualizar ya está eliminado");
 
+
+                suplidorToUpdate.ConvertSuplidorUpdateToEntity(entity);
+
+                base.Update(suplidorToUpdate);
+                this.logger.LogInformation($"El suplidor de id: {entity.IdSuplidor} ha sido actualizado");
+                this.SaveChanges();
             }
-            catch(Exception ex)
+            catch (SuplidorException ex)
             {
-                this.logger.LogError("Se produjo un fallo durante la actualización del suplidor", ex.ToString());
+                this.logger.LogError($"Algo ha fallado: {ex.Message}");
+                throw;
+            }
+            catch (Exception ex)
+            {
+                this.logger.LogError($"Error al actualizar el suplidor: {ex.Message}", ex.ToString());
+                throw new ConnectionException($"Error de Conexión con la base de datos: {ex.Message}");
             }
         }
 
@@ -128,21 +124,62 @@ namespace Ventas.Infrastructure.Repositories
         {
             try
             {
-                Suplidor suplidorRemove = this.GetEntity(entity.IdSuplidor);
+                this.logger.LogInformation($"Se eliminará el suplidor con el id: {entity.IdSuplidor}");
 
-                suplidorRemove.UserDeleted = entity.UserDeleted;
-                suplidorRemove.DeletedDate = entity.DeletedDate;
-                suplidorRemove.Deleted = entity.Deleted;
+                Suplidor suplidorToRemove = this.GetEntity(entity.IdSuplidor)
+                 ?? throw new SuplidorNotFoundException(
+                     "El suplidor no encontrado en la base de datos");
 
-                this.context.Suplidor.Update(suplidorRemove);
+
+                suplidorToRemove.ConvertSuplidorDeletedToEntity(entity);
+
+                this.context.Update(suplidorToRemove);
+                this.logger.LogInformation($"El suplidor del id: {entity.IdSuplidor} ha sido eliminado");
                 this.context.SaveChanges();
-
             }
-            catch(Exception ex)
+            catch (SuplidorException ex)
             {
-                this.logger.LogError("Se produjo un fallo durante el eliminado del suplidor");
+                this.logger.LogError($"Algo ha fallado: {ex.Message}");
+                throw;
+            }
+            catch (Exception ex)
+            {
+                this.logger.LogError($"Error al eliminar  suplidor: {ex.Message}", ex.ToString());
+                throw new ConnectionException($"Error de Conexión con la base de datos: {ex.Message}");
             }
         }
 
-           }
+        List<SuplidorModels> ISuplidorRepository.GetAllSuplidor()
+        {
+            List<SuplidorModels> suplidores = new List<SuplidorModels>();
+            try
+            {
+                this.logger.LogInformation("Obteniendo Suplidor");
+
+                List<Suplidor> suplidor = base.GetEntities()
+                      .Where(cat => !cat.Deleted).ToList();
+
+                if (suplidor == null)
+                    throw new SuplidorNotFoundException("El suplidor no ha sido encontrado en la base de datos");
+
+                foreach (Suplidor supli in suplidor)
+                {
+                    SuplidorModels suplidorModels = supli.ConvertSuplidorEntityToModel();
+                    suplidores.Add(suplidorModels);
+                }
+            }
+            catch (SuplidorException ex)
+            {
+                this.logger.LogError($"Algo ha fallado: {ex.Message}");
+                throw;
+            }
+            catch (Exception ex)
+            {
+                this.logger.LogError($"Error al cargar suplidores{ex.Message}", ex.ToString());
+                throw new ConnectionException($"Error de Conexión con la base de datos: {ex.Message}");
+            }
+
+            return suplidores;
+        }
+    }
 }

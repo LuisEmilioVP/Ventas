@@ -19,6 +19,9 @@ namespace Ventas.Application.Extentions
                  Pais = suplidorAddDto.Pais,
                  Telefono = suplidorAddDto.Telefono,
                  Fax = suplidorAddDto.Fax,
+                 CreationUser = suplidorAddDto.ChangeUser,
+                 CreationDate = suplidorAddDto.ChangeDate
+
             };
         }
 
@@ -36,8 +39,20 @@ namespace Ventas.Application.Extentions
                 Pais = suplidorUpdate.Pais,
                 Telefono = suplidorUpdate.Telefono,
                 Fax = suplidorUpdate.Fax,
+                UserMod = suplidorUpdate.ChangeUser,
+                ModifyDate = suplidorUpdate.ChangeDate
 
+            };
+        }
 
+        public static Suplidor ConvertRemoveDtoToEntity(this SuplidorRemoveDto suplidorRemove)
+        {
+            return new Suplidor()
+            {
+                IdSuplidor = suplidorRemove.IdSuplidor,
+                Deleted = suplidorRemove.Deleted,
+                UserDeleted = suplidorRemove.ChangeUser,
+                DeletedDate = suplidorRemove.ChangeDate
             };
         }
 

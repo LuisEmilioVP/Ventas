@@ -5,7 +5,10 @@ using Ventas.Application.Contract;
 using Ventas.Application.Dto.Suplidor;
 using Ventas.Domain.Entities;
 using Ventas.Infrastructure.Models;
+using Ventas.Web.Controllers.Extention;
 using Ventas.Web.Models;
+using Ventas.Web.Models.Suplidor.Request;
+using Ventas.Web.Models.Suplidor.Response;
 
 namespace Ventas.Web.Controllers
 {
@@ -22,30 +25,54 @@ namespace Ventas.Web.Controllers
         // GET: SuplidorController
         public ActionResult Index()
         {
-            var suplidor = suplidorService.Get();
+            try
+            {
+                var result = suplidorService.Get();
 
-            if (!suplidor.Success)
-                ViewBag.Message = suplidor.Message;
+                if (!result.Success)
+                    throw new Exception(result.Message);
 
-            var supliList = (List<SuplidorModels>)suplidor.Data;
+                var listUser = result.Data as List<SuplidorModels>
+                    ?? throw new Exception("No se hallaron los suplidores");
 
-            return View(supliList);
+                List<SuplidorResponse> suplidorResponse = listUser
+                    .Select(use => use.ConverterModelToSuplidorResponse()).ToList();
+                                     
+
+                return View(suplidorResponse);
+            }
+            catch (Exception ex)
+            {
+                ViewBag.Message = ex.Message;
+                return RedirectToAction(nameof(Index));
+            }
         }
 
         // GET: SuplidorController/Details/5
         public ActionResult Details(int id)
         {
-            var suplidor = suplidorService.GetById(id);
+            try
+            {
+                var result = suplidorService.GetById(id);
 
-            if (!suplidor.Success)
-                ViewBag.Message = suplidor.Message;
+                if (!result.Success)
+                    throw new Exception(result.Message);
 
-            var supliDetails = (SuplidorModels)suplidor.Data;
+                var listUserById = result.Data as SuplidorModels
+                    ?? throw new Exception("Este suplidor no existe");
 
-            return View(supliDetails);
+                SuplidorResponse suplidorResponse = listUserById.ConverterModelToSuplidorResponse();
+
+                return View(suplidorResponse);
+            }
+            catch (Exception ex)
+            {
+                ViewBag.Message = ex.Message;
+                return RedirectToAction(nameof(Index));
+            }
         }
 
-        // GET: SuplidorController/Create
+        // GET: UsuarioController/Create
         public ActionResult Create()
         {
             return View();
@@ -55,16 +82,18 @@ namespace Ventas.Web.Controllers
         [HttpPost]
         [ValidateAntiForgeryToken]
 
-        public ActionResult Create(SuplidorAddDto suplidorAddDto)
+        public ActionResult Create(SuplidorAddRequest suplidorAdd)
         {
             try
             {
-                var suplidor = this.suplidorService.Save(suplidorAddDto);
+                var supli = suplidorAdd.ConvertAddRequestToAddDto();
 
-                if (!suplidor.Success)
+                var result = this.suplidorService.Save(supli);
+
+                if (!result.Success)
                 {
-                  ViewBag.Message = suplidor.Message;
-                  return View(suplidor);
+                    ViewBag.Message = result.Message;
+                    return View();
                 }
 
                 return RedirectToAction(nameof(Index));
@@ -78,34 +107,39 @@ namespace Ventas.Web.Controllers
         // GET: SuplidorController/Edit/5
         public ActionResult Edit(int id)
         {
-            var suplidor = suplidorService.GetById(id);
+            var result = this.suplidorService.GetById(id);
 
-            if (!suplidor.Success)
-                ViewBag.Message = suplidor.Message;
+            if (!result.Success)
+                ViewBag.Message = result.Message;
 
-            var supliEdit = (SuplidorModels)suplidor.Data;
+            var supli = result.Data as SuplidorModels
+                ?? throw new Exception("No existe el suplidor");
 
-            return View(supliEdit);
+            SuplidorUpdateRequest suplidorUpdate = supli.ConvertUsuarioToUpdateRequest();                                           
+
+            return View(suplidorUpdate);
         }
+
 
         // POST: SuplidorController/Edit/5
         [HttpPost]
         [ValidateAntiForgeryToken]
 
-        public ActionResult Edit(SuplidorUpdateDto suplidorUpdateDto)
+        public ActionResult Edit(int id, SuplidorUpdateRequest suplidorUpdate)
         {
             try
             {
-                var suplidor = this.suplidorService.Update(suplidorUpdateDto);
+                var supli = suplidorUpdate.ConvertUpdateRequestToUpdateDto();
 
-                if (!suplidor.Success)
+                var result = this.suplidorService.Update(supli);
+
+                if (!result.Success)
                 {
-                    ViewBag.Message = suplidor.Message;
-                    return View(suplidor);
+                    ViewBag.Message = result.Message;
+                    return View();
                 }
 
                 return RedirectToAction(nameof(Index));
-
             }
             catch
             {
@@ -116,31 +150,22 @@ namespace Ventas.Web.Controllers
         // GET: kkkController1/Delete/5
         public ActionResult Delete(int id)
         {
-            var suplidor = suplidorService.GetById(id);
+            SuplidorRemoveRequest suplidorRemove = new SuplidorRemoveRequest(id);
 
-            if (!suplidor.Success)
-                ViewBag.Message = suplidor.Message;
-
-            var supliDelete = (SuplidorModels)suplidor.Data;
-
-            return View(supliDelete);
+            return View(suplidorRemove);
         }
 
         // POST: kkkController1/Delete/5
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Delete(SuplidorRemoveDto suplidorRemoveDto)
+        public ActionResult Delete(int id, SuplidorRemoveRequest suplidorRemove)
         {
             try
             {
-                var suplidor = this.suplidorService.Delete(suplidorRemoveDto);
+                var supli = suplidorRemove.ConvertRemoveDtoToRemoveRequest();
 
-                if (!suplidor.Success)
-                {
-                    ViewBag.Message = suplidor.Message;
-                    return View(suplidor);
-                }
-
+                var result = this.suplidorService.Delete(supli);
+                  
                 return RedirectToAction(nameof(Index));
             }
             catch

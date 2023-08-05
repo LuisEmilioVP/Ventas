@@ -1,8 +1,8 @@
-﻿namespace Ventas.Web.Models
+﻿namespace Ventas.Web.Models.Suplidor
 {
-    public class SuplidorModel
+    public class BaseSuplidorModel
     {
-        public int idSuplidor { get; set; }
+        public int IdSuplidor { get; set; }
         public string Nombre { get; set; }
         public string Contacto { get; set; }
         public string Direccion { get; set; }
