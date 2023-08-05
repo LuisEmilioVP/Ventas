@@ -1,13 +1,10 @@
-﻿
-
-using Microsoft.Extensions.Logging;
+﻿using Microsoft.Extensions.Logging;
 using System;
 using Ventas.Application.Contract;
 using Ventas.Application.Core;
 using Ventas.Application.Dtos.Producto;
 using Ventas.Application.Extensions;
-using Ventas.Application.Help;
-using Ventas.Domain.Entities;
+using Ventas.Application.Validation;
 using Ventas.Infrastructure.Interfaces;
 
 namespace Ventas.Application.Service
@@ -45,7 +42,12 @@ namespace Ventas.Application.Service
 
         public ServiceResult GetById(int idproducto)
         {
-            ServiceResult result = new ServiceResult();
+            ServiceResult result = ProductoValidantion.ValidantionIdProducto(idproducto);
+
+            if (!result.Success)
+            {
+                return result;
+            }
 
             try
             {
@@ -67,17 +69,13 @@ namespace Ventas.Application.Service
 
         public ServiceResult Remove(ProductoRemoveDto model)
         {
-            ServiceResult result = new ServiceResult();
+            ServiceResult result = ProductoValidantion.ValidationRemoveProducto(model);
+
 
             try
             {
-                this.productoRepository.Remove(new Producto()
-                {
-                    IdProducto = model.IdProducto,
-                    UserDeleted = model.ChangeUser,
-                    DeletedDate = model.ChangeDate,
-                    Deleted = model.Deleted
-                });
+                var producto = model.ConvertRemoveDtoToEntity();
+                this.productoRepository.Remove(producto);
 
                 result.Message = "Producto eliminado correctamente";
 
@@ -95,7 +93,7 @@ namespace Ventas.Application.Service
 
         public ServiceResult Add(ProductoAddDto model)
         {
-            ServiceResult result = ProductoValidations.ValidateProducto(model);
+            ServiceResult result = ProductoValidantion.ValidantionAddProducto(model);
 
             if (!result.Success)
             {
@@ -104,6 +102,8 @@ namespace Ventas.Application.Service
 
             try
             {
+                //model.ChangeDate = DateTime.Now;
+                //model.ChangeUser = 1;
                 var producto = model.ConvertDtoAddToEntity();
                 this.productoRepository.Add(producto);
                 result.Message = "Producto agregado correctamente";
@@ -120,7 +120,7 @@ namespace Ventas.Application.Service
 
         public ServiceResult Update(ProductoUpdateDto model)
         {
-            ServiceResult result = ProductoValidations.ValidateProducto(model);
+            ServiceResult result = ProductoValidantion.ValidantionUpdateProducto(model);
 
             if (!result.Success)
             {
@@ -129,6 +129,7 @@ namespace Ventas.Application.Service
 
             try
             {
+               
                 var producto = model.ConvertDtoUpdateToEntity();
                 this.productoRepository.Update(producto);
                 result.Message = "Producto actualizado correctamente";

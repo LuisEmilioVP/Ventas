@@ -291,9 +291,6 @@
             "projectReferences": {
               "C:\\Proyecto\\Ventas\\Ventas.Application\\Ventas.Application.csproj": {
                 "projectPath": "C:\\Proyecto\\Ventas\\Ventas.Application\\Ventas.Application.csproj"
-              },
-              "C:\\Proyecto\\Ventas\\Ventas.Infrastructure\\Ventas.Infrastructure.csproj": {
-                "projectPath": "C:\\Proyecto\\Ventas\\Ventas.Infrastructure\\Ventas.Infrastructure.csproj"
               }
             }
           }

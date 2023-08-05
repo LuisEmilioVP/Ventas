@@ -4138,8 +4138,7 @@
         "type": "project",
         "framework": ".NETStandard,Version=v2.1",
         "dependencies": {
-          "Ventas.Application": "1.0.0",
-          "Ventas.Infrastructure": "1.0.0"
+          "Ventas.Application": "1.0.0"
         },
         "compile": {
           "bin/placeholder/Ventas.IOC.dll": {}
@@ -11821,8 +11820,7 @@
     "net6.0": [
       "Microsoft.VisualStudio.Web.CodeGeneration.Design >= 6.0.15",
       "Ventas.Application >= 1.0.0",
-      "Ventas.IOC >= 1.0.0",
-      "Ventas.Infrastructure >= 1.0.0"
+      "Ventas.IOC >= 1.0.0"
     ]
   },
   "packageFolders": {
@@ -11855,9 +11853,6 @@
           "projectReferences": {
             "C:\\Proyecto\\Ventas\\Ventas.Application\\Ventas.Application.csproj": {
               "projectPath": "C:\\Proyecto\\Ventas\\Ventas.Application\\Ventas.Application.csproj"
-            },
-            "C:\\Proyecto\\Ventas\\Ventas.Infrastructure\\Ventas.Infrastructure.csproj": {
-              "projectPath": "C:\\Proyecto\\Ventas\\Ventas.Infrastructure\\Ventas.Infrastructure.csproj"
             },
             "C:\\Proyecto\\Ventas\\Ventas.IOC\\Ventas.IOC.csproj": {
               "projectPath": "C:\\Proyecto\\Ventas\\Ventas.IOC\\Ventas.IOC.csproj"

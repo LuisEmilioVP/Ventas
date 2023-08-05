@@ -1,9 +1,5 @@
 using Microsoft.EntityFrameworkCore;
-using Ventas.Application.Contract;
-using Ventas.Application.Service;
 using Ventas.Infrastructure.Context;
-using Ventas.Infrastructure.Interfaces;
-using Ventas.Infrastructure.Repositories;
 using Ventas.IOC.Dependecies;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -18,7 +14,7 @@ builder.Services.AddSwaggerGen();
 
 builder.Services.AddDbContext<VentasContext>(option => option.UseSqlServer(builder.Configuration.GetConnectionString("VentasContext")));
 
-//Repositorio//
+//Dependecia//
 
 builder.Services.AddProductoDependecy();
 

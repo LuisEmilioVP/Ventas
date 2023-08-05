@@ -16,8 +16,6 @@ namespace Ventas.Application.Extensions
                 Precio = productoAddDto.Precio,
                 UrlImagen = productoAddDto.UrlImagen,
                 NombreImagen = productoAddDto.NombreImagen,
-                EsActivo = productoAddDto.EsActivo,
-                FechaRegistro = productoAddDto.FechaRegistro,
                 CreationUser = productoAddDto.ChangeUser,
                 CreationDate = productoAddDto.ChangeDate,
             };
@@ -41,5 +39,18 @@ namespace Ventas.Application.Extensions
             };
         }
 
+        public static Producto ConvertRemoveDtoToEntity(this ProductoRemoveDto ProductoRemoveDto)
+        {
+            return new Producto()
+            {
+                IdProducto = ProductoRemoveDto.IdProducto,
+                Deleted = ProductoRemoveDto.Deleted,
+                DeletedDate = ProductoRemoveDto.ChangeDate
+            };
+
+        }
+
+        }
+
+
     }
-}

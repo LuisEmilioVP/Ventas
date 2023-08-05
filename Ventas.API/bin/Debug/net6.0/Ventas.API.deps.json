@@ -1008,8 +1008,7 @@
       },
       "Ventas.IOC/1.0.0": {
         "dependencies": {
-          "Ventas.Application": "1.0.0",
-          "Ventas.Infrastructure": "1.0.0"
+          "Ventas.Application": "1.0.0"
         },
         "runtime": {
           "Ventas.IOC.dll": {}

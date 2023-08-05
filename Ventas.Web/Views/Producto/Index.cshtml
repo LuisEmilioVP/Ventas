@@ -1,20 +1,17 @@
-﻿@model IEnumerable<Ventas.Infrastructure.Models.ProductoModels>
+﻿@model IEnumerable<Ventas.Web.Models.Producto.BaseProductoModel>
 
 @{
     ViewData["Title"] = "Index";
 }
 
-<h1>Productos</h1>
+<h1>Producto sin Api</h1>
 
 <p>
-    <a asp-action="Create">Nuevo producto</a>
+    <a asp-action="Create">Create New</a>
 </p>
 <table class="table">
     <thead>
         <tr>
-            <th>
-                @Html.DisplayNameFor(model => model.IdProducto)
-            </th>
             <th>
                 @Html.DisplayNameFor(model => model.CodigoBarra)
             </th>
@@ -47,10 +44,7 @@
     </thead>
     <tbody>
 @foreach (var item in Model) {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.IdProducto)
-            </td>
+        <tr> 
             <td>
                 @Html.DisplayFor(modelItem => item.CodigoBarra)
             </td>
@@ -79,9 +73,9 @@
                 @Html.DisplayFor(modelItem => item.FechaRegistro)
             </td>
             <td>
-                @Html.ActionLink("Edit", "Edit", new { id=item.IdProducto }) |
-                @Html.ActionLink("Details", "Details", new { id=item.IdProducto }) |
-                @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })
+                @Html.ActionLink("Edit", "Edit", new {  id=item.IdProducto  }) 
+                @Html.ActionLink("Details", "Details", new { id=item.IdProducto  }) |
+                @Html.ActionLink("Delete", "Delete", new { id=item.IdProducto  })
             </td>
         </tr>
 }

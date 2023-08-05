@@ -1,7 +1,9 @@
 using Microsoft.EntityFrameworkCore;
 using Ventas.Infrastructure.Context;
 using Ventas.IOC.Dependecies;
-
+using Ventas.Web.APIs;
+using Ventas.Web.APIs.ApiServices;
+using Ventas.Web.APIs.ApiServices.Interfaces;
 
 
 var builder = WebApplication.CreateBuilder(args);
@@ -14,6 +16,11 @@ builder.Services.AddDbContext<VentasContext>(option => option.UseSqlServer(build
 //Dependecia//
 
 builder.Services.AddProductoDependecy();
+
+builder.Services.AddTransient<IApiRepository, ApiRepository>();
+
+builder.Services.AddTransient<IProductoApiService, ProductoApiService>();
+
 
 var app = builder.Build();
 

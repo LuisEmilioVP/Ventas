@@ -1,7 +1,9 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Ventas.Application.Contract;
-using Ventas.Application.Dtos.Producto;
 using Ventas.Infrastructure.Models;
+using Ventas.Web.Controllers.Extentions;
+using Ventas.Web.Models.Producto;
+using Ventas.Web.Models.Producto.Request;
 
 namespace Ventas.Web.Controllers
 {
@@ -18,26 +20,55 @@ namespace Ventas.Web.Controllers
         // GET: HomeController1
         public ActionResult Index()
         {
-            var result = productoService.Get();
 
-            if (!result.Success)
-                ViewBag.Message = result.Message;
+            try
+            {
+                var result = productoService.Get();
 
-            var produlist = (List<ProductoModels>)result.Data; 
+                if (!result.Success)
+                    throw new Exception(result.Message);
 
-            return View(produlist);
+                var produlist = result.Data as List<ProductoModels>
+                        ?? throw new Exception("No se encontro ningun producto.");
+
+                List<BaseProductoModel> productoResponses = produlist
+                     .Select(pro => pro.ConverModelToProductoResponse()).ToList();
+
+                return View(productoResponses);
+            }
+            catch(Exception e)
+            {
+                ViewBag.Message = e.Message;
+                return RedirectToAction(nameof(Index));
+            }
+            
+            
         }
 
         // GET: HomeController1/Details/5
         public ActionResult Details(int id)
         {
-            var result = productoService.GetById(id);
-            if (!result.Success)
-                ViewBag.Message = result.Message;
+            try
+            {
+                var result = productoService.GetById(id);
 
-            var produDetails = (ProductoModels)result.Data;
+                if (!result.Success)
+                    throw new Exception(result.Message);
 
-            return View(produDetails);
+                var listproById = result.Data as ProductoModels
+                    ?? throw new Exception("El producto no existe");
+
+                BaseProductoModel productoResponse = listproById.ConverModelToProductoResponse();
+
+                return View(productoResponse);
+            }
+            catch(Exception e)
+            {
+                ViewBag.Message = e.Message;
+                return RedirectToAction(nameof(Index));
+            }
+
+            
         }
 
         // GET: HomeController1/Create
@@ -49,16 +80,18 @@ namespace Ventas.Web.Controllers
         // POST: HomeController1/Create
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create(ProductoAddDto productoAddDtos)
+        public ActionResult Create(ProductoAddRequest productoAdd)
         {
             try
             {
-                var result = this.productoService.Add(productoAddDtos);
+                var producto = productoAdd.ConverAddRequestToAddDto();
+
+                var result = this.productoService.Add(producto);
 
                 if (!result.Success)
                 {
                     ViewBag.Message = result.Message;
-                    return View(result);
+                    return View();
                 }
 
                 return RedirectToAction(nameof(Index));
@@ -73,22 +106,28 @@ namespace Ventas.Web.Controllers
         public ActionResult Edit(int id)
         {
             var result = productoService.GetById(id);
+
             if (!result.Success)
                 ViewBag.Message = result.Message;
 
-            var produEdit = (ProductoModels)result.Data;
+            var producto = result.Data as ProductoModels
+                ?? throw new Exception("No existe este producto");
 
-            return View(produEdit);
+            ProductoUpdateRequest updateProducto = producto.ConverProductoToUpdateRequest();
+
+            return View(updateProducto);
         }
 
         // POST: HomeController1/Edit/5
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit(ProductoUpdateDto productoUpdateDto)
+        public ActionResult Edit(int id, ProductoUpdateRequest productoUpdateRequest)
         {
             try
             {
-                var result = this.productoService.Update(productoUpdateDto);
+                var producto = productoUpdateRequest.ConverUpdateRequestToUpdateDto();
+
+                var result = this.productoService.Update(producto);
 
                 if (!result.Success)
                 {
@@ -106,16 +145,22 @@ namespace Ventas.Web.Controllers
         // GET: HomeController1/Delete/5
         public ActionResult Delete(int id)
         {
-            return View();
+            ProductoRemoveRequest productoRemove = new ProductoRemoveRequest(id);
+           
+            return View(productoRemove);
         }
 
         // POST: HomeController1/Delete/5
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Delete(int id, IFormCollection collection)
+        public ActionResult Delete(int id, ProductoRemoveRequest productoRemove)
         {
             try
             {
+                var producto = productoRemove.ConverRemoveDtoToRemoveRequest();
+
+                var result = this.productoService.Remove(producto);
+
                 return RedirectToAction(nameof(Index));
             }
             catch

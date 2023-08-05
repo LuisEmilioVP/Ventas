@@ -19,7 +19,7 @@ namespace Ventas.API.Controllers
         }
 
         // GET: api/<ProductoController>
-        [HttpGet]
+        [HttpGet("GetProducto")]
         public IActionResult Get()
         {
             var result = this.productoService.Get();
@@ -30,7 +30,7 @@ namespace Ventas.API.Controllers
         }
 
         // GET api/<ProductoController>/5
-        [HttpGet("{id}")]
+        [HttpGet("GetById")]
         public IActionResult Get(int id)
         {
             var result = this.productoService.GetById(id);
@@ -41,7 +41,7 @@ namespace Ventas.API.Controllers
         }
 
         // POST api/<ProductoController>
-        [HttpPost("Save")]
+        [HttpPost("SaveProducto")]
         public IActionResult Post([FromBody] ProductoAddDto productoAdd)
         {
             var result = this.productoService.Add(productoAdd);
@@ -52,7 +52,7 @@ namespace Ventas.API.Controllers
         }
 
         // PUT api/<ProductoController>/5
-        [HttpPut("Update")]
+        [HttpPost("UpdateProducto")]
         public IActionResult Put([FromBody] ProductoUpdateDto productoUpdate)
         {
 
@@ -64,7 +64,7 @@ namespace Ventas.API.Controllers
         }
 
         // DELETE api/<ProductoController>/5
-        [HttpDelete("Remove")]
+        [HttpPost("RemoveProducto")]
         public IActionResult Delete([FromBody] ProductoRemoveDto productoRemove)
         {
             var result = this.productoService.Remove(productoRemove);

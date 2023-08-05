@@ -31,26 +31,25 @@ namespace Ventas.Infrastructure.Repositories
             List<ProductoModels> producto = new List<ProductoModels>();
             try
             {
-                this.logger.LogInformation("Obteniendo Producto...");
-                producto = this.context.Producto
-                    .Where(pro => !pro.Deleted)
-                    .Select(pro => new ProductoModels()
+                this.logger.LogInformation("Obteniendo Productos...");
 
-                    {
-                        CodigoBarra = pro.CodigoBarra,
-                        Marca = pro.Marca,
-                        Descripcion = pro.Descripcion,
-                        Stock = pro.Stock,
-                        UrlImagen = pro.UrlImagen,
-                        NombreImagen = pro.NombreImagen,
-                        Precio = pro.Precio,
-                        EsActivo = pro.EsActivo,
-                        FechaRegistro = pro.FechaRegistro
-                    }).ToList();
+                List<Producto> pro = base.GetEntities()
+                    .Where(pro => !pro.Deleted && pro.EsActivo == true).ToList();
+
+                if (pro == null)
+                    throw new ProductoNotFoundException(
+                        "Producto no encontrado en la base de datos");
+
+                foreach (Producto productos in pro)
+                {
+                    ProductoModels productoModels = productos.ConvertProductoEntityToModel();
+                    producto.Add(productoModels);
+                }
             }
             catch (Exception e)
             {
                 this.logger.LogError("Error obteniendo los productos", e.ToString());
+                throw new DbConnectionException($"Error de conexión: {e.Message}");
             }
 
             return producto;
@@ -61,11 +60,15 @@ namespace Ventas.Infrastructure.Repositories
             ProductoModels productoModels = new ProductoModels();
             try
             {
-                if (!base.Exists(pro => pro.IdProducto == idproducto))
+                Producto pro = context.Producto.FirstOrDefault(pro => pro.IdProducto == idproducto
+                && pro.EsActivo == true);
+
+                if (pro == null)
                     throw new ProductoNotFoundException("Producto no encontrado en la base de datos");
 
-                productoModels = base.GetEntity(idproducto).ConvertUserEntityToModel();
-                this.logger.LogInformation($"Obteniendo un usuario: {idproducto}");
+                productoModels = pro.ConvertProductoEntityToModel();
+
+                this.logger.LogInformation($"Obteniendo un producto: {idproducto}");
             }
             catch (Exception e)
             {
@@ -78,13 +81,19 @@ namespace Ventas.Infrastructure.Repositories
 
         public override void Add(Producto entity)
         {
+            this.logger.LogInformation("Se agregará un nuevo prdoucto…");
+
             try
             {
+                string? codigoBarra = entity.CodigoBarra;
+
                 if (this.Exists(pro => pro.CodigoBarra == entity.CodigoBarra)) 
                 {
-                    throw new ProductoExceptions("Este codigo de barra ya existe");
+                    throw new ProductoExceptions($"¡El correo: {codigoBarra} ya existe!");
 
                 }
+
+                entity.ConvertProductoCreateToEntity();
 
                 base.Add(entity);
                 base.SaveChanges();
@@ -92,12 +101,12 @@ namespace Ventas.Infrastructure.Repositories
             }
             catch (ProductoExceptions e)
             {
-                this.logger.LogError($"Error al agregar el codigo de barra: {e.Message}", e.ToString());
+                this.logger.LogError($"Algo salió mal: {e.Message}");
                 throw;
             }
             catch (Exception e)
             {
-                this.logger.LogError($"Error al cargar el codigo de barra{e.Message}", e.ToString());
+                this.logger.LogError($"Error al agregar el producto{e.Message}", e.ToString());
                 throw new DbConnectionException($"Error de Conexión: {e.Message}");
             }
         }
@@ -106,23 +115,19 @@ namespace Ventas.Infrastructure.Repositories
         {
             try
             {
-               Producto ProductoToUpdate = this.GetEntity(entity.IdProducto)
+                this.logger.LogInformation($"Se actualizará el producto con el, Id: {entity.IdProducto}");
+
+                Producto productoToUpdate = base.GetEntity(entity.IdProducto)
                     ?? throw new ProductoNotFoundException(
                         "Producto no encontrado en la base de datos");
 
-                ProductoToUpdate.IdProducto = entity.IdProducto;
-                ProductoToUpdate.CodigoBarra = entity.CodigoBarra;
-                ProductoToUpdate.Marca = entity.Marca;
-                ProductoToUpdate.Descripcion = entity.Descripcion;
-                ProductoToUpdate.Stock = entity.Stock;
-                ProductoToUpdate.Precio = entity.Precio;
-                ProductoToUpdate.UrlImagen = entity.UrlImagen;
-                ProductoToUpdate.NombreImagen = entity.NombreImagen;
-                ProductoToUpdate.FechaRegistro = entity.FechaRegistro;
-                ProductoToUpdate.UserMod = entity.UserMod;
-                ProductoToUpdate.ModifyDate = entity.ModifyDate;
+                if (productoToUpdate.EsActivo == false && productoToUpdate.Deleted == true)
+                    throw new ProductoExceptions("El producto a actualizar está eliminado");
 
-                this.context.Producto.Update(ProductoToUpdate);         
+                productoToUpdate.ConvertProductoUpdateToEntity(entity);
+
+                base.Update(productoToUpdate);
+                this.logger.LogInformation($"El producto de Id: {entity.IdProducto} ha sido actualizado");
                 this.context.SaveChanges();
             }
             catch (ProductoNotFoundException ex)
@@ -142,14 +147,16 @@ namespace Ventas.Infrastructure.Repositories
             try
             {
 
-                Producto ProductoToRemove = this.GetEntity(entity.IdProducto)
-                 ?? throw new ProductoNotFoundException(
+                this.logger.LogInformation($"Se eliminara el producto con el, Id: {entity.IdProducto}");
+
+                Producto ProductoToRemove = base.GetEntity(entity.IdProducto)
+                    ?? throw new ProductoNotFoundException(
                         "Producto no encontrado en la base de datos");
 
-                ProductoToRemove.IdProducto = entity.IdProducto;
-                ProductoToRemove.UserDeleted = entity.UserDeleted;
-                ProductoToRemove.DeletedDate = entity.DeletedDate;
-                ProductoToRemove.Deleted = entity.Deleted;
+                if (ProductoToRemove.EsActivo == false)
+                    throw new ProductoExceptions("Este producto ya esta eliminado");
+
+                ProductoToRemove.ConvertProductoRemoveToEntity(entity);
 
                 this.context.Update(ProductoToRemove);
                 this.context.SaveChanges();

@@ -1,4 +1,4 @@
-﻿@model Ventas.Infrastructure.Models.ProductoModels
+﻿@model Ventas.Web.Models.Producto.Request.ProductoUpdateRequest
 
 @{
     ViewData["Title"] = "Edit";
@@ -6,7 +6,7 @@
 
 <h1>Edit</h1>
 
-<h4>ProductoModels</h4>
+<h4>ProductoUpdateRequest</h4>
 <hr />
 <div class="row">
     <div class="col-md-4">
@@ -38,6 +38,11 @@
                 <span asp-validation-for="Stock" class="text-danger"></span>
             </div>
             <div class="form-group">
+                <label asp-for="Precio" class="control-label"></label>
+                <input asp-for="Precio" class="form-control" />
+                <span asp-validation-for="Precio" class="text-danger"></span>
+            </div>
+            <div class="form-group">
                 <label asp-for="UrlImagen" class="control-label"></label>
                 <input asp-for="UrlImagen" class="form-control" />
                 <span asp-validation-for="UrlImagen" class="text-danger"></span>
@@ -48,19 +53,14 @@
                 <span asp-validation-for="NombreImagen" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="Precio" class="control-label"></label>
-                <input asp-for="Precio" class="form-control" />
-                <span asp-validation-for="Precio" class="text-danger"></span>
+                <label asp-for="ChangeUser" class="control-label"></label>
+                <input asp-for="ChangeUser" class="form-control" />
+                <span asp-validation-for="ChangeUser" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="EsActivo" class="control-label"></label>
-                <input asp-for="EsActivo" class="form-control" />
-                <span asp-validation-for="EsActivo" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="FechaRegistro" class="control-label"></label>
-                <input asp-for="FechaRegistro" class="form-control" />
-                <span asp-validation-for="FechaRegistro" class="text-danger"></span>
+                <label asp-for="ChangeDate" class="control-label"></label>
+                <input asp-for="ChangeDate" class="form-control" />
+                <span asp-validation-for="ChangeDate" class="text-danger"></span>
             </div>
             <div class="form-group">
                 <input type="submit" value="Save" class="btn btn-primary" />

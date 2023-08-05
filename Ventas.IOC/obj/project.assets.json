@@ -7156,8 +7156,7 @@
   },
   "projectFileDependencyGroups": {
     ".NETStandard,Version=v2.1": [
-      "Ventas.Application >= 1.0.0",
-      "Ventas.Infrastructure >= 1.0.0"
+      "Ventas.Application >= 1.0.0"
     ]
   },
   "packageFolders": {
@@ -7189,9 +7188,6 @@
           "projectReferences": {
             "C:\\Proyecto\\Ventas\\Ventas.Application\\Ventas.Application.csproj": {
               "projectPath": "C:\\Proyecto\\Ventas\\Ventas.Application\\Ventas.Application.csproj"
-            },
-            "C:\\Proyecto\\Ventas\\Ventas.Infrastructure\\Ventas.Infrastructure.csproj": {
-              "projectPath": "C:\\Proyecto\\Ventas\\Ventas.Infrastructure\\Ventas.Infrastructure.csproj"
             }
           }
         }

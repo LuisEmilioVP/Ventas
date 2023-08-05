@@ -1,10 +1,12 @@
 ﻿using System.ComponentModel.DataAnnotations;
+using System;
 using Ventas.Domain.Core;
 
 namespace Ventas.Domain.Entities
 {
     public class Producto : SeconEntity
     {
+       
         [Key] public int IdProducto { get; set; }
         public string? CodigoBarra { get; set; }
         public string? Marca { get; set; }

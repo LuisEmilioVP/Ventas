@@ -1824,8 +1824,7 @@
         "type": "project",
         "framework": ".NETStandard,Version=v2.1",
         "dependencies": {
-          "Ventas.Application": "1.0.0",
-          "Ventas.Infrastructure": "1.0.0"
+          "Ventas.Application": "1.0.0"
         },
         "compile": {
           "bin/placeholder/Ventas.IOC.dll": {}

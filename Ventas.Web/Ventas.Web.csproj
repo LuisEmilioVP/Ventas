@@ -8,7 +8,6 @@
 
   <ItemGroup>
     <ProjectReference Include="..\Ventas.Application\Ventas.Application.csproj" />
-    <ProjectReference Include="..\Ventas.Infrastructure\Ventas.Infrastructure.csproj" />
     <ProjectReference Include="..\Ventas.IOC\Ventas.IOC.csproj" />
   </ItemGroup>
 
