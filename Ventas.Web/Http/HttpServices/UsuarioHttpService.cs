@@ -13,19 +13,21 @@ namespace Ventas.Web.Http.HttpServices
         private readonly ILogger<UsuarioHttpService> logger;
         private string baseUrl = string.Empty;
 
+        //http://localhost:5203/api/Usuario/GetUsers
+
         public UsuarioHttpService(IHttpRepository httpRepository,
                                   IConfiguration configuration,
                                   ILogger<UsuarioHttpService> logger)
         {
             this.httpRepository = httpRepository;
             this.logger = logger;
-            this.baseUrl = configuration["ApiConfig:baseUrl"] + "Usuario/";
+            this.baseUrl = configuration["ApiConfig:baseUrl"];
         }
 
         public UsuarioListResponse Get()
         {
             UsuarioListResponse? usuarioList = new();
-            string url = $" {baseUrl}GetUsers";
+            string url = $" {baseUrl}Usuario/GetUsers";
 
             try
             {
@@ -50,7 +52,7 @@ namespace Ventas.Web.Http.HttpServices
         public UsuarioDetailsResponse GetById(int id)
         {
             UsuarioDetailsResponse? usuarioDetails = new();
-            string url = $" {baseUrl}GetUserById?id={id}";
+            string url = $" {baseUrl}Usuario/GetUserById?id={id}";
 
             try
             {
@@ -78,7 +80,7 @@ namespace Ventas.Web.Http.HttpServices
             BaseResponse? response = new();
 
             UsuarioAddDto usuarioAdd = add.ConvertAddRequestToAddDto();
-            string url = $" {baseUrl}SaveUser";
+            string url = $" {baseUrl}Usuario/SaveUser";
 
             try
             {
@@ -105,7 +107,7 @@ namespace Ventas.Web.Http.HttpServices
             BaseResponse? response = new();
 
             UsuarioUpdateDto usuarioUpdate = update.ConvertUpdateRequestToUpdateDto();
-            string url = $" {baseUrl}UpdateUser";
+            string url = $" {baseUrl}Usuario/UpdateUser";
 
             try
             {
@@ -132,7 +134,7 @@ namespace Ventas.Web.Http.HttpServices
             BaseResponse? response = new();
 
             UsuarioRevoveDto usuarioRevove = remove.ConvertRemoveDtoToRemoveRequest();
-            string url = $" {baseUrl}RemoveUser";
+            string url = $" {baseUrl}Usuario/RemoveUser";
 
             try
             {
