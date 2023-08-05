@@ -17,8 +17,6 @@ namespace Ventas.Web.Controllers.Extentions
                 Correo = usuario.Correo,
                 Telefono = usuario.Telefono,
                 Clave = usuario.Clave,
-                UrlFoto = usuario.UrlFoto,
-                NombreFoto = usuario.NombreFoto,
                 EsActivo = usuario.EsActivo,
                 FechaRegistro = usuario.FechaRegistro
             };
@@ -32,12 +30,10 @@ namespace Ventas.Web.Controllers.Extentions
                 Nombre = usuario.Nombre,
                 Correo = usuario.Correo,
                 Telefono = usuario.Telefono,
-                Clave = usuario.Clave,
-                UrlFoto= usuario.UrlFoto,
-                NombreFoto = usuario.NombreFoto
+                Clave = usuario.Clave
             };
         }
-        //* Con Api
+        //* Con Api Y Http
         public static UsuarioUpdateRequest ConvertUsuarioToUpdateRequest(this BaseUsuarioModel usuario)
         {
             return new UsuarioUpdateRequest()
@@ -47,8 +43,6 @@ namespace Ventas.Web.Controllers.Extentions
                 Correo = usuario.Correo,
                 Telefono = usuario.Telefono,
                 Clave = usuario.Clave,
-                UrlFoto = usuario.UrlFoto,
-                NombreFoto = usuario.NombreFoto
             };
         }
         //* Para Api y sin Api
@@ -60,8 +54,6 @@ namespace Ventas.Web.Controllers.Extentions
                 Correo = usuarioAdd.Correo,
                 Telefono = usuarioAdd.Telefono,
                 Clave = usuarioAdd.Clave,
-                UrlFoto = usuarioAdd.UrlFoto,
-                NombreFoto = usuarioAdd.NombreFoto,
                 ChangeUser = usuarioAdd.ChangeUser,
                 ChangeDate = usuarioAdd.ChangeDate
             };
@@ -76,8 +68,6 @@ namespace Ventas.Web.Controllers.Extentions
                 Correo = usuarioUpdate.Correo,
                 Telefono = usuarioUpdate.Telefono,
                 Clave = usuarioUpdate.Clave,
-                UrlFoto = usuarioUpdate.UrlFoto,
-                NombreFoto = usuarioUpdate.NombreFoto,
                 ChangeUser = usuarioUpdate.ChangeUser,
                 ChangeDate = usuarioUpdate.ChangeDate
             };

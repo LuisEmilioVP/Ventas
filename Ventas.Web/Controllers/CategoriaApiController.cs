@@ -99,7 +99,7 @@ namespace Ventas.Web.Controllers
             if (category.Data == null)
                 throw new Exception("El usuario no puede ser nulo");
 
-            CategoriaUpdateRequest categoriaUpdate = category.Data.ConvertUsuarioToUpdateRequest();
+            CategoriaUpdateRequest categoriaUpdate = category.Data.ConvertCategoriaToUpdateRequest();
 
             return View(categoriaUpdate);
         }

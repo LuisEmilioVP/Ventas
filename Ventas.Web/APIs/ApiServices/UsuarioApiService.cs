@@ -12,7 +12,7 @@ namespace Ventas.Web.APIs.ApiServices
         private readonly IApiRepository apiCaller;
         private readonly ILogger<UsuarioApiService> logger;
         private readonly string apiKey = "http://localhost:5203/api/Usuario/";
-            
+
         public UsuarioApiService(IApiRepository apiCaller, ILogger<UsuarioApiService> logger)
         {
             this.apiCaller = apiCaller;

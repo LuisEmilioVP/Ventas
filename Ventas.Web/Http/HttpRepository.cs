@@ -7,12 +7,10 @@ namespace Ventas.Web.Http
     public class HttpRepository : IHttpRepository
     {
         private readonly IHttpClientFactory httpClientFactory;
-        private readonly ILogger<HttpRepository> _logger;
 
         public HttpRepository(IHttpClientFactory httpClientFactory, ILogger<HttpRepository> logger)
         {
             this.httpClientFactory = httpClientFactory;
-            this._logger = logger;
         }
 
         public ObjIn? Get<ObjIn>(string url, ObjIn? response) where ObjIn : BaseResponse

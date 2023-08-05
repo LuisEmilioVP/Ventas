@@ -28,6 +28,7 @@ builder.Services.AddTransient<IApiRepository, ApiRepository>();
 builder.Services.AddHttpClient();
 
 builder.Services.AddTransient<IUsuarioHttpService, UsuarioHttpService>();
+builder.Services.AddTransient<ICategoriaHttpService, CategoriaHttpService>();
 
 builder.Services.AddTransient<IHttpRepository, HttpRepository>();
 

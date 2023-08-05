@@ -28,7 +28,7 @@ namespace Ventas.Web.Controllers.Extentions
             };
         }
         //* Con Api
-        public static CategoriaUpdateRequest ConvertUsuarioToUpdateRequest(this BaseCategoriaModel baseCategoria)
+        public static CategoriaUpdateRequest ConvertCategoriaToUpdateRequest(this BaseCategoriaModel baseCategoria)
         {
             return new CategoriaUpdateRequest()
             {

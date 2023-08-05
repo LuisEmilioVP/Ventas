@@ -88,27 +88,6 @@ namespace Ventas.Application.Validations
                 return result;
             }
 
-            if (!IsValidUrl(addDto.UrlFoto))
-            {
-                result.Message = "La URL es inválida.";
-                result.Success = false;
-                return result;
-            }
-
-            if (addDto.UrlFoto.Length > 500)
-            {
-                result.Message = "La URL es demasiado larga";
-                result.Success = false;
-                return result;
-            }
-
-            if (addDto.NombreFoto.Length > 100)
-            {
-                result.Message = "El nombre de la foto es demasiado largo";
-                result.Success = false;
-                return result;
-            }
-
             if (addDto.Clave.Length > 100)
             {
                 result.Message = "El Telefóno del usuario es demasiado largo";
@@ -194,27 +173,6 @@ namespace Ventas.Application.Validations
                 return result;
             }
 
-            if (!IsValidUrl(updateDto.UrlFoto))
-            {
-                result.Message = "La URL es inválida.";
-                result.Success = false;
-                return result;
-            }
-
-            if (updateDto.UrlFoto.Length > 500)
-            {
-                result.Message = "La URL es demasiado larga";
-                result.Success = false;
-                return result;
-            }
-
-            if (updateDto.NombreFoto.Length > 100)
-            {
-                result.Message = "El nombre de la foto es demasiado largo";
-                result.Success = false;
-                return result;
-            }
-
             if (updateDto.Clave.Length > 100)
             {
                 result.Message = "El Telefóno del usuario es demasiado largo";
@@ -277,15 +235,6 @@ namespace Ventas.Application.Validations
 
             // Validar el formato del número telefónico usando la expresión regular
             return Regex.IsMatch(phoneNumber, phonePattern);
-        }
-
-        private static bool IsValidUrl(string url)
-        {
-            // Expresión regular para validar el formato de una URL
-            string urlPattern = @"^(http|https)://([\w-]+(\.[\w-]+)+)([\w.,@?^=%&:/~+#-]*[\w@?^=%&/~+#-])?$";
-
-            // Validar el formato de la URL usando la expresión regular
-            return Regex.IsMatch(url, urlPattern);
         }
     }
 }

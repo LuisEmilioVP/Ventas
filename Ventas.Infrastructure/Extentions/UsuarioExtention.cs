@@ -14,9 +14,7 @@ namespace Ventas.Infrastructure.Extentions
                 Nombre = usuario.Nombre,
                 Correo = usuario.Correo,
                 Telefono = usuario.Telefono,
-                UrlFoto = usuario.UrlFoto,
                 Clave = usuario.Clave,
-                NombreFoto = usuario.NombreFoto,
                 EsActivo = usuario.EsActivo,
                 FechaRegistro = usuario.FechaRegistro
             };
@@ -31,9 +29,7 @@ namespace Ventas.Infrastructure.Extentions
                 Nombre = usuario.Nombre,
                 Correo = usuario.Correo,
                 Telefono = usuario.Telefono,
-                UrlFoto = usuario.UrlFoto,
                 Clave = usuario.Clave,
-                NombreFoto = usuario.NombreFoto,
                 EsActivo = usuario.EsActivo = true,
                 FechaRegistro = usuario.FechaRegistro = DateTime.Now,
                 CreationUser = usuario.CreationUser,
@@ -47,8 +43,6 @@ namespace Ventas.Infrastructure.Extentions
             usuarioToUpdate.IdUsuario = usuario.IdUsuario;
             usuarioToUpdate.Nombre = usuario.Nombre;
             usuarioToUpdate.Correo = usuario.Correo;
-            usuarioToUpdate.UrlFoto = usuario.UrlFoto;
-            usuarioToUpdate.NombreFoto = usuario.NombreFoto;
             usuarioToUpdate.Clave = usuario.Clave;
             usuarioToUpdate.EsActivo = usuario.EsActivo = true;
             usuarioToUpdate.FechaRegistro = usuario.FechaRegistro = DateTime.Now;

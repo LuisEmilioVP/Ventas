@@ -13,8 +13,6 @@ namespace Ventas.Web.Http.HttpServices
         private readonly ILogger<UsuarioHttpService> logger;
         private string baseUrl = string.Empty;
 
-        //http://localhost:5203/api/Usuario/GetUsers
-
         public UsuarioHttpService(IHttpRepository httpRepository,
                                   IConfiguration configuration,
                                   ILogger<UsuarioHttpService> logger)

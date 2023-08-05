@@ -8,7 +8,7 @@ namespace Ventas.Web.Http.Interfaces
                                                           CategoriaDetailsResponse,
                                                           CategoriaAddRequest,
                                                           CategoriaUpdateRequest,
-                                                          CategoriaUpdateRequest>
+                                                          CategoriaRemoveRequest>
     {
     }
 }
