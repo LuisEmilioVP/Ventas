@@ -16,6 +16,7 @@ namespace Ventas.Application.Extensions
                 nombre = negocioAddDto.nombre,
                 correo = negocioAddDto.correo,
                 direccion = negocioAddDto.direccion,
+                telefono = negocioAddDto.telefono,
                 porcentajeImpuesto = negocioAddDto.porcentajeImpuesto,
                 simboloMoneda = negocioAddDto.simboloMoneda,
                 CreationUser = negocioAddDto.ChangeUser,
@@ -35,6 +36,7 @@ namespace Ventas.Application.Extensions
                 nombre = negocioUpdateDto.nombre,
                 correo = negocioUpdateDto.correo,
                 direccion = negocioUpdateDto.direccion,
+                telefono= negocioUpdateDto.telefono, 
                 porcentajeImpuesto = negocioUpdateDto.porcentajeImpuesto,
                 simboloMoneda = negocioUpdateDto.simboloMoneda,
                 UserMod = negocioUpdateDto.ChangeUser,
@@ -43,5 +45,15 @@ namespace Ventas.Application.Extensions
 
         }
 
+        public static Negocio ConvertRemoveDtoToEntity(this NegocioRemoveDto negocioRemoveDto)
+        {
+            return new Negocio()
+            {
+                idNegocio = negocioRemoveDto.idNegocio,
+                Deleted = negocioRemoveDto.Deleted,
+                UserDeleted = negocioRemoveDto.ChangeUser,
+                DeletedDate = negocioRemoveDto.ChangeDate
+            };
+        }
     }
 }

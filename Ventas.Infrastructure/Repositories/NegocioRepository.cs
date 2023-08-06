@@ -26,60 +26,65 @@ namespace Ventas.Infrastructure.Repositories
 
         public override void Add(Negocio entity)
         {
+            this.logger.LogInformation("Se agregará un nuevo negocio…");
+
             try
             {
-                if (this.Exists(us => us.nombre == entity.nombre))
-                    throw new NegocioExceptions("¡El Negocio ya existe!");
+                if (entity == null)
+                    throw new NegocioExceptions("Un Negocio no puede ser nulo");
+
+                // Capturar nombre de usuario y correo para evitar que se repitan
+                string? name = entity.nombre;
+                string? email = entity.correo;
+
+                if (this.Exists(us => us.correo == entity.correo))
+                    throw new NegocioExceptions($"¡El correo: {email} ya existe!");
+
+                entity.ConvertNegocioCreateToEntity();
 
                 base.Add(entity);
+                this.logger.LogInformation($"Agregando el usuario: {name} con el correo: {email}");
                 base.SaveChanges();
-                this.logger.LogInformation($"Nuevo Negocio insertado: {entity.nombre}");
             }
             catch (NegocioExceptions ex)
             {
-                this.logger.LogError($"Error al agregar Negocio: {ex.Message}", ex.ToString());
+                this.logger.LogError($"Algo salió mal: {ex.Message}");
                 throw;
             }
             catch (Exception ex)
             {
-                this.logger.LogError($"Error al agregar Negocio: {ex.Message}", ex.ToString());
+                this.logger.LogError($"Error al agregar usuario: {ex.Message}", ex.ToString());
                 throw new NDatabaseConnectionException($"Error de conexión: {ex.Message}");
             }
-
         }
 
         public override void Update(Negocio entity)
         {
             try
             {
-                Negocio negocioToUpdate = this.GetEntity(entity.idNegocio)
-                    ?? throw new NegocioNotFoundException("Negocio no encontrado en la base de datos");
+                this.logger.LogInformation($"Se actualizará el Negocio con el, Id: {entity.idNegocio}");
 
-                negocioToUpdate.idNegocio = entity.idNegocio;
-                negocioToUpdate.urlLogo = entity.urlLogo;
-                negocioToUpdate.nombreLogo = entity.nombreLogo;
-                negocioToUpdate.numeroDocumento = entity.numeroDocumento;
-                negocioToUpdate.nombre = entity.nombre;
-                negocioToUpdate.correo = entity.correo;
-                negocioToUpdate.direccion = entity.direccion;
-                negocioToUpdate.porcentajeImpuesto = entity.porcentajeImpuesto;
-                negocioToUpdate.simboloMoneda = entity.simboloMoneda;
-                negocioToUpdate.UserMod = 1;//entity.UserMod;
-                negocioToUpdate.ModifyDate = DateTime.Now;
+                Negocio negocioToUpdate = base.GetEntity(entity.idNegocio)
+                    ?? throw new NegocioNotFoundException(
+                        "Negocio no encontrado en la base de datos");
 
+                if (negocioToUpdate.Deleted == true)
+                    throw new NegocioExceptions("El Negocio a actualizar está eliminado");
 
-                this.context.Update(negocioToUpdate);
+                negocioToUpdate.ConvertNegocioUpdateToEntity(entity);
+
+                base.Update(negocioToUpdate);
+                this.logger.LogInformation($"El Negocio de id: {entity.idNegocio} ha sido actualizado");
                 this.context.SaveChanges();
-                this.logger.LogInformation("Actualización de usuario exitosa.");
             }
             catch (NegocioExceptions ex)
             {
-                this.logger.LogError($"Error al actualizar usuario: {ex.Message}");
+                this.logger.LogError($"Algo salió mal: {ex.Message}");
                 throw;
             }
             catch (Exception ex)
             {
-                this.logger.LogError($"Error al actualizar usuario: {ex.Message}", ex.ToString());
+                this.logger.LogError($"Error al actualizar Negocio: {ex.Message}", ex.ToString());
                 throw new NDatabaseConnectionException($"Error de conexión: {ex.Message}");
             }
         }
@@ -88,82 +93,97 @@ namespace Ventas.Infrastructure.Repositories
         {
             try
             {
-                Negocio negocioToRemove = this.GetEntity(entity.idNegocio)
-                      ?? throw new NegocioNotFoundException("Negocio no encontrado en la base de datos");
+                this.logger.LogInformation($"Se eliminará el usuario con el Id: {entity.idNegocio}");
 
-                negocioToRemove.Deleted = entity.Deleted;
-                negocioToRemove.UserDeleted = entity.UserDeleted;
-                negocioToRemove.DeletedDate = entity.DeletedDate;
+                Negocio negocioToRemove = base.GetEntity(entity.idNegocio)
+                      ?? throw new NegocioNotFoundException(
+                          "Negocio no encontrado en la base de datos");
+
+                if (negocioToRemove.Deleted == true)
+                    throw new NegocioExceptions("El usuario ya ha sido eliminado");
+
+                negocioToRemove.ConvertNegocioRemoveToEntity(entity);
 
                 this.context.Update(negocioToRemove);
+                this.logger.LogInformation($"El Negocio de Id: {entity.idNegocio} ha sido eliminado");
                 this.context.SaveChanges();
-                this.logger.LogInformation("Eliminación de Negocio exitosa.");
             }
             catch (NegocioExceptions ex)
             {
-                this.logger.LogError($"Error al eliminar Negocio: {ex.Message}");
+                this.logger.LogError($"Algo salió mal: {ex.Message}");
                 throw;
             }
             catch (Exception ex)
             {
-                this.logger.LogError($"Error al eliminar Negocio: {ex.Message}", ex.ToString());
+                this.logger.LogError($"Error al eliminar usuario: {ex.Message}", ex.ToString());
                 throw new NDatabaseConnectionException($"Error de conexión: {ex.Message}");
             }
-
-
         }
 
-        public NegocioModel GetNegocio(int idNegocio)
+        public NegocioModel GetNegocio(int NegocioId)
         {
             NegocioModel negociomodel = new NegocioModel();
 
             try
             {
-                if (!base.Exists(ne => ne.idNegocio == idNegocio))
-                    throw new NegocioNotFoundException("Negocio no ha sido encontrado en la base de datos");
+                this.logger.LogInformation($"Obteniendo Usuario de Id: {NegocioId}");
 
-                negociomodel = base.GetEntity(idNegocio).ConvertUserEntityToModel();
-                this.logger.LogInformation($"Obteniendo un Negocio: {idNegocio}");
+                Negocio nego = context.Negocio.FirstOrDefault(use => use.idNegocio == NegocioId);
+
+                if (nego == null)
+                    throw new NegocioNotFoundException(
+                            $"Negocio de id: {NegocioId} no encontrado en la base de datos");
+
+                negociomodel = nego.ConvertUserEntityToModel();
+
+                this.logger.LogInformation($"Obteniendo al usuario de Id: {NegocioId}");
             }
-            catch(Exception ex)
+            catch (NegocioExceptions ex)
             {
-                this.logger.LogError($"Error al cargar el negocio {ex.Message}", ex.ToString());
-                throw new NegocioExceptions("Negocio no existe");
+                this.logger.LogError($"Algo salió mal: {ex.Message}");
+                throw;
+            }
+            catch (Exception ex)
+            {
+                this.logger.LogError($"Error al cargar el usuario {ex.Message}", ex.ToString());
                 throw new NDatabaseConnectionException($"Error de conexión: {ex.Message}");
             }
 
             return negociomodel;
-
         }
-
         public List<NegocioModel> GetAllNegocio()
         {
-            List<NegocioModel> negocio = new List<NegocioModel>();
+            List<NegocioModel> negocios = new List<NegocioModel>();
             try
             {
-                this.logger.LogInformation("Obteniendo Negocios...");
-                negocio = this.context.Negocio
-                    .Where(ne => !ne.Deleted)
-                    .Select(neg => new NegocioModel()
-                    {
-                        idNegocio = neg.idNegocio,
-                        urlLogo = neg.urlLogo,
-                        nombreLogo = neg.nombreLogo,
-                        numeroDocumento = neg.numeroDocumento,
-                        nombre = neg.nombre,
-                        correo = neg.correo,
-                        direccion = neg.direccion,
-                        porcentajeImpuesto = neg.porcentajeImpuesto,
-                        simboloMoneda = neg.simboloMoneda
-                    }).ToList();
+                this.logger.LogInformation("Obteniendo Negocio...");
+
+                List<Negocio> negos = base.GetEntities()
+                    .Where(use => !use.Deleted == true)
+                    .ToList();
+
+                if (negos == null)
+                    throw new NegocioNotFoundException(
+                        "Negocio no encontrado en la base de datos");
+
+                foreach (Negocio negocio in negos)
+                {
+                    NegocioModel negocioModel = negocio.ConvertUserEntityToModel();
+                    negocios.Add(negocioModel);
+                }
+            }
+            catch (NegocioExceptions ex)
+            {
+                this.logger.LogError($"Algo salió mal: {ex.Message}");
+                throw;
             }
             catch (Exception ex)
             {
-                this.logger.LogError($"Error al cargar Negocios {ex.Message}", ex.ToString());
+                this.logger.LogError($"Error al cargar Usuarios {ex.Message}", ex.ToString());
                 throw new NDatabaseConnectionException($"Error de conexión: {ex.Message}");
             }
 
-            return negocio;
+            return negocios;
         }
     }
 }

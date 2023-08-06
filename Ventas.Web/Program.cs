@@ -1,6 +1,12 @@
 using Microsoft.EntityFrameworkCore;
 using Ventas.Infrastructure.Context;
 using Ventas.IOC.Dependencies;
+using Ventas.Web.APIs;
+using Ventas.Web.APIs.ApiServices;
+using Ventas.Web.APIs.ApiServices.Interfaces;
+using Ventas.Web.Http;
+using Ventas.Web.Http.HttpServices;
+using Ventas.Web.Http.Interfaces;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -11,10 +17,19 @@ builder.Services.AddControllersWithViews();
 builder.Services.AddDbContext<VentasContext>(option => option.UseSqlServer(builder.Configuration.GetConnectionString("VentasContext")));
 
 
-//*== Repositorios de app servicios==*//
+//*== MyDepes==*//
 
 builder.Services.AddNegocioDependency();
 
+builder.Services.AddTransient<INegocioApiService, NegocioApiService>();;
+
+builder.Services.AddTransient<IApiRepository, ApiRepository>();
+
+builder.Services.AddHttpClient();
+
+builder.Services.AddTransient<INegocioHttpService, NegocioHttpService>();
+
+builder.Services.AddTransient<IHttpRepository, HttpRepository>();
 
 var app = builder.Build();
 
