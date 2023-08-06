@@ -252,3 +252,4 @@ C:\Proyecto\Ventas\Ventas.Web\obj\Debug\net6.0\refint\Ventas.Web.dll
 C:\Proyecto\Ventas\Ventas.Web\obj\Debug\net6.0\Ventas.Web.pdb
 C:\Proyecto\Ventas\Ventas.Web\obj\Debug\net6.0\Ventas.Web.genruntimeconfig.cache
 C:\Proyecto\Ventas\Ventas.Web\obj\Debug\net6.0\ref\Ventas.Web.dll
+C:\Proyecto\Ventas\Ventas.Web\bin\Debug\net6.0\Microsoft.Recognizers.Text.dll

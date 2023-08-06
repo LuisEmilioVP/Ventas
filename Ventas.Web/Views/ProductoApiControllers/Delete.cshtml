@@ -7,7 +7,7 @@
 
 <h1>Delete</h1>
 
-<h4>ProductoRemoveRequest</h4>
+<h4>Eliminar producto</h4>
 <hr />
 <div class="row">
     <div class="col-md-4">
@@ -27,6 +27,11 @@
                 <label asp-for="ChangeDate" class="control-label"></label>
                 <input asp-for="ChangeDate" class="form-control" />
                 <span asp-validation-for="ChangeDate" class="text-danger"></span>
+            </div>
+            <div class="form-group form-check">
+                <label class="form-check-label">
+                    <input class="form-check-input" asp-for="Deleted" disabled /> @Html.DisplayNameFor(model => model.Deleted)
+                </label>
             </div>
             <div class="form-group">
                 <input type="submit" value="Save" class="btn btn-primary" />

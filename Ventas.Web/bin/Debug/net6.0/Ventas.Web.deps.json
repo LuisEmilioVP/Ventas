@@ -8,6 +8,7 @@
     ".NETCoreApp,Version=v6.0": {
       "Ventas.Web/1.0.0": {
         "dependencies": {
+          "Microsoft.Recognizers.Text": "1.8.8",
           "Microsoft.VisualStudio.Web.CodeGeneration.Design": "6.0.15",
           "Ventas.Application": "1.0.0",
           "Ventas.IOC": "1.0.0"
@@ -1300,6 +1301,21 @@
       },
       "Microsoft.NETCore.Platforms/2.0.0": {},
       "Microsoft.NETCore.Targets/1.1.0": {},
+      "Microsoft.Recognizers.Text/1.8.8": {
+        "dependencies": {
+          "Microsoft.Extensions.Caching.Memory": "3.1.32",
+          "NuGet.CommandLine": "5.9.3",
+          "System.Collections.Immutable": "6.0.0",
+          "System.ValueTuple": "4.5.0",
+          "vswhere": "2.8.4"
+        },
+        "runtime": {
+          "lib/net6.0/Microsoft.Recognizers.Text.dll": {
+            "assemblyVersion": "1.0.0.0",
+            "fileVersion": "1.0.0.0"
+          }
+        }
+      },
       "Microsoft.VisualStudio.Debugger.Contracts/17.2.0": {
         "dependencies": {
           "MessagePack": "2.1.152",
@@ -1489,6 +1505,7 @@
           }
         }
       },
+      "NuGet.CommandLine/5.9.3": {},
       "NuGet.Common/6.3.1": {
         "dependencies": {
           "NuGet.Frameworks": "6.3.1"
@@ -2556,6 +2573,7 @@
           "System.Runtime": "4.3.0"
         }
       },
+      "System.ValueTuple/4.5.0": {},
       "System.Windows.Extensions/6.0.0": {
         "dependencies": {
           "System.Drawing.Common": "6.0.0"
@@ -2645,6 +2663,7 @@
           "System.Xml.XmlDocument": "4.3.0"
         }
       },
+      "vswhere/2.8.4": {},
       "Ventas.Application/1.0.0": {
         "dependencies": {
           "Ventas.Infrastructure": "1.0.0"
@@ -3366,6 +3385,13 @@
       "path": "microsoft.netcore.targets/1.1.0",
       "hashPath": "microsoft.netcore.targets.1.1.0.nupkg.sha512"
     },
+    "Microsoft.Recognizers.Text/1.8.8": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-4ZAb/vQQxJMb4UVyuzKrmINoQv9wjoWUMiWM63pZDsOzhwzGuhdCPGsxOmv5DaCRbq/YhqteEkjkmRd0SBUFZQ==",
+      "path": "microsoft.recognizers.text/1.8.8",
+      "hashPath": "microsoft.recognizers.text.1.8.8.nupkg.sha512"
+    },
     "Microsoft.VisualStudio.Debugger.Contracts/17.2.0": {
       "type": "package",
       "serviceable": true,
@@ -3456,6 +3482,13 @@
       "sha512": "sha512-ppPFpBcvxdsfUonNcvITKqLl3bqxWbDCZIzDWHzjpdAHRFfZe0Dw9HmA0+za13IdyrgJwpkDTDA9fHaxOrt20A==",
       "path": "newtonsoft.json/13.0.1",
       "hashPath": "newtonsoft.json.13.0.1.nupkg.sha512"
+    },
+    "NuGet.CommandLine/5.9.3": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-NrFrtAZxFG36W7INn3fbxoeljOMzf/I6SVjZHOuXsp2KwBwuFbr+dsgGmeIgllJD+wAajFhOorfrpG8m1vT0ew==",
+      "path": "nuget.commandline/5.9.3",
+      "hashPath": "nuget.commandline.5.9.3.nupkg.sha512"
     },
     "NuGet.Common/6.3.1": {
       "type": "package",
@@ -4283,6 +4316,13 @@
       "path": "system.threading.timer/4.3.0",
       "hashPath": "system.threading.timer.4.3.0.nupkg.sha512"
     },
+    "System.ValueTuple/4.5.0": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-okurQJO6NRE/apDIP23ajJ0hpiNmJ+f0BwOlB/cSqTLQlw5upkf+5+96+iG2Jw40G1fCVCyPz/FhIABUjMR+RQ==",
+      "path": "system.valuetuple/4.5.0",
+      "hashPath": "system.valuetuple.4.5.0.nupkg.sha512"
+    },
     "System.Windows.Extensions/6.0.0": {
       "type": "package",
       "serviceable": true,
@@ -4317,6 +4357,13 @@
       "sha512": "sha512-MYoTCP7EZ98RrANESW05J5ZwskKDoN0AuZ06ZflnowE50LTpbR5yRg3tHckTVm5j/m47stuGgCrCHWePyHS70Q==",
       "path": "system.xml.xmlserializer/4.3.0",
       "hashPath": "system.xml.xmlserializer.4.3.0.nupkg.sha512"
+    },
+    "vswhere/2.8.4": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-vnprpt1NycD1CrUecoj+EQHY3LGqGvCrSK9NrhORiT9TnZ2J1Ve9qYYddLBaX207uyBWImDv8QuMv/95Bd3V6w==",
+      "path": "vswhere/2.8.4",
+      "hashPath": "vswhere.2.8.4.nupkg.sha512"
     },
     "Ventas.Application/1.0.0": {
       "type": "project",

@@ -94,6 +94,7 @@ namespace Ventas.Web.Controllers.Extentions
             return new ProductoRemoveDto()
             {
                 IdProducto = productoRemove.IdProducto,
+                Deleted = productoRemove.Deleted,
                 ChangeUser = productoRemove.ChangeUser,
                 ChangeDate = productoRemove.ChangeDate
             };
