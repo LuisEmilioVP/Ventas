@@ -1,0 +1,52 @@
+﻿@model Ventas.Web.Models.Venta.Request.VentaRemoveRequest
+
+@{
+    ViewData["Title"] = "Delete";
+}
+
+<h1>Eliminar Venta Api</h1>
+
+<h3>¿Estás seguro de que quieres eliminar este usuario?</h3>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Delete">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="IdVenta" class="control-label"></label>
+                <input asp-for="IdVenta" class="form-control" readonly />
+                <span asp-validation-for="IdVenta" class="text-danger"></span>
+            </div>
+          
+            <div class="form-group">
+                <label asp-for="ChangeUser" class="control-label"></label>
+                <input asp-for="ChangeUser" class="form-control" />
+                <span asp-validation-for="ChangeUser" class="text-danger"></span>
+            </div>
+
+            <div class="form-group">
+                <label asp-for="ChangeDate" class="control-label"></label>
+                <input asp-for="ChangeDate" class="form-control" />
+                <span asp-validation-for="ChangeDate" class="text-danger"></span>
+            </div>
+
+            <div class="form-group form-check">
+                <label class="form-check-label">
+                    <input class="form-check-input" asp-for="Deleted" disabled /> @Html.DisplayNameFor(model => model.Deleted)
+                </label>
+            </div>
+
+            <div class="form-group p-2">
+                <input type="submit" value="Eliminar" class="btn btn-danger" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Volver a la lista</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

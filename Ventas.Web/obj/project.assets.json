@@ -11820,6 +11820,7 @@
     "net6.0": [
       "Microsoft.VisualStudio.Web.CodeGeneration.Design >= 6.0.15",
       "Ventas.Application >= 1.0.0",
+      "Ventas.Domain >= 1.0.0",
       "Ventas.IOC >= 1.0.0"
     ]
   },
@@ -11853,6 +11854,9 @@
           "projectReferences": {
             "C:\\Users\\Wang Wu\\Pictures\\THANS GOOD\\Ventas\\Ventas.Application\\Ventas.Application.csproj": {
               "projectPath": "C:\\Users\\Wang Wu\\Pictures\\THANS GOOD\\Ventas\\Ventas.Application\\Ventas.Application.csproj"
+            },
+            "C:\\Users\\Wang Wu\\Pictures\\THANS GOOD\\Ventas\\Ventas.Domain\\Ventas.Domain.csproj": {
+              "projectPath": "C:\\Users\\Wang Wu\\Pictures\\THANS GOOD\\Ventas\\Ventas.Domain\\Ventas.Domain.csproj"
             },
             "C:\\Users\\Wang Wu\\Pictures\\THANS GOOD\\Ventas\\Ventas.IOC\\Ventas.IOC.csproj": {
               "projectPath": "C:\\Users\\Wang Wu\\Pictures\\THANS GOOD\\Ventas\\Ventas.IOC\\Ventas.IOC.csproj"
