@@ -1,10 +1,10 @@
-﻿@model IEnumerable<Ventas.Web.Models.Suplidor.Response.SuplidorResponse>
+﻿@model IEnumerable<Ventas.Web.Models.Suplidor.BaseSuplidorModel>
 
 @{
     ViewData["Title"] = "Index";
 }
 
-<h1>Index</h1>
+<h1>Index Sin Api</h1>
 
 <p>
     <a asp-action="Create">Create New</a>
@@ -73,9 +73,9 @@
                 @Html.DisplayFor(modelItem => item.Fax)
             </td>
             <td>
-                @Html.ActionLink("Edit", "Edit", new { id=item.IdSuplidor }) |
-                    @Html.ActionLink("Details", "Details", new { id=item.IdSuplidor }) |
-                    @Html.ActionLink("Delete", "Delete", new { id=item.IdSuplidor })
+                @Html.ActionLink("Edit", "Edit", new {  id=item.IdSuplidor }) |
+                @Html.ActionLink("Details", "Details", new { id=item.IdSuplidor }) |
+                @Html.ActionLink("Delete", "Delete", new {  id=item.IdSuplidor })
             </td>
         </tr>
 }

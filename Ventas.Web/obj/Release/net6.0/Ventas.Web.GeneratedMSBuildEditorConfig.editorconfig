@@ -32,6 +32,46 @@ build_metadata.AdditionalFiles.CssScope =
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9WYWxpZGF0aW9uU2NyaXB0c1BhcnRpYWwuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
+[C:/Proyecto/Ventas/Ventas.Web/Views/SuplidorApi/Create.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU3VwbGlkb3JBcGlcQ3JlYXRlLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Proyecto/Ventas/Ventas.Web/Views/SuplidorApi/Delete.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU3VwbGlkb3JBcGlcRGVsZXRlLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Proyecto/Ventas/Ventas.Web/Views/SuplidorApi/Details.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU3VwbGlkb3JBcGlcRGV0YWlscy5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Proyecto/Ventas/Ventas.Web/Views/SuplidorApi/Edit.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU3VwbGlkb3JBcGlcRWRpdC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Proyecto/Ventas/Ventas.Web/Views/SuplidorApi/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU3VwbGlkb3JBcGlcSW5kZXguY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Proyecto/Ventas/Ventas.Web/Views/SuplidorHttp/Create.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU3VwbGlkb3JIdHRwXENyZWF0ZS5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Proyecto/Ventas/Ventas.Web/Views/SuplidorHttp/Delete.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU3VwbGlkb3JIdHRwXERlbGV0ZS5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Proyecto/Ventas/Ventas.Web/Views/SuplidorHttp/Details.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU3VwbGlkb3JIdHRwXERldGFpbHMuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Proyecto/Ventas/Ventas.Web/Views/SuplidorHttp/Edit.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU3VwbGlkb3JIdHRwXEVkaXQuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Proyecto/Ventas/Ventas.Web/Views/SuplidorHttp/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU3VwbGlkb3JIdHRwXEluZGV4LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
 [C:/Proyecto/Ventas/Ventas.Web/Views/Suplidor/Create.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU3VwbGlkb3JcQ3JlYXRlLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 

@@ -7,6 +7,7 @@ using Ventas.Domain.Entities;
 using Ventas.Infrastructure.Models;
 using Ventas.Web.Controllers.Extention;
 using Ventas.Web.Models;
+using Ventas.Web.Models.Suplidor;
 using Ventas.Web.Models.Suplidor.Request;
 using Ventas.Web.Models.Suplidor.Response;
 
@@ -32,14 +33,13 @@ namespace Ventas.Web.Controllers
                 if (!result.Success)
                     throw new Exception(result.Message);
 
-                var listUser = result.Data as List<SuplidorModels>
-                    ?? throw new Exception("No se hallaron los suplidores");
+                var listSupl = result.Data as List<SuplidorModels>
+                    ?? throw new Exception("No se encontraron usuarios");
 
-                List<SuplidorResponse> suplidorResponse = listUser
-                    .Select(use => use.ConverterModelToSuplidorResponse()).ToList();
-                                     
+                List<BaseSuplidorModel> suplidorResponses = listSupl
+                    .Select(cat => cat.ConverterModelToSuplidorResponse()).ToList();
 
-                return View(suplidorResponse);
+                return View(suplidorResponses);
             }
             catch (Exception ex)
             {
@@ -58,10 +58,10 @@ namespace Ventas.Web.Controllers
                 if (!result.Success)
                     throw new Exception(result.Message);
 
-                var listUserById = result.Data as SuplidorModels
-                    ?? throw new Exception("Este suplidor no existe");
+                var listSuplById = result.Data as SuplidorModels
+                    ?? throw new Exception("El Suplidor no existe");
 
-                SuplidorResponse suplidorResponse = listUserById.ConverterModelToSuplidorResponse();
+                BaseSuplidorModel suplidorResponse = listSuplById.ConverterModelToSuplidorResponse();
 
                 return View(suplidorResponse);
             }
@@ -112,10 +112,10 @@ namespace Ventas.Web.Controllers
             if (!result.Success)
                 ViewBag.Message = result.Message;
 
-            var supli = result.Data as SuplidorModels
-                ?? throw new Exception("No existe el suplidor");
+            var suplidor = result.Data as SuplidorModels
+                ?? throw new Exception("Suplidor no existente.");
 
-            SuplidorUpdateRequest suplidorUpdate = supli.ConvertUsuarioToUpdateRequest();                                           
+            SuplidorUpdateRequest suplidorUpdate = suplidor.ConvertSuplidorToUpdateRequest();
 
             return View(suplidorUpdate);
         }
@@ -150,7 +150,7 @@ namespace Ventas.Web.Controllers
         // GET: kkkController1/Delete/5
         public ActionResult Delete(int id)
         {
-            SuplidorRemoveRequest suplidorRemove = new SuplidorRemoveRequest(id);
+            SuplidorRemoveRequest suplidorRemove = new(id);
 
             return View(suplidorRemove);
         }

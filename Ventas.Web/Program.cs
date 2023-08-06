@@ -1,6 +1,12 @@
 using Microsoft.EntityFrameworkCore;
 using Ventas.Infrastructure.Context;
 using Ventas.IOC.Dependencie;
+using Ventas.Web.API;
+using Ventas.Web.API.ApiServices;
+using Ventas.Web.API.ApiServices.Interface;
+using Ventas.Web.Http;
+using Ventas.Web.Http.HttpService;
+using Ventas.Web.Http.Interface;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -13,6 +19,17 @@ builder.Services.AddDbContext<VentasContext>(options => options.UseSqlServer(bui
 
 //my Dependencies
 builder.Services.AddSuplidorDependency();
+
+
+builder.Services.AddTransient<ISuplidorApiService, SuplidorApiService>();
+
+builder.Services.AddTransient<IApiRepository, ApiRepository>();
+
+builder.Services.AddHttpClient();
+
+builder.Services.AddTransient<ISuplidorHttpService, SuplidorHttpService>();
+
+builder.Services.AddTransient<IHttpRepository, HttpRepository>();
 
 var app = builder.Build();
 

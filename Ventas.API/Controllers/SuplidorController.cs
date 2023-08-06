@@ -20,7 +20,7 @@ namespace Ventas.API.Controllers
         }
 
         // GET: api/<SuplidorController>
-        [HttpGet]
+        [HttpGet("GetSuplidor")]
         public IActionResult Get()
         {
             var result = this.suplidorService.Get();
@@ -30,7 +30,7 @@ namespace Ventas.API.Controllers
         }
 
         // GET api/<SuplidorController>/5
-        [HttpGet("ID")]
+        [HttpGet("IdSuplidor")]
         public IActionResult Get(int id)
         {
             var result = this.suplidorService.GetById(id);
@@ -40,7 +40,7 @@ namespace Ventas.API.Controllers
         }
 
         
-        [HttpPost("Save")]
+        [HttpPost("SaveSuplidor")]
         public IActionResult Post([FromBody] SuplidorAddDto suplidorAdd)
         {
             var result = this.suplidorService.Save(suplidorAdd);
@@ -51,7 +51,7 @@ namespace Ventas.API.Controllers
         }
 
        
-        [HttpPost("Update")]
+        [HttpPost("UpdateSuplidor")]
         public IActionResult Put([FromBody] SuplidorUpdateDto suplidorUpdate)
         {
             var result = this.suplidorService.Update(suplidorUpdate);
@@ -62,7 +62,7 @@ namespace Ventas.API.Controllers
         }
 
        
-        [HttpPost("Remove")]
+        [HttpPost("RemoveSuplidor")]
         public IActionResult Delete([FromBody] SuplidorRemoveDto suplidorRemove)
         {
             var result = this.suplidorService.Delete(suplidorRemove);
