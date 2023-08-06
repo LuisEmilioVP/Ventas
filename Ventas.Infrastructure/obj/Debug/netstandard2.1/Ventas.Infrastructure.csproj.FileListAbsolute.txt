@@ -11,3 +11,16 @@ C:\project\Ventas\Ventas.Infrastructure\obj\Debug\netstandard2.1\Ventas.Infrastr
 C:\project\Ventas\Ventas.Infrastructure\obj\Debug\netstandard2.1\Ventas.Infrastructure.csproj.CopyComplete
 C:\project\Ventas\Ventas.Infrastructure\obj\Debug\netstandard2.1\Ventas.Infrastructure.dll
 C:\project\Ventas\Ventas.Infrastructure\obj\Debug\netstandard2.1\Ventas.Infrastructure.pdb
+C:\Http\Ventas\Ventas.Infrastructure\bin\Debug\netstandard2.1\Ventas.Infrastructure.deps.json
+C:\Http\Ventas\Ventas.Infrastructure\bin\Debug\netstandard2.1\Ventas.Infrastructure.dll
+C:\Http\Ventas\Ventas.Infrastructure\bin\Debug\netstandard2.1\Ventas.Infrastructure.pdb
+C:\Http\Ventas\Ventas.Infrastructure\bin\Debug\netstandard2.1\Ventas.Domain.dll
+C:\Http\Ventas\Ventas.Infrastructure\bin\Debug\netstandard2.1\Ventas.Domain.pdb
+C:\Http\Ventas\Ventas.Infrastructure\obj\Debug\netstandard2.1\Ventas.Infrastructure.csproj.AssemblyReference.cache
+C:\Http\Ventas\Ventas.Infrastructure\obj\Debug\netstandard2.1\Ventas.Infrastructure.GeneratedMSBuildEditorConfig.editorconfig
+C:\Http\Ventas\Ventas.Infrastructure\obj\Debug\netstandard2.1\Ventas.Infrastructure.AssemblyInfoInputs.cache
+C:\Http\Ventas\Ventas.Infrastructure\obj\Debug\netstandard2.1\Ventas.Infrastructure.AssemblyInfo.cs
+C:\Http\Ventas\Ventas.Infrastructure\obj\Debug\netstandard2.1\Ventas.Infrastructure.csproj.CoreCompileInputs.cache
+C:\Http\Ventas\Ventas.Infrastructure\obj\Debug\netstandard2.1\Ventas.Infrastructure.csproj.CopyComplete
+C:\Http\Ventas\Ventas.Infrastructure\obj\Debug\netstandard2.1\Ventas.Infrastructure.dll
+C:\Http\Ventas\Ventas.Infrastructure\obj\Debug\netstandard2.1\Ventas.Infrastructure.pdb

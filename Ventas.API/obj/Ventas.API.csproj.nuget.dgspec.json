@@ -1,20 +1,20 @@
 {
   "format": 1,
   "restore": {
-    "C:\\project\\Ventas\\Ventas.API\\Ventas.API.csproj": {}
+    "C:\\Http\\Ventas\\Ventas.API\\Ventas.API.csproj": {}
   },
   "projects": {
-    "C:\\project\\Ventas\\Ventas.API\\Ventas.API.csproj": {
+    "C:\\Http\\Ventas\\Ventas.API\\Ventas.API.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\project\\Ventas\\Ventas.API\\Ventas.API.csproj",
+        "projectUniqueName": "C:\\Http\\Ventas\\Ventas.API\\Ventas.API.csproj",
         "projectName": "Ventas.API",
-        "projectPath": "C:\\project\\Ventas\\Ventas.API\\Ventas.API.csproj",
-        "packagesPath": "C:\\Users\\luise\\.nuget\\packages\\",
-        "outputPath": "C:\\project\\Ventas\\Ventas.API\\obj\\",
+        "projectPath": "C:\\Http\\Ventas\\Ventas.API\\Ventas.API.csproj",
+        "packagesPath": "C:\\Users\\Aquil\\.nuget\\packages\\",
+        "outputPath": "C:\\Http\\Ventas\\Ventas.API\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\luise\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\Aquil\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -22,18 +22,17 @@
         ],
         "sources": {
           "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
-          "C:\\Program Files\\dotnet\\sdk\\7.0.306\\Sdks\\Microsoft.NET.Sdk.Web\\library-packs": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
           "net6.0": {
             "targetAlias": "net6.0",
             "projectReferences": {
-              "C:\\project\\Ventas\\Ventas.Application\\Ventas.Application.csproj": {
-                "projectPath": "C:\\project\\Ventas\\Ventas.Application\\Ventas.Application.csproj"
+              "C:\\Http\\Ventas\\Ventas.Application\\Ventas.Application.csproj": {
+                "projectPath": "C:\\Http\\Ventas\\Ventas.Application\\Ventas.Application.csproj"
               },
-              "C:\\project\\Ventas\\Ventas.IOC\\Ventas.IOC.csproj": {
-                "projectPath": "C:\\project\\Ventas\\Ventas.IOC\\Ventas.IOC.csproj"
+              "C:\\Http\\Ventas\\Ventas.IOC\\Ventas.IOC.csproj": {
+                "projectPath": "C:\\Http\\Ventas\\Ventas.IOC\\Ventas.IOC.csproj"
               }
             }
           }
@@ -72,21 +71,21 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.306\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.401\\RuntimeIdentifierGraph.json"
         }
       }
     },
-    "C:\\project\\Ventas\\Ventas.Application\\Ventas.Application.csproj": {
+    "C:\\Http\\Ventas\\Ventas.Application\\Ventas.Application.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\project\\Ventas\\Ventas.Application\\Ventas.Application.csproj",
+        "projectUniqueName": "C:\\Http\\Ventas\\Ventas.Application\\Ventas.Application.csproj",
         "projectName": "Ventas.Application",
-        "projectPath": "C:\\project\\Ventas\\Ventas.Application\\Ventas.Application.csproj",
-        "packagesPath": "C:\\Users\\luise\\.nuget\\packages\\",
-        "outputPath": "C:\\project\\Ventas\\Ventas.Application\\obj\\",
+        "projectPath": "C:\\Http\\Ventas\\Ventas.Application\\Ventas.Application.csproj",
+        "packagesPath": "C:\\Users\\Aquil\\.nuget\\packages\\",
+        "outputPath": "C:\\Http\\Ventas\\Ventas.Application\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\luise\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\Aquil\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -100,8 +99,8 @@
           "netstandard2.1": {
             "targetAlias": "netstandard2.1",
             "projectReferences": {
-              "C:\\project\\Ventas\\Ventas.Infrastructure\\Ventas.Infrastructure.csproj": {
-                "projectPath": "C:\\project\\Ventas\\Ventas.Infrastructure\\Ventas.Infrastructure.csproj"
+              "C:\\Http\\Ventas\\Ventas.Infrastructure\\Ventas.Infrastructure.csproj": {
+                "projectPath": "C:\\Http\\Ventas\\Ventas.Infrastructure\\Ventas.Infrastructure.csproj"
               }
             }
           }
@@ -131,21 +130,21 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.306\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.401\\RuntimeIdentifierGraph.json"
         }
       }
     },
-    "C:\\project\\Ventas\\Ventas.Domain\\Ventas.Domain.csproj": {
+    "C:\\Http\\Ventas\\Ventas.Domain\\Ventas.Domain.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\project\\Ventas\\Ventas.Domain\\Ventas.Domain.csproj",
+        "projectUniqueName": "C:\\Http\\Ventas\\Ventas.Domain\\Ventas.Domain.csproj",
         "projectName": "Ventas.Domain",
-        "projectPath": "C:\\project\\Ventas\\Ventas.Domain\\Ventas.Domain.csproj",
-        "packagesPath": "C:\\Users\\luise\\.nuget\\packages\\",
-        "outputPath": "C:\\project\\Ventas\\Ventas.Domain\\obj\\",
+        "projectPath": "C:\\Http\\Ventas\\Ventas.Domain\\Ventas.Domain.csproj",
+        "packagesPath": "C:\\Users\\Aquil\\.nuget\\packages\\",
+        "outputPath": "C:\\Http\\Ventas\\Ventas.Domain\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\luise\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\Aquil\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -192,21 +191,21 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.306\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.401\\RuntimeIdentifierGraph.json"
         }
       }
     },
-    "C:\\project\\Ventas\\Ventas.Infrastructure\\Ventas.Infrastructure.csproj": {
+    "C:\\Http\\Ventas\\Ventas.Infrastructure\\Ventas.Infrastructure.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\project\\Ventas\\Ventas.Infrastructure\\Ventas.Infrastructure.csproj",
+        "projectUniqueName": "C:\\Http\\Ventas\\Ventas.Infrastructure\\Ventas.Infrastructure.csproj",
         "projectName": "Ventas.Infrastructure",
-        "projectPath": "C:\\project\\Ventas\\Ventas.Infrastructure\\Ventas.Infrastructure.csproj",
-        "packagesPath": "C:\\Users\\luise\\.nuget\\packages\\",
-        "outputPath": "C:\\project\\Ventas\\Ventas.Infrastructure\\obj\\",
+        "projectPath": "C:\\Http\\Ventas\\Ventas.Infrastructure\\Ventas.Infrastructure.csproj",
+        "packagesPath": "C:\\Users\\Aquil\\.nuget\\packages\\",
+        "outputPath": "C:\\Http\\Ventas\\Ventas.Infrastructure\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\luise\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\Aquil\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -220,8 +219,8 @@
           "netstandard2.1": {
             "targetAlias": "netstandard2.1",
             "projectReferences": {
-              "C:\\project\\Ventas\\Ventas.Domain\\Ventas.Domain.csproj": {
-                "projectPath": "C:\\project\\Ventas\\Ventas.Domain\\Ventas.Domain.csproj"
+              "C:\\Http\\Ventas\\Ventas.Domain\\Ventas.Domain.csproj": {
+                "projectPath": "C:\\Http\\Ventas\\Ventas.Domain\\Ventas.Domain.csproj"
               }
             }
           }
@@ -261,21 +260,21 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.306\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.401\\RuntimeIdentifierGraph.json"
         }
       }
     },
-    "C:\\project\\Ventas\\Ventas.IOC\\Ventas.IOC.csproj": {
+    "C:\\Http\\Ventas\\Ventas.IOC\\Ventas.IOC.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\project\\Ventas\\Ventas.IOC\\Ventas.IOC.csproj",
+        "projectUniqueName": "C:\\Http\\Ventas\\Ventas.IOC\\Ventas.IOC.csproj",
         "projectName": "Ventas.IOC",
-        "projectPath": "C:\\project\\Ventas\\Ventas.IOC\\Ventas.IOC.csproj",
-        "packagesPath": "C:\\Users\\luise\\.nuget\\packages\\",
-        "outputPath": "C:\\project\\Ventas\\Ventas.IOC\\obj\\",
+        "projectPath": "C:\\Http\\Ventas\\Ventas.IOC\\Ventas.IOC.csproj",
+        "packagesPath": "C:\\Users\\Aquil\\.nuget\\packages\\",
+        "outputPath": "C:\\Http\\Ventas\\Ventas.IOC\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\luise\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\Aquil\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -289,8 +288,8 @@
           "netstandard2.1": {
             "targetAlias": "netstandard2.1",
             "projectReferences": {
-              "C:\\project\\Ventas\\Ventas.Application\\Ventas.Application.csproj": {
-                "projectPath": "C:\\project\\Ventas\\Ventas.Application\\Ventas.Application.csproj"
+              "C:\\Http\\Ventas\\Ventas.Application\\Ventas.Application.csproj": {
+                "projectPath": "C:\\Http\\Ventas\\Ventas.Application\\Ventas.Application.csproj"
               }
             }
           }
@@ -320,7 +319,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.306\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.401\\RuntimeIdentifierGraph.json"
         }
       }
     }

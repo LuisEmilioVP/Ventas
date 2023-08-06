@@ -5,161 +5,164 @@ build_property.UsingMicrosoftNETSdkWeb = true
 build_property.ProjectTypeGuids = 
 build_property.InvariantGlobalization = 
 build_property.PlatformNeutralAssembly = 
-build_property.EnforceExtendedAnalyzerRules = 
 build_property._SupportedPlatformList = Linux,macOS,Windows
 build_property.RootNamespace = Ventas.Web
 build_property.RootNamespace = Ventas.Web
-build_property.ProjectDir = C:\project\Ventas\Ventas.Web\
+build_property.ProjectDir = C:\Http\Ventas\Ventas.Web\
 build_property.RazorLangVersion = 6.0
 build_property.SupportLocalizedComponentNames = 
 build_property.GenerateRazorMetadataSourceChecksumAttributes = 
-build_property.MSBuildProjectDirectory = C:\project\Ventas\Ventas.Web
+build_property.MSBuildProjectDirectory = C:\Http\Ventas\Ventas.Web
 build_property._RazorSourceGeneratorDebug = 
 
-[C:/project/Ventas/Ventas.Web/Views/CategoriaApi/Create.cshtml]
+[C:/Http/Ventas/Ventas.Web/Views/CategoriaApi/Create.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ2F0ZWdvcmlhQXBpXENyZWF0ZS5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/project/Ventas/Ventas.Web/Views/CategoriaApi/Delete.cshtml]
+[C:/Http/Ventas/Ventas.Web/Views/CategoriaApi/Delete.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ2F0ZWdvcmlhQXBpXERlbGV0ZS5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/project/Ventas/Ventas.Web/Views/CategoriaApi/Details.cshtml]
+[C:/Http/Ventas/Ventas.Web/Views/CategoriaApi/Details.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ2F0ZWdvcmlhQXBpXERldGFpbHMuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/project/Ventas/Ventas.Web/Views/CategoriaApi/Edit.cshtml]
+[C:/Http/Ventas/Ventas.Web/Views/CategoriaApi/Edit.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ2F0ZWdvcmlhQXBpXEVkaXQuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/project/Ventas/Ventas.Web/Views/CategoriaApi/Index.cshtml]
+[C:/Http/Ventas/Ventas.Web/Views/CategoriaApi/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ2F0ZWdvcmlhQXBpXEluZGV4LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/project/Ventas/Ventas.Web/Views/CategoriaHttp/Create.cshtml]
+[C:/Http/Ventas/Ventas.Web/Views/CategoriaHttp/Create.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ2F0ZWdvcmlhSHR0cFxDcmVhdGUuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/project/Ventas/Ventas.Web/Views/CategoriaHttp/Delete.cshtml]
+[C:/Http/Ventas/Ventas.Web/Views/CategoriaHttp/Delete.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ2F0ZWdvcmlhSHR0cFxEZWxldGUuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/project/Ventas/Ventas.Web/Views/CategoriaHttp/Details.cshtml]
+[C:/Http/Ventas/Ventas.Web/Views/CategoriaHttp/Details.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ2F0ZWdvcmlhSHR0cFxEZXRhaWxzLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/project/Ventas/Ventas.Web/Views/CategoriaHttp/Edit.cshtml]
+[C:/Http/Ventas/Ventas.Web/Views/CategoriaHttp/Edit.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ2F0ZWdvcmlhSHR0cFxFZGl0LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/project/Ventas/Ventas.Web/Views/CategoriaHttp/Index.cshtml]
+[C:/Http/Ventas/Ventas.Web/Views/CategoriaHttp/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ2F0ZWdvcmlhSHR0cFxJbmRleC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/project/Ventas/Ventas.Web/Views/Categoria/Create.cshtml]
+[C:/Http/Ventas/Ventas.Web/Views/CategoriaHttp/View.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ2F0ZWdvcmlhSHR0cFxWaWV3LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Http/Ventas/Ventas.Web/Views/Categoria/Create.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ2F0ZWdvcmlhXENyZWF0ZS5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/project/Ventas/Ventas.Web/Views/Categoria/Delete.cshtml]
+[C:/Http/Ventas/Ventas.Web/Views/Categoria/Delete.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ2F0ZWdvcmlhXERlbGV0ZS5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/project/Ventas/Ventas.Web/Views/Categoria/Details.cshtml]
+[C:/Http/Ventas/Ventas.Web/Views/Categoria/Details.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ2F0ZWdvcmlhXERldGFpbHMuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/project/Ventas/Ventas.Web/Views/Categoria/Edit.cshtml]
+[C:/Http/Ventas/Ventas.Web/Views/Categoria/Edit.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ2F0ZWdvcmlhXEVkaXQuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/project/Ventas/Ventas.Web/Views/Categoria/Index.cshtml]
+[C:/Http/Ventas/Ventas.Web/Views/Categoria/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ2F0ZWdvcmlhXEluZGV4LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/project/Ventas/Ventas.Web/Views/Home/Index.cshtml]
+[C:/Http/Ventas/Ventas.Web/Views/Home/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxJbmRleC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/project/Ventas/Ventas.Web/Views/Home/Privacy.cshtml]
+[C:/Http/Ventas/Ventas.Web/Views/Home/Privacy.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxQcml2YWN5LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/project/Ventas/Ventas.Web/Views/Shared/Error.cshtml]
+[C:/Http/Ventas/Ventas.Web/Views/Shared/Error.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXEVycm9yLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/project/Ventas/Ventas.Web/Views/Shared/_ValidationScriptsPartial.cshtml]
+[C:/Http/Ventas/Ventas.Web/Views/Shared/_ValidationScriptsPartial.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9WYWxpZGF0aW9uU2NyaXB0c1BhcnRpYWwuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/project/Ventas/Ventas.Web/Views/UsuarioApi/Create.cshtml]
+[C:/Http/Ventas/Ventas.Web/Views/UsuarioApi/Create.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVXN1YXJpb0FwaVxDcmVhdGUuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/project/Ventas/Ventas.Web/Views/UsuarioApi/Delete.cshtml]
+[C:/Http/Ventas/Ventas.Web/Views/UsuarioApi/Delete.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVXN1YXJpb0FwaVxEZWxldGUuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/project/Ventas/Ventas.Web/Views/UsuarioApi/Details.cshtml]
+[C:/Http/Ventas/Ventas.Web/Views/UsuarioApi/Details.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVXN1YXJpb0FwaVxEZXRhaWxzLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/project/Ventas/Ventas.Web/Views/UsuarioApi/Edit.cshtml]
+[C:/Http/Ventas/Ventas.Web/Views/UsuarioApi/Edit.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVXN1YXJpb0FwaVxFZGl0LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/project/Ventas/Ventas.Web/Views/UsuarioApi/Index.cshtml]
+[C:/Http/Ventas/Ventas.Web/Views/UsuarioApi/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVXN1YXJpb0FwaVxJbmRleC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/project/Ventas/Ventas.Web/Views/UsuarioHttp/Create.cshtml]
+[C:/Http/Ventas/Ventas.Web/Views/UsuarioHttp/Create.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVXN1YXJpb0h0dHBcQ3JlYXRlLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/project/Ventas/Ventas.Web/Views/UsuarioHttp/Delete.cshtml]
+[C:/Http/Ventas/Ventas.Web/Views/UsuarioHttp/Delete.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVXN1YXJpb0h0dHBcRGVsZXRlLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/project/Ventas/Ventas.Web/Views/UsuarioHttp/Details.cshtml]
+[C:/Http/Ventas/Ventas.Web/Views/UsuarioHttp/Details.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVXN1YXJpb0h0dHBcRGV0YWlscy5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/project/Ventas/Ventas.Web/Views/UsuarioHttp/Edit.cshtml]
+[C:/Http/Ventas/Ventas.Web/Views/UsuarioHttp/Edit.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVXN1YXJpb0h0dHBcRWRpdC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/project/Ventas/Ventas.Web/Views/UsuarioHttp/Index.cshtml]
+[C:/Http/Ventas/Ventas.Web/Views/UsuarioHttp/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVXN1YXJpb0h0dHBcSW5kZXguY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/project/Ventas/Ventas.Web/Views/Usuario/Create.cshtml]
+[C:/Http/Ventas/Ventas.Web/Views/Usuario/Create.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVXN1YXJpb1xDcmVhdGUuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/project/Ventas/Ventas.Web/Views/Usuario/Delete.cshtml]
+[C:/Http/Ventas/Ventas.Web/Views/Usuario/Delete.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVXN1YXJpb1xEZWxldGUuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/project/Ventas/Ventas.Web/Views/Usuario/Details.cshtml]
+[C:/Http/Ventas/Ventas.Web/Views/Usuario/Details.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVXN1YXJpb1xEZXRhaWxzLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/project/Ventas/Ventas.Web/Views/Usuario/Edit.cshtml]
+[C:/Http/Ventas/Ventas.Web/Views/Usuario/Edit.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVXN1YXJpb1xFZGl0LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/project/Ventas/Ventas.Web/Views/Usuario/Index.cshtml]
+[C:/Http/Ventas/Ventas.Web/Views/Usuario/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVXN1YXJpb1xJbmRleC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/project/Ventas/Ventas.Web/Views/_ViewImports.cshtml]
+[C:/Http/Ventas/Ventas.Web/Views/_ViewImports.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcX1ZpZXdJbXBvcnRzLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/project/Ventas/Ventas.Web/Views/_ViewStart.cshtml]
+[C:/Http/Ventas/Ventas.Web/Views/_ViewStart.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcX1ZpZXdTdGFydC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/project/Ventas/Ventas.Web/Views/Shared/_Layout.cshtml]
+[C:/Http/Ventas/Ventas.Web/Views/Shared/_Layout.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9MYXlvdXQuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = b-ppk0jeepxa
