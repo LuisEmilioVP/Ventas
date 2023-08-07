@@ -9,8 +9,8 @@
       "Ventas.Web/1.0.0": {
         "dependencies": {
           "Microsoft.VisualStudio.Web.CodeGeneration.Design": "6.0.15",
-          "Ventas.IOC": "1.0.0",
-          "Ventas.Infrastructure": "1.0.0"
+          "Ventas.Application": "1.0.0",
+          "Ventas.IOC": "1.0.0"
         },
         "runtime": {
           "Ventas.Web.dll": {}

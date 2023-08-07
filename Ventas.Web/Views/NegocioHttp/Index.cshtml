@@ -1,4 +1,4 @@
-﻿@model IEnumerable<Ventas.Infrastructure.Models.NegocioModel>
+﻿@model IEnumerable<Ventas.Web.Models.Negocio.BaseNegocioModel>
 
 @{
     ViewData["Title"] = "Index";
@@ -9,7 +9,7 @@
         <h1>Negocio Http</h1>
     </div>
     <div class="col-2">
-        <br />
+        <br/>
         <a class="btn btn-primary" asp-action="Create">Nuevo Negocio</a>
     </div>
 </div>
@@ -35,6 +35,9 @@
                 @Html.DisplayNameFor(model => model.direccion)
             </th>
             <th>
+                @Html.DisplayNameFor(model => model.telefono)
+            </th>
+            <th>
                 @Html.DisplayNameFor(model => model.porcentajeImpuesto)
             </th>
             <th>
@@ -44,40 +47,43 @@
         </tr>
     </thead>
     <tbody>
-@foreach (var item in Model) {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.urlLogo)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.nombreLogo)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.numeroDocumento)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.nombre)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.correo)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.direccion)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.porcentajeImpuesto)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.simboloMoneda)
-            </td>
-            ++
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.urlLogo)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.nombreLogo)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.numeroDocumento)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.nombre)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.correo)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.direccion)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.telefono)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.porcentajeImpuesto)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.simboloMoneda)
+                </td>
 
                 <td class="d-grid gap-2">
                     @Html.ActionLink("Editar", "Edit", new { id=item.idNegocio }, new { @class = "btn btn-warning" })
                     @Html.ActionLink("Detalle", "Details", new { id=item.idNegocio }, new { @class = "btn btn-primary" })
                     @Html.ActionLink("Eliminar", "Delete", new { id=item.idNegocio }, new { @class = "btn btn-danger" })
                 </td>
-        </tr>
-}
+            </tr>
+        }
     </tbody>
 </table>

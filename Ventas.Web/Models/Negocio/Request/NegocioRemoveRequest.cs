@@ -5,6 +5,9 @@
         public int idNegocio { get; set; }
         public bool Deleted { get; set; }
 
+        public NegocioRemoveRequest()
+        {
+        }
         public NegocioRemoveRequest(int negoId)
         {
             this.idNegocio = negoId;

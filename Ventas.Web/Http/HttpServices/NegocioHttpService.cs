@@ -51,7 +51,7 @@ namespace Ventas.Web.Http.HttpServices
         public NegocioListResponse Get()
         {
             NegocioListResponse? response = new();
-            string url = $" {baseUrl}Negocio/GetNegocio";
+            string url = $" {baseUrl}Negocio/ShowNegocio";
 
             try
             {
@@ -76,7 +76,7 @@ namespace Ventas.Web.Http.HttpServices
         public NegocioDetailsResponse GetById(int id)
         {
             NegocioDetailsResponse? response = new();
-            string url = $" {baseUrl}Negocio/GetNegocioById?id={id}";
+            string url = $" {baseUrl}Negocio/ShowNegocioById?id={id}";
 
             try
             {
@@ -103,7 +103,7 @@ namespace Ventas.Web.Http.HttpServices
             BaseResponse? response = new();
 
             NegocioRemoveDto negocioRemove = remove.ConvertRemoveDtoToRemoveRequest();
-            string url = $" {baseUrl}Negocio/RemoveUser";
+            string url = $" {baseUrl}Negocio/RemoveNegocio";
 
             try
             {

@@ -88,6 +88,7 @@ namespace Ventas.Web.Controllers.Extensions
         {
             return new NegocioUpdateDto()
             {
+                idNegocio = negocioUpdate.idNegocio,
                 urlLogo = negocioUpdate.urlLogo,
                 nombreLogo = negocioUpdate.nombreLogo,
                 numeroDocumento = negocioUpdate.numeroDocumento,

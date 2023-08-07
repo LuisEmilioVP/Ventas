@@ -46,7 +46,7 @@ namespace Ventas.API.Controllers
             return Ok();
         }
 
-        [HttpPut("UpdateNegocio")]
+        [HttpPost("UpdateNegocio")]
         public IActionResult Put([FromBody] NegocioUpdateDto NegocioUpdate)
         {
             var result = this.negocioService.Update(NegocioUpdate);
@@ -57,7 +57,7 @@ namespace Ventas.API.Controllers
 
         }
 
-        [HttpDelete("RemoveNegocio")]
+        [HttpPost("RemoveNegocio")]
         public IActionResult Delete([FromBody] NegocioRemoveDto negocioRemove)
         {
             var result = this.negocioService.Remove(negocioRemove);

@@ -9,7 +9,7 @@ namespace Ventas.Web.APIs.ApiServices
     {
         private readonly IApiRepository apiCaller;
         private readonly ILogger<NegocioApiService> logger;
-        private readonly string apiKey = "http://localhost:5203/api/Usuario/";
+        private readonly string apiKey = "http://localhost:5203/api/Negocio/";
 
         public NegocioApiService(IApiRepository apiCaller, ILogger<NegocioApiService> logger)
         {
